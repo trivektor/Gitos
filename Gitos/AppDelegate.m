@@ -7,6 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "DashboardViewController.h"
+#import "KeychainHelper.h"
+
+@implementation UINavigationController (autorotate)
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+-(BOOL) shouldAutorotate {
+    return NO;
+}
+
+@end
 
 @implementation AppDelegate
 
@@ -20,6 +36,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    [self validateAuthenticationToken];
     return YES;
 }
 
@@ -146,4 +163,23 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+- (void)validateAuthenticationToken
+{
+    NSString *authToken = [KeychainHelper getAuthenticationToken];
+    
+    //NSLog(@"authToken when app starts is %@", authToken);
+    
+    if (authToken != nil && authToken != @"") {
+        DashboardViewController *dashboardController = [[DashboardViewController alloc] init];
+        
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:dashboardController];
+        
+        [self.window setRootViewController:navController];
+    } else {
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];
+        [self.window setRootViewController:navController];
+    }
+    
+}
 @end

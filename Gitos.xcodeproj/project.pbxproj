@@ -23,6 +23,19 @@
 		B5F5C72D167576BC00C4F0E4 /* octocat_original.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C72C167576BC00C4F0E4 /* octocat_original.png */; };
 		B5F5C72F167577BA00C4F0E4 /* signin_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C72E167577BA00C4F0E4 /* signin_btn.png */; };
 		B5F5C7311675780D00C4F0E4 /* blue_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7301675780D00C4F0E4 /* blue_btn.png */; };
+		B5F5C7341675797000C4F0E4 /* GithubAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7331675797000C4F0E4 /* GithubAuthController.m */; };
+		B5F5C73E16757A6700C4F0E4 /* GithubAuthenticatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C73D16757A6700C4F0E4 /* GithubAuthenticatorView.m */; };
+		B5F5C74216757C0800C4F0E4 /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C74116757C0800C4F0E4 /* NSDictionary+UrlEncoding.m */; };
+		B5F5C74616757C5D00C4F0E4 /* SizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C74516757C5D00C4F0E4 /* SizerView.m */; };
+		B5F5C74B16759CC300C4F0E4 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C74916759CC300C4F0E4 /* DashboardViewController.m */; };
+		B5F5C74C16759CC300C4F0E4 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C74A16759CC300C4F0E4 /* DashboardViewController.xib */; };
+		B5F5C7521675A3B500C4F0E4 /* KeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7511675A3B500C4F0E4 /* KeychainHelper.m */; };
+		B5F5C7551675A3EA00C4F0E4 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7541675A3EA00C4F0E4 /* KeychainItemWrapper.m */; };
+		B5F5C7571675A6CC00C4F0E4 /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7561675A6CC00C4F0E4 /* AppConfig.plist */; };
+		B5F5C7641675A71D00C4F0E4 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7631675A71C00C4F0E4 /* AppConfig.m */; };
+		B5F5C7661675A7A100C4F0E4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F5C7651675A7A100C4F0E4 /* Security.framework */; };
+		B5F5C76A1675B43300C4F0E4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7681675B43300C4F0E4 /* LoginViewController.m */; };
+		B5F5C76B1675B43300C4F0E4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7691675B43300C4F0E4 /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +60,29 @@
 		B5F5C72C167576BC00C4F0E4 /* octocat_original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_original.png; sourceTree = "<group>"; };
 		B5F5C72E167577BA00C4F0E4 /* signin_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_btn.png; sourceTree = "<group>"; };
 		B5F5C7301675780D00C4F0E4 /* blue_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_btn.png; sourceTree = "<group>"; };
+		B5F5C7321675797000C4F0E4 /* GithubAuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubAuthController.h; sourceTree = "<group>"; };
+		B5F5C7331675797000C4F0E4 /* GithubAuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubAuthController.m; sourceTree = "<group>"; };
+		B5F5C73C16757A6700C4F0E4 /* GithubAuthenticatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubAuthenticatorView.h; sourceTree = "<group>"; };
+		B5F5C73D16757A6700C4F0E4 /* GithubAuthenticatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubAuthenticatorView.m; sourceTree = "<group>"; };
+		B5F5C73F16757AE100C4F0E4 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Defines.h; path = Classes/Defines.h; sourceTree = "<group>"; };
+		B5F5C74016757BFB00C4F0E4 /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
+		B5F5C74116757C0800C4F0E4 /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
+		B5F5C74416757C5D00C4F0E4 /* SizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizerView.h; sourceTree = "<group>"; };
+		B5F5C74516757C5D00C4F0E4 /* SizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizerView.m; sourceTree = "<group>"; };
+		B5F5C74816759CC300C4F0E4 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		B5F5C74916759CC300C4F0E4 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		B5F5C74A16759CC300C4F0E4 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		B5F5C7501675A3B500C4F0E4 /* KeychainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainHelper.h; sourceTree = "<group>"; };
+		B5F5C7511675A3B500C4F0E4 /* KeychainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainHelper.m; sourceTree = "<group>"; };
+		B5F5C7531675A3EA00C4F0E4 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		B5F5C7541675A3EA00C4F0E4 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		B5F5C7561675A6CC00C4F0E4 /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
+		B5F5C7621675A71C00C4F0E4 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		B5F5C7631675A71C00C4F0E4 /* AppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
+		B5F5C7651675A7A100C4F0E4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B5F5C7671675B43300C4F0E4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B5F5C7681675B43300C4F0E4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B5F5C7691675B43300C4F0E4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F5C7661675A7A100C4F0E4 /* Security.framework in Frameworks */,
 				B5F5C7041675742500C4F0E4 /* UIKit.framework in Frameworks */,
 				B5F5C7061675742500C4F0E4 /* Foundation.framework in Frameworks */,
 				B5F5C7081675742500C4F0E4 /* CoreGraphics.framework in Frameworks */,
@@ -67,6 +104,7 @@
 		B5F5C6F41675742500C4F0E4 = {
 			isa = PBXGroup;
 			children = (
+				B5F5C7651675A7A100C4F0E4 /* Security.framework */,
 				B5F5C70B1675742500C4F0E4 /* Gitos */,
 				B5F5C7021675742500C4F0E4 /* Frameworks */,
 				B5F5C7001675742500C4F0E4 /* Products */,
@@ -95,12 +133,16 @@
 		B5F5C70B1675742500C4F0E4 /* Gitos */ = {
 			isa = PBXGroup;
 			children = (
+				B5F5C74316757C3F00C4F0E4 /* Views */,
+				B5F5C73816757A0A00C4F0E4 /* Classes */,
 				B5F5C72B167576A400C4F0E4 /* Images */,
 				B5F5C725167575E700C4F0E4 /* Controllers */,
 				B5F5C7141675742500C4F0E4 /* AppDelegate.h */,
+				B5F5C73F16757AE100C4F0E4 /* Defines.h */,
 				B5F5C7151675742500C4F0E4 /* AppDelegate.m */,
 				B5F5C71D1675742500C4F0E4 /* Gitos.xcdatamodeld */,
 				B5F5C70C1675742500C4F0E4 /* Supporting Files */,
+				B5F5C7561675A6CC00C4F0E4 /* AppConfig.plist */,
 			);
 			path = Gitos;
 			sourceTree = "<group>";
@@ -125,6 +167,16 @@
 				B5F5C7261675762200C4F0E4 /* HomeViewController.h */,
 				B5F5C7271675762200C4F0E4 /* HomeViewController.m */,
 				B5F5C7281675762200C4F0E4 /* HomeViewController.xib */,
+				B5F5C7321675797000C4F0E4 /* GithubAuthController.h */,
+				B5F5C7331675797000C4F0E4 /* GithubAuthController.m */,
+				B5F5C73C16757A6700C4F0E4 /* GithubAuthenticatorView.h */,
+				B5F5C73D16757A6700C4F0E4 /* GithubAuthenticatorView.m */,
+				B5F5C74816759CC300C4F0E4 /* DashboardViewController.h */,
+				B5F5C74916759CC300C4F0E4 /* DashboardViewController.m */,
+				B5F5C74A16759CC300C4F0E4 /* DashboardViewController.xib */,
+				B5F5C7671675B43300C4F0E4 /* LoginViewController.h */,
+				B5F5C7681675B43300C4F0E4 /* LoginViewController.m */,
+				B5F5C7691675B43300C4F0E4 /* LoginViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +189,30 @@
 				B5F5C72C167576BC00C4F0E4 /* octocat_original.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		B5F5C73816757A0A00C4F0E4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B5F5C74016757BFB00C4F0E4 /* NSDictionary+UrlEncoding.h */,
+				B5F5C74116757C0800C4F0E4 /* NSDictionary+UrlEncoding.m */,
+				B5F5C7501675A3B500C4F0E4 /* KeychainHelper.h */,
+				B5F5C7511675A3B500C4F0E4 /* KeychainHelper.m */,
+				B5F5C7531675A3EA00C4F0E4 /* KeychainItemWrapper.h */,
+				B5F5C7541675A3EA00C4F0E4 /* KeychainItemWrapper.m */,
+				B5F5C7621675A71C00C4F0E4 /* AppConfig.h */,
+				B5F5C7631675A71C00C4F0E4 /* AppConfig.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B5F5C74316757C3F00C4F0E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5F5C74416757C5D00C4F0E4 /* SizerView.h */,
+				B5F5C74516757C5D00C4F0E4 /* SizerView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +274,9 @@
 				B5F5C72D167576BC00C4F0E4 /* octocat_original.png in Resources */,
 				B5F5C72F167577BA00C4F0E4 /* signin_btn.png in Resources */,
 				B5F5C7311675780D00C4F0E4 /* blue_btn.png in Resources */,
+				B5F5C74C16759CC300C4F0E4 /* DashboardViewController.xib in Resources */,
+				B5F5C7571675A6CC00C4F0E4 /* AppConfig.plist in Resources */,
+				B5F5C76B1675B43300C4F0E4 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +291,15 @@
 				B5F5C7161675742500C4F0E4 /* AppDelegate.m in Sources */,
 				B5F5C71F1675742500C4F0E4 /* Gitos.xcdatamodeld in Sources */,
 				B5F5C7291675762200C4F0E4 /* HomeViewController.m in Sources */,
+				B5F5C7341675797000C4F0E4 /* GithubAuthController.m in Sources */,
+				B5F5C73E16757A6700C4F0E4 /* GithubAuthenticatorView.m in Sources */,
+				B5F5C74216757C0800C4F0E4 /* NSDictionary+UrlEncoding.m in Sources */,
+				B5F5C74616757C5D00C4F0E4 /* SizerView.m in Sources */,
+				B5F5C74B16759CC300C4F0E4 /* DashboardViewController.m in Sources */,
+				B5F5C7521675A3B500C4F0E4 /* KeychainHelper.m in Sources */,
+				B5F5C7551675A3EA00C4F0E4 /* KeychainItemWrapper.m in Sources */,
+				B5F5C7641675A71D00C4F0E4 /* AppConfig.m in Sources */,
+				B5F5C76A1675B43300C4F0E4 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

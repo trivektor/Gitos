@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GithubAuthController.h"
 
 @interface HomeViewController : UIViewController
+{
+    __weak IBOutlet UIButton *signinButton;
+}
+
+- (IBAction)showSigninForm:(id)sender;
+- (void)authenticateUser;
+- (void)showDashboard;
 
 @end
