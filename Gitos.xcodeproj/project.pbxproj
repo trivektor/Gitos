@@ -18,6 +18,11 @@
 		B5F5C71A1675742500C4F0E4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7191675742500C4F0E4 /* Default@2x.png */; };
 		B5F5C71C1675742500C4F0E4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C71B1675742500C4F0E4 /* Default-568h@2x.png */; };
 		B5F5C71F1675742500C4F0E4 /* Gitos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C71D1675742500C4F0E4 /* Gitos.xcdatamodeld */; };
+		B5F5C7291675762200C4F0E4 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7271675762200C4F0E4 /* HomeViewController.m */; };
+		B5F5C72A1675762200C4F0E4 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7281675762200C4F0E4 /* HomeViewController.xib */; };
+		B5F5C72D167576BC00C4F0E4 /* octocat_original.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C72C167576BC00C4F0E4 /* octocat_original.png */; };
+		B5F5C72F167577BA00C4F0E4 /* signin_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C72E167577BA00C4F0E4 /* signin_btn.png */; };
+		B5F5C7311675780D00C4F0E4 /* blue_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7301675780D00C4F0E4 /* blue_btn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,12 @@
 		B5F5C7191675742500C4F0E4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B5F5C71B1675742500C4F0E4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B5F5C71E1675742500C4F0E4 /* Gitos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gitos.xcdatamodel; sourceTree = "<group>"; };
+		B5F5C7261675762200C4F0E4 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		B5F5C7271675762200C4F0E4 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		B5F5C7281675762200C4F0E4 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		B5F5C72C167576BC00C4F0E4 /* octocat_original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat_original.png; sourceTree = "<group>"; };
+		B5F5C72E167577BA00C4F0E4 /* signin_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_btn.png; sourceTree = "<group>"; };
+		B5F5C7301675780D00C4F0E4 /* blue_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_btn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +95,8 @@
 		B5F5C70B1675742500C4F0E4 /* Gitos */ = {
 			isa = PBXGroup;
 			children = (
+				B5F5C72B167576A400C4F0E4 /* Images */,
+				B5F5C725167575E700C4F0E4 /* Controllers */,
 				B5F5C7141675742500C4F0E4 /* AppDelegate.h */,
 				B5F5C7151675742500C4F0E4 /* AppDelegate.m */,
 				B5F5C71D1675742500C4F0E4 /* Gitos.xcdatamodeld */,
@@ -104,6 +117,26 @@
 				B5F5C71B1675742500C4F0E4 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5F5C725167575E700C4F0E4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5F5C7261675762200C4F0E4 /* HomeViewController.h */,
+				B5F5C7271675762200C4F0E4 /* HomeViewController.m */,
+				B5F5C7281675762200C4F0E4 /* HomeViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B5F5C72B167576A400C4F0E4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B5F5C72E167577BA00C4F0E4 /* signin_btn.png */,
+				B5F5C7301675780D00C4F0E4 /* blue_btn.png */,
+				B5F5C72C167576BC00C4F0E4 /* octocat_original.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +194,10 @@
 				B5F5C7181675742500C4F0E4 /* Default.png in Resources */,
 				B5F5C71A1675742500C4F0E4 /* Default@2x.png in Resources */,
 				B5F5C71C1675742500C4F0E4 /* Default-568h@2x.png in Resources */,
+				B5F5C72A1675762200C4F0E4 /* HomeViewController.xib in Resources */,
+				B5F5C72D167576BC00C4F0E4 /* octocat_original.png in Resources */,
+				B5F5C72F167577BA00C4F0E4 /* signin_btn.png in Resources */,
+				B5F5C7311675780D00C4F0E4 /* blue_btn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +211,7 @@
 				B5F5C7121675742500C4F0E4 /* main.m in Sources */,
 				B5F5C7161675742500C4F0E4 /* AppDelegate.m in Sources */,
 				B5F5C71F1675742500C4F0E4 /* Gitos.xcdatamodeld in Sources */,
+				B5F5C7291675762200C4F0E4 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
