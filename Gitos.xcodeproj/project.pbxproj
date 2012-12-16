@@ -27,8 +27,6 @@
 		B5F5C73E16757A6700C4F0E4 /* GithubAuthenticatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C73D16757A6700C4F0E4 /* GithubAuthenticatorView.m */; };
 		B5F5C74216757C0800C4F0E4 /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C74116757C0800C4F0E4 /* NSDictionary+UrlEncoding.m */; };
 		B5F5C74616757C5D00C4F0E4 /* SizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C74516757C5D00C4F0E4 /* SizerView.m */; };
-		B5F5C74B16759CC300C4F0E4 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C74916759CC300C4F0E4 /* DashboardViewController.m */; };
-		B5F5C74C16759CC300C4F0E4 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C74A16759CC300C4F0E4 /* DashboardViewController.xib */; };
 		B5F5C7521675A3B500C4F0E4 /* KeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7511675A3B500C4F0E4 /* KeychainHelper.m */; };
 		B5F5C7551675A3EA00C4F0E4 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7541675A3EA00C4F0E4 /* KeychainItemWrapper.m */; };
 		B5F5C7571675A6CC00C4F0E4 /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7561675A6CC00C4F0E4 /* AppConfig.plist */; };
@@ -38,6 +36,14 @@
 		B5F5C76B1675B43300C4F0E4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7691675B43300C4F0E4 /* LoginViewController.xib */; };
 		B5F5C7CD167D9B7E00C4F0E4 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7CC167D9B7E00C4F0E4 /* URLParser.m */; };
 		B5F5C7D3167DABF700C4F0E4 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7D2167DABF700C4F0E4 /* SSKeychain.m */; };
+		B5F5C7D7167DB85200C4F0E4 /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7D5167DB85200C4F0E4 /* NewsfeedViewController.m */; };
+		B5F5C7D8167DB85200C4F0E4 /* NewsfeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7D6167DB85200C4F0E4 /* NewsfeedViewController.xib */; };
+		B5F5C7DC167DBAE400C4F0E4 /* ReposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7DA167DBAE300C4F0E4 /* ReposViewController.m */; };
+		B5F5C7DD167DBAE400C4F0E4 /* ReposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7DB167DBAE300C4F0E4 /* ReposViewController.xib */; };
+		B5F5C7E1167E528E00C4F0E4 /* GistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7DF167E528E00C4F0E4 /* GistsViewController.m */; };
+		B5F5C7E2167E528E00C4F0E4 /* GistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7E0167E528E00C4F0E4 /* GistsViewController.xib */; };
+		B5F5C7EA167E54A700C4F0E4 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7E8167E54A700C4F0E4 /* DashboardViewController.m */; };
+		B5F5C7EB167E54A700C4F0E4 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7E9167E54A700C4F0E4 /* DashboardViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,9 +77,6 @@
 		B5F5C74116757C0800C4F0E4 /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
 		B5F5C74416757C5D00C4F0E4 /* SizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizerView.h; sourceTree = "<group>"; };
 		B5F5C74516757C5D00C4F0E4 /* SizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizerView.m; sourceTree = "<group>"; };
-		B5F5C74816759CC300C4F0E4 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
-		B5F5C74916759CC300C4F0E4 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
-		B5F5C74A16759CC300C4F0E4 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		B5F5C7501675A3B500C4F0E4 /* KeychainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainHelper.h; sourceTree = "<group>"; };
 		B5F5C7511675A3B500C4F0E4 /* KeychainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainHelper.m; sourceTree = "<group>"; };
 		B5F5C7531675A3EA00C4F0E4 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
@@ -89,6 +92,18 @@
 		B5F5C7CC167D9B7E00C4F0E4 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLParser.m; sourceTree = "<group>"; };
 		B5F5C7D1167DABF700C4F0E4 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		B5F5C7D2167DABF700C4F0E4 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		B5F5C7D4167DB85200C4F0E4 /* NewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedViewController.h; sourceTree = "<group>"; };
+		B5F5C7D5167DB85200C4F0E4 /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
+		B5F5C7D6167DB85200C4F0E4 /* NewsfeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedViewController.xib; sourceTree = "<group>"; };
+		B5F5C7D9167DBAE300C4F0E4 /* ReposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReposViewController.h; sourceTree = "<group>"; };
+		B5F5C7DA167DBAE300C4F0E4 /* ReposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReposViewController.m; sourceTree = "<group>"; };
+		B5F5C7DB167DBAE300C4F0E4 /* ReposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReposViewController.xib; sourceTree = "<group>"; };
+		B5F5C7DE167E528D00C4F0E4 /* GistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistsViewController.h; sourceTree = "<group>"; };
+		B5F5C7DF167E528E00C4F0E4 /* GistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistsViewController.m; sourceTree = "<group>"; };
+		B5F5C7E0167E528E00C4F0E4 /* GistsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistsViewController.xib; sourceTree = "<group>"; };
+		B5F5C7E7167E54A700C4F0E4 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		B5F5C7E8167E54A700C4F0E4 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		B5F5C7E9167E54A700C4F0E4 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,12 +192,21 @@
 				B5F5C7331675797000C4F0E4 /* GithubAuthController.m */,
 				B5F5C73C16757A6700C4F0E4 /* GithubAuthenticatorView.h */,
 				B5F5C73D16757A6700C4F0E4 /* GithubAuthenticatorView.m */,
-				B5F5C74816759CC300C4F0E4 /* DashboardViewController.h */,
-				B5F5C74916759CC300C4F0E4 /* DashboardViewController.m */,
-				B5F5C74A16759CC300C4F0E4 /* DashboardViewController.xib */,
 				B5F5C7671675B43300C4F0E4 /* LoginViewController.h */,
 				B5F5C7681675B43300C4F0E4 /* LoginViewController.m */,
 				B5F5C7691675B43300C4F0E4 /* LoginViewController.xib */,
+				B5F5C7D4167DB85200C4F0E4 /* NewsfeedViewController.h */,
+				B5F5C7D5167DB85200C4F0E4 /* NewsfeedViewController.m */,
+				B5F5C7D6167DB85200C4F0E4 /* NewsfeedViewController.xib */,
+				B5F5C7D9167DBAE300C4F0E4 /* ReposViewController.h */,
+				B5F5C7DA167DBAE300C4F0E4 /* ReposViewController.m */,
+				B5F5C7DB167DBAE300C4F0E4 /* ReposViewController.xib */,
+				B5F5C7DE167E528D00C4F0E4 /* GistsViewController.h */,
+				B5F5C7DF167E528E00C4F0E4 /* GistsViewController.m */,
+				B5F5C7E0167E528E00C4F0E4 /* GistsViewController.xib */,
+				B5F5C7E7167E54A700C4F0E4 /* DashboardViewController.h */,
+				B5F5C7E8167E54A700C4F0E4 /* DashboardViewController.m */,
+				B5F5C7E9167E54A700C4F0E4 /* DashboardViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,9 +308,12 @@
 				B5F5C72D167576BC00C4F0E4 /* octocat_original.png in Resources */,
 				B5F5C72F167577BA00C4F0E4 /* signin_btn.png in Resources */,
 				B5F5C7311675780D00C4F0E4 /* blue_btn.png in Resources */,
-				B5F5C74C16759CC300C4F0E4 /* DashboardViewController.xib in Resources */,
 				B5F5C7571675A6CC00C4F0E4 /* AppConfig.plist in Resources */,
 				B5F5C76B1675B43300C4F0E4 /* LoginViewController.xib in Resources */,
+				B5F5C7D8167DB85200C4F0E4 /* NewsfeedViewController.xib in Resources */,
+				B5F5C7DD167DBAE400C4F0E4 /* ReposViewController.xib in Resources */,
+				B5F5C7E2167E528E00C4F0E4 /* GistsViewController.xib in Resources */,
+				B5F5C7EB167E54A700C4F0E4 /* DashboardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,13 +332,16 @@
 				B5F5C73E16757A6700C4F0E4 /* GithubAuthenticatorView.m in Sources */,
 				B5F5C74216757C0800C4F0E4 /* NSDictionary+UrlEncoding.m in Sources */,
 				B5F5C74616757C5D00C4F0E4 /* SizerView.m in Sources */,
-				B5F5C74B16759CC300C4F0E4 /* DashboardViewController.m in Sources */,
 				B5F5C7521675A3B500C4F0E4 /* KeychainHelper.m in Sources */,
 				B5F5C7551675A3EA00C4F0E4 /* KeychainItemWrapper.m in Sources */,
 				B5F5C7641675A71D00C4F0E4 /* AppConfig.m in Sources */,
 				B5F5C76A1675B43300C4F0E4 /* LoginViewController.m in Sources */,
 				B5F5C7CD167D9B7E00C4F0E4 /* URLParser.m in Sources */,
 				B5F5C7D3167DABF700C4F0E4 /* SSKeychain.m in Sources */,
+				B5F5C7D7167DB85200C4F0E4 /* NewsfeedViewController.m in Sources */,
+				B5F5C7DC167DBAE400C4F0E4 /* ReposViewController.m in Sources */,
+				B5F5C7E1167E528E00C4F0E4 /* GistsViewController.m in Sources */,
+				B5F5C7EA167E54A700C4F0E4 /* DashboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

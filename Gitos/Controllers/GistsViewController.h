@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.h
+//  GistsViewController.h
 //  Gitos
 //
 //  Created by Tri Vuong on 12/16/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DashboardViewController : UITabBarController
+@interface GistsViewController : UIViewController
 
 @end

@@ -2,11 +2,14 @@
 //  DashboardViewController.m
 //  Gitos
 //
-//  Created by Tri Vuong on 12/9/12.
+//  Created by Tri Vuong on 12/16/12.
 //  Copyright (c) 2012 Crafted By Tri. All rights reserved.
 //
 
 #import "DashboardViewController.h"
+#import "NewsfeedViewController.h"
+#import "ReposViewController.h"
+#import "GistsViewController.h"
 
 @interface DashboardViewController ()
 
@@ -19,6 +22,17 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
+        ReposViewController *reposController = [[ReposViewController alloc] init];
+        GistsViewController *gistsController = [[GistsViewController alloc] init];
+        
+        NSArray *viewControllers = [NSArray arrayWithObjects:newsfeedController,
+                                    reposController,
+                                    gistsController,
+                                    nil];
+        
+        [self setViewControllers:viewControllers];
+        self.navigationController.navigationBarHidden = YES;
     }
     return self;
 }
