@@ -9,19 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UIWebViewDelegate>
 {
-    __weak IBOutlet UITableView *loginTable;
     
-    __weak IBOutlet UITextField *emailTextField;
-    __weak IBOutlet UITextField *passwordTextField;
+    __weak IBOutlet UIWebView *webView;
 }
 
-@property (nonatomic, retain) IBOutlet UITableViewCell *emailCell;
-@property (nonatomic, retain) IBOutlet UITableViewCell *passwordCell;
-
-
-
-- (void)login;
+@property(nonatomic, strong) NSURLConnection *tokenRequestConnection;
+@property(nonatomic, strong) NSMutableData *data;
 
 @end

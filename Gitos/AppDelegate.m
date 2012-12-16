@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "DashboardViewController.h"
 #import "KeychainHelper.h"
+#import "SSKeychain.h"
 
 @implementation UINavigationController (autorotate)
 
@@ -165,9 +166,10 @@
 
 - (void)validateAuthenticationToken
 {
-    NSString *authToken = [KeychainHelper getAuthenticationToken];
+    //NSString *authToken = [KeychainHelper getAuthenticationToken];
+    NSString *authToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
-    //NSLog(@"authToken when app starts is %@", authToken);
+    NSLog(@"authToken when app starts is %@", authToken);
     
     if (authToken != nil && authToken != @"") {
         DashboardViewController *dashboardController = [[DashboardViewController alloc] init];

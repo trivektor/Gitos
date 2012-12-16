@@ -36,6 +36,8 @@
 		B5F5C7661675A7A100C4F0E4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F5C7651675A7A100C4F0E4 /* Security.framework */; };
 		B5F5C76A1675B43300C4F0E4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7681675B43300C4F0E4 /* LoginViewController.m */; };
 		B5F5C76B1675B43300C4F0E4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F5C7691675B43300C4F0E4 /* LoginViewController.xib */; };
+		B5F5C7CD167D9B7E00C4F0E4 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7CC167D9B7E00C4F0E4 /* URLParser.m */; };
+		B5F5C7D3167DABF700C4F0E4 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F5C7D2167DABF700C4F0E4 /* SSKeychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,10 @@
 		B5F5C7671675B43300C4F0E4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B5F5C7681675B43300C4F0E4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B5F5C7691675B43300C4F0E4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		B5F5C7CB167D9B7E00C4F0E4 /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLParser.h; sourceTree = "<group>"; };
+		B5F5C7CC167D9B7E00C4F0E4 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLParser.m; sourceTree = "<group>"; };
+		B5F5C7D1167DABF700C4F0E4 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		B5F5C7D2167DABF700C4F0E4 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +110,6 @@
 		B5F5C6F41675742500C4F0E4 = {
 			isa = PBXGroup;
 			children = (
-				B5F5C7651675A7A100C4F0E4 /* Security.framework */,
 				B5F5C70B1675742500C4F0E4 /* Gitos */,
 				B5F5C7021675742500C4F0E4 /* Frameworks */,
 				B5F5C7001675742500C4F0E4 /* Products */,
@@ -122,6 +127,7 @@
 		B5F5C7021675742500C4F0E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5F5C7651675A7A100C4F0E4 /* Security.framework */,
 				B5F5C7031675742500C4F0E4 /* UIKit.framework */,
 				B5F5C7051675742500C4F0E4 /* Foundation.framework */,
 				B5F5C7071675742500C4F0E4 /* CoreGraphics.framework */,
@@ -194,6 +200,8 @@
 		B5F5C73816757A0A00C4F0E4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B5F5C7D1167DABF700C4F0E4 /* SSKeychain.h */,
+				B5F5C7D2167DABF700C4F0E4 /* SSKeychain.m */,
 				B5F5C74016757BFB00C4F0E4 /* NSDictionary+UrlEncoding.h */,
 				B5F5C74116757C0800C4F0E4 /* NSDictionary+UrlEncoding.m */,
 				B5F5C7501675A3B500C4F0E4 /* KeychainHelper.h */,
@@ -202,6 +210,8 @@
 				B5F5C7541675A3EA00C4F0E4 /* KeychainItemWrapper.m */,
 				B5F5C7621675A71C00C4F0E4 /* AppConfig.h */,
 				B5F5C7631675A71C00C4F0E4 /* AppConfig.m */,
+				B5F5C7CB167D9B7E00C4F0E4 /* URLParser.h */,
+				B5F5C7CC167D9B7E00C4F0E4 /* URLParser.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -300,6 +310,8 @@
 				B5F5C7551675A3EA00C4F0E4 /* KeychainItemWrapper.m in Sources */,
 				B5F5C7641675A71D00C4F0E4 /* AppConfig.m in Sources */,
 				B5F5C76A1675B43300C4F0E4 /* LoginViewController.m in Sources */,
+				B5F5C7CD167D9B7E00C4F0E4 /* URLParser.m in Sources */,
+				B5F5C7D3167DABF700C4F0E4 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +420,7 @@
 				B5F5C7241675742500C4F0E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
