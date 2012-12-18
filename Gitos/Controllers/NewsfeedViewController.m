@@ -19,7 +19,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.tabBarItem.title = @"Newsfeed";
     }
     return self;
 }
@@ -28,8 +27,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     self.navigationItem.title = @"Newsfeed";
-    self.tabBarController.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning

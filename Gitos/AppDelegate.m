@@ -179,9 +179,19 @@
         ReposViewController *reposController = [[ReposViewController alloc] init];
         GistsViewController *gistsController = [[GistsViewController alloc] init];
         
-        NSArray *viewControllers = [NSArray arrayWithObjects:newsfeedController,
-                                    reposController,
-                                    gistsController,
+        UINavigationController *newsfeedNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
+        newsfeedNavController.tabBarItem.title = @"Newsfeed";
+        
+        UINavigationController *reposNavController = [[UINavigationController alloc] initWithRootViewController:reposController];
+        reposNavController.tabBarItem.title = @"Repos";
+        
+        UINavigationController *gistsNavController = [[UINavigationController alloc] initWithRootViewController:gistsController];
+        gistsNavController.tabBarItem.title = @"Gists";
+        
+        NSArray *viewControllers = [NSArray arrayWithObjects:
+                                    newsfeedNavController,
+                                    reposNavController,
+                                    gistsNavController,
                                     nil];
         UITabBarController *tabController = [[UITabBarController alloc] init];
         [tabController setViewControllers:viewControllers];
