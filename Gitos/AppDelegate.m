@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "DashboardViewController.h"
+#import "ReposViewController.h"
+#import "NewsfeedViewController.h"
+#import "GistsViewController.h"
 #import "KeychainHelper.h"
 #import "SSKeychain.h"
 
@@ -172,11 +175,17 @@
     NSLog(@"authToken when app starts is %@", authToken);
     
     if (authToken != nil && authToken != @"") {
-        DashboardViewController *dashboardController = [[DashboardViewController alloc] init];
+        NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
+        ReposViewController *reposController = [[ReposViewController alloc] init];
+        GistsViewController *gistsController = [[GistsViewController alloc] init];
         
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:dashboardController];
-        
-        [self.window setRootViewController:navController];
+        NSArray *viewControllers = [NSArray arrayWithObjects:newsfeedController,
+                                    reposController,
+                                    gistsController,
+                                    nil];
+        UITabBarController *tabController = [[UITabBarController alloc] init];
+        [tabController setViewControllers:viewControllers];
+        [self.window setRootViewController:tabController];
     } else {
         LoginViewController *loginController = [[LoginViewController alloc] init];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];

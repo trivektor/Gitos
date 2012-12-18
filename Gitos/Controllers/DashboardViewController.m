@@ -33,6 +33,7 @@
         
         [self setViewControllers:viewControllers];
         self.navigationController.navigationBarHidden = YES;
+        self.moreNavigationController.navigationBar.tintColor = [UIColor redColor];
     }
     return self;
 }
@@ -41,6 +42,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.moreNavigationController.navigationBar.tintColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning
