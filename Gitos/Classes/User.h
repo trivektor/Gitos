@@ -17,6 +17,6 @@
 @property (nonatomic, strong) NSString *starredUrl;
 @property (nonatomic, strong) NSString *reposUrl;
 
-- (id)initWithAccessToken:(NSString *)accessToken;
+- (id)initWithOptions:(NSDictionary *)options;
 
 @end

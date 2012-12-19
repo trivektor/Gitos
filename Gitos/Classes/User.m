@@ -7,12 +7,17 @@
 //
 
 #import "User.h"
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
 
 @implementation User
 
-- (id)initWithAccessToken:(NSString *)accessToken
+@synthesize receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl;
+
+- (id)initWithOptions:(NSDictionary *)options
 {
-    
+    self.receivedEventsUrl = [options valueForKey:@"received_events_url"];
+    return self;
 }
 
 @end

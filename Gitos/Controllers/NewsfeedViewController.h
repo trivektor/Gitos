@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
-@interface NewsfeedViewController : UIViewController
+@interface NewsfeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    __weak IBOutlet UITableView *newsFeedTable;
+}
+
+@property (nonatomic, strong) NSMutableArray *newsFeed;
+@property (nonatomic, retain) User *user;
+
+- (void)getUserInfoAndNewsFeed;
+- (void)getUserNewsFeed;
 
 @end
