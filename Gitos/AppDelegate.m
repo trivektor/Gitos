@@ -198,6 +198,7 @@
                                     nil];
         UITabBarController *tabController = [[UITabBarController alloc] init];
         [tabController setViewControllers:viewControllers];
+        [tabController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar_bg.png"]];
         
         UITabBarItem *item0 = [tabController.tabBar.items objectAtIndex:0];
         UITabBarItem *item1 = [tabController.tabBar.items objectAtIndex:1];
