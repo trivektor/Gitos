@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5CB3C76168267AF00566E19 /* NewsFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CB3C75168267AF00566E19 /* NewsFeedCell.m */; };
+		B5CB3C78168267BF00566E19 /* NewsFeed.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C77168267BF00566E19 /* NewsFeed.xib */; };
+		B5CB3C7A16827CE000566E19 /* news_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C7916827CE000566E19 /* news_icon.png */; };
+		B5CB3C8016827E1B00566E19 /* news_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C7F16827E1B00566E19 /* news_icon.png */; };
+		B5CB3C8216827FFB00566E19 /* news_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C8116827FFB00566E19 /* news_icon.png */; };
+		B5CB3C841682805B00566E19 /* repos_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C831682805B00566E19 /* repos_icon.png */; };
+		B5CB3C86168280D900566E19 /* gists_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C85168280D900566E19 /* gists_icon.png */; };
 		B5CC190116822847000D32B3 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC190016822847000D32B3 /* User.m */; };
 		B5CC1919168229AE000D32B3 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1905168229AE000D32B3 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5CC191A168229AE000D32B3 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1907168229AE000D32B3 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -58,6 +65,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5CB3C74168267AF00566E19 /* NewsFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCell.h; sourceTree = "<group>"; };
+		B5CB3C75168267AF00566E19 /* NewsFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedCell.m; sourceTree = "<group>"; };
+		B5CB3C77168267BF00566E19 /* NewsFeed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsFeed.xib; sourceTree = "<group>"; };
+		B5CB3C7916827CE000566E19 /* news_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_icon.png; sourceTree = "<group>"; };
+		B5CB3C7F16827E1B00566E19 /* news_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_icon.png; sourceTree = "<group>"; };
+		B5CB3C8116827FFB00566E19 /* news_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_icon.png; sourceTree = "<group>"; };
+		B5CB3C831682805B00566E19 /* repos_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repos_icon.png; sourceTree = "<group>"; };
+		B5CB3C85168280D900566E19 /* gists_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gists_icon.png; sourceTree = "<group>"; };
 		B5CC18FF16822847000D32B3 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		B5CC190016822847000D32B3 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		B5CC1904168229AE000D32B3 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -156,6 +171,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B5CB3C73168267A400566E19 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B5CB3C74168267AF00566E19 /* NewsFeedCell.h */,
+				B5CB3C75168267AF00566E19 /* NewsFeedCell.m */,
+				B5CB3C77168267BF00566E19 /* NewsFeed.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		B5CC1903168229AE000D32B3 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,13 +207,6 @@
 				B5CC1918168229AE000D32B3 /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		B5CC192616824019000D32B3 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		B5F5C6F41675742500C4F0E4 = {
@@ -224,7 +242,7 @@
 		B5F5C70B1675742500C4F0E4 /* Gitos */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC192616824019000D32B3 /* Cells */,
+				B5CB3C73168267A400566E19 /* Cells */,
 				B5F5C74316757C3F00C4F0E4 /* Views */,
 				B5F5C73816757A0A00C4F0E4 /* Classes */,
 				B5F5C72B167576A400C4F0E4 /* Images */,
@@ -285,6 +303,11 @@
 		B5F5C72B167576A400C4F0E4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B5CB3C831682805B00566E19 /* repos_icon.png */,
+				B5CB3C85168280D900566E19 /* gists_icon.png */,
+				B5CB3C8116827FFB00566E19 /* news_icon.png */,
+				B5CB3C7F16827E1B00566E19 /* news_icon.png */,
+				B5CB3C7916827CE000566E19 /* news_icon.png */,
 				B5F5C72E167577BA00C4F0E4 /* signin_btn.png */,
 				B5F5C7301675780D00C4F0E4 /* blue_btn.png */,
 				B5F5C72C167576BC00C4F0E4 /* octocat_original.png */,
@@ -387,6 +410,12 @@
 				B5F5C7DD167DBAE400C4F0E4 /* ReposViewController.xib in Resources */,
 				B5F5C7E2167E528E00C4F0E4 /* GistsViewController.xib in Resources */,
 				B5F5C7EB167E54A700C4F0E4 /* DashboardViewController.xib in Resources */,
+				B5CB3C78168267BF00566E19 /* NewsFeed.xib in Resources */,
+				B5CB3C7A16827CE000566E19 /* news_icon.png in Resources */,
+				B5CB3C8016827E1B00566E19 /* news_icon.png in Resources */,
+				B5CB3C8216827FFB00566E19 /* news_icon.png in Resources */,
+				B5CB3C841682805B00566E19 /* repos_icon.png in Resources */,
+				B5CB3C86168280D900566E19 /* gists_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +455,7 @@
 				B5CC1920168229AE000D32B3 /* AFURLConnectionOperation.m in Sources */,
 				B5CC1921168229AE000D32B3 /* AFXMLRequestOperation.m in Sources */,
 				B5CC1922168229AE000D32B3 /* UIImageView+AFNetworking.m in Sources */,
+				B5CB3C76168267AF00566E19 /* NewsFeedCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

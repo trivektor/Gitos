@@ -11,8 +11,27 @@
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
 #import "User.h"
+#import "NewsFeedCell.h"
 
 @interface NewsfeedViewController ()
+
+@end
+
+@interface UILabel (BPExtensions)
+
+- (void)sizeToFitFixedWith:(CGFloat)fixedWith;
+
+@end
+
+@implementation UILabel (BPExtensions)
+
+- (void)sizeToFitFixedWith:(CGFloat)fixedWith
+{
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, fixedWith, 0);
+    self.lineBreakMode = NSLineBreakByWordWrapping;
+    self.numberOfLines = 0;
+    [self sizeToFit];
+}
 
 @end
 
@@ -33,13 +52,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"News Feed";
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    [self getUserInfoAndNewsFeed];
-}
+    UINib *nib = [UINib nibWithNibName:@"NewsFeed" bundle:nil];
+    
+    [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
+    [newsFeedTable setAutoresizingMask:YES];
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationItem.title = @"Newsfeed";
+    [self getUserInfoAndNewsFeed];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,43 +112,50 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"Cell"];
-
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
+    NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"NewsFeed"];
 
     NSDictionary *item = [self.newsFeed objectAtIndex:indexPath.row];
 
     NSString *eventType = [item valueForKey:@"type"];
-    NSString *actor = [[item valueForKey:@"actor"] valueForKey:@"login"];
-    NSString *repoName = [[item valueForKey:@"repo"] valueForKey:@"name"];
+    NSString *actor     = [[item valueForKey:@"actor"] valueForKey:@"login"];
+    NSString *repoName  = [[item valueForKey:@"repo"] valueForKey:@"name"];
 
     if ([eventType isEqualToString:@"ForkEvent"]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ forked %@", actor, repoName];
+
+        cell.actionDescription.text = [NSString stringWithFormat:@"%@ forked %@", actor, repoName];
+
     } else if ([eventType isEqualToString:@"WatchEvent"]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ watched %@", actor, repoName];
+
+        cell.actionDescription.text = [NSString stringWithFormat:@"%@ watched %@", actor, repoName];
+
     } else if ([eventType isEqualToString:@"CreateEvent"]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ created %@", actor, repoName];
+
+        cell.actionDescription.text = [NSString stringWithFormat:@"%@ created %@", actor, repoName];
+
     } else if ([eventType isEqualToString:@"FollowEvent"]) {
+        
         NSString *target = [[[item valueForKey:@"payload"] valueForKey:@"target"] valueForKey:@"login"];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ started following %@", actor, target];
+        cell.actionDescription.text = [NSString stringWithFormat:@"%@ started following %@", actor, target];
+        
     } else if ([eventType isEqualToString:@"GistEvent"]) {
+
         NSString *action = [[item valueForKey:@"payload"] valueForKey:@"action"];
         NSString *gist = [[[item valueForKey:@"payload"] valueForKey:@"gist"] valueForKey:@"id"];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ gist:%@", actor, action, gist];
+        cell.actionDescription.text = [NSString stringWithFormat:@"%@ %@ gist:%@", actor, action, gist];
+
     } else if ([eventType isEqualToString:@"IssuesEvent"]) {
+
         NSString *issue = [[[item valueForKey:@"payload"] valueForKey:@"issue"] valueForKey:@"id"];
         NSString *action = [[item valueForKey:@"payload"] valueForKey:@"action"];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ issue:%@", actor, action, issue];
+        cell.actionDescription.text = [NSString stringWithFormat:@"%@ %@ issue:%@", actor, action, issue];
+
     }
+    
+    cell.actionDate.text = [item valueForKey:@"created_at"];
+    [cell.actionDescription sizeToFitFixedWith:301];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return  cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 44;
 }
 
 - (void)getUserNewsFeed

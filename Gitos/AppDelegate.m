@@ -180,13 +180,16 @@
         GistsViewController *gistsController = [[GistsViewController alloc] init];
         
         UINavigationController *newsfeedNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
-        newsfeedNavController.tabBarItem.title = @"Newsfeed";
+        newsfeedNavController.tabBarItem.title = @"News Feed";
+        UIImage *newsIconImage = [UIImage imageNamed:@"news_icon.png"];
         
         UINavigationController *reposNavController = [[UINavigationController alloc] initWithRootViewController:reposController];
         reposNavController.tabBarItem.title = @"Repos";
+        UIImage *reposIconImage = [UIImage imageNamed:@"repos_icon.png"];
         
         UINavigationController *gistsNavController = [[UINavigationController alloc] initWithRootViewController:gistsController];
         gistsNavController.tabBarItem.title = @"Gists";
+        UIImage *gistsIconImage = [UIImage imageNamed:@"gists_icon.png"];
         
         NSArray *viewControllers = [NSArray arrayWithObjects:
                                     newsfeedNavController,
@@ -195,6 +198,15 @@
                                     nil];
         UITabBarController *tabController = [[UITabBarController alloc] init];
         [tabController setViewControllers:viewControllers];
+        
+        UITabBarItem *item0 = [tabController.tabBar.items objectAtIndex:0];
+        UITabBarItem *item1 = [tabController.tabBar.items objectAtIndex:1];
+        UITabBarItem *item2 = [tabController.tabBar.items objectAtIndex:2];
+        
+        [item0 setFinishedSelectedImage:newsIconImage withFinishedUnselectedImage:newsIconImage];
+        [item1 setFinishedSelectedImage:reposIconImage withFinishedUnselectedImage:reposIconImage];
+        [item2 setFinishedSelectedImage:gistsIconImage withFinishedUnselectedImage:gistsIconImage];
+        
         [self.window setRootViewController:tabController];
     } else {
         LoginViewController *loginController = [[LoginViewController alloc] init];
