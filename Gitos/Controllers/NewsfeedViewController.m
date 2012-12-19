@@ -100,9 +100,35 @@
 
     NSDictionary *item = [self.newsFeed objectAtIndex:indexPath.row];
 
-    cell.textLabel.text = [item valueForKey:@"type"];
+    NSString *eventType = [item valueForKey:@"type"];
+    NSString *actor = [[item valueForKey:@"actor"] valueForKey:@"login"];
+    NSString *repoName = [[item valueForKey:@"repo"] valueForKey:@"name"];
+
+    if ([eventType isEqualToString:@"ForkEvent"]) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ forked %@", actor, repoName];
+    } else if ([eventType isEqualToString:@"WatchEvent"]) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ watched %@", actor, repoName];
+    } else if ([eventType isEqualToString:@"CreateEvent"]) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ created %@", actor, repoName];
+    } else if ([eventType isEqualToString:@"FollowEvent"]) {
+        NSString *target = [[[item valueForKey:@"payload"] valueForKey:@"target"] valueForKey:@"login"];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ started following %@", actor, target];
+    } else if ([eventType isEqualToString:@"GistEvent"]) {
+        NSString *action = [[item valueForKey:@"payload"] valueForKey:@"action"];
+        NSString *gist = [[[item valueForKey:@"payload"] valueForKey:@"gist"] valueForKey:@"id"];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ gist:%@", actor, action, gist];
+    } else if ([eventType isEqualToString:@"IssuesEvent"]) {
+        NSString *issue = [[[item valueForKey:@"payload"] valueForKey:@"issue"] valueForKey:@"id"];
+        NSString *action = [[item valueForKey:@"payload"] valueForKey:@"action"];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ issue:%@", actor, action, issue];
+    }
 
     return  cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
 }
 
 - (void)getUserNewsFeed

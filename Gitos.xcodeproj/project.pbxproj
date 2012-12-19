@@ -184,6 +184,13 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		B5CC192616824019000D32B3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		B5F5C6F41675742500C4F0E4 = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +224,7 @@
 		B5F5C70B1675742500C4F0E4 /* Gitos */ = {
 			isa = PBXGroup;
 			children = (
+				B5CC192616824019000D32B3 /* Cells */,
 				B5F5C74316757C3F00C4F0E4 /* Views */,
 				B5F5C73816757A0A00C4F0E4 /* Classes */,
 				B5F5C72B167576A400C4F0E4 /* Images */,

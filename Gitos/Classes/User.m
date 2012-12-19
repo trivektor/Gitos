@@ -12,11 +12,12 @@
 
 @implementation User
 
-@synthesize receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl;
+@synthesize receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl, login;
 
 - (id)initWithOptions:(NSDictionary *)options
 {
     self.receivedEventsUrl = [options valueForKey:@"received_events_url"];
+    self.login = [options valueForKey:@"login"];
     return self;
 }
 

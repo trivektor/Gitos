@@ -10,6 +10,7 @@
 
 @interface User : NSObject
 
+@property (nonatomic, strong) NSString *login;
 @property (nonatomic, strong) NSString *receivedEventsUrl;
 @property (nonatomic, strong) NSString *followingUrl;
 @property (nonatomic, strong) NSString *avatarUrl;
