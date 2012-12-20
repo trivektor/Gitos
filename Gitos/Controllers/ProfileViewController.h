@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "User.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UIImageView *avatar;
+@property (nonatomic, weak) IBOutlet UITableView *profileTable;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *joinDateLabel;
+
+@property (nonatomic, strong) User *user;
+
+- (void)getUserInfo;
+- (void)displayUsernameAndAvatar;
 
 @end

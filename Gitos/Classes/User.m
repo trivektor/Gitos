@@ -12,12 +12,26 @@
 
 @implementation User
 
-@synthesize receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl, login;
+@synthesize name, login, receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl,
+            location, publicGists, privateGists, email, followers, blog, createdAt;
 
 - (id)initWithOptions:(NSDictionary *)options
 {
-    self.receivedEventsUrl = [options valueForKey:@"received_events_url"];
-    self.login = [options valueForKey:@"login"];
+    self.name               = [options valueForKey:@"name"];
+    self.login              = [options valueForKey:@"login"];
+    self.followingUrl       = [options valueForKey:@"follwowing_url"];
+    self.receivedEventsUrl  = [options valueForKey:@"received_events_url"];
+    self.avatarUrl          = [options valueForKey:@"avatar_url"];
+    self.htmlUrl            = [options valueForKey:@"html_url"];
+    self.reposUrl           = [options valueForKey:@"repos_url"];
+    self.location           = [options valueForKey:@"location"];
+    self.publicGists        = [options valueForKey:@"public_gists"];
+    self.privateGists       = [options valueForKey:@"private_gists"];
+    self.email              = [options valueForKey:@"email"];
+    self.followers          = [options valueForKey:@"followers"];
+    self.createdAt          = [options valueForKey:@"created_at"];
+    self.blog               = [options valueForKey:@"blog"];
+
     return self;
 }
 

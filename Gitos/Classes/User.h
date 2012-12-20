@@ -10,6 +10,7 @@
 
 @interface User : NSObject
 
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *login;
 @property (nonatomic, strong) NSString *receivedEventsUrl;
 @property (nonatomic, strong) NSString *followingUrl;
@@ -17,6 +18,14 @@
 @property (nonatomic, strong) NSString *htmlUrl;
 @property (nonatomic, strong) NSString *starredUrl;
 @property (nonatomic, strong) NSString *reposUrl;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *publicGists;
+@property (nonatomic, strong) NSString *privateGists;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *followers;
+@property (nonatomic, strong) NSString *company;
+@property (nonatomic, strong) NSString *blog;
+@property (nonatomic, strong) NSString *createdAt;
 
 - (id)initWithOptions:(NSDictionary *)options;
 
