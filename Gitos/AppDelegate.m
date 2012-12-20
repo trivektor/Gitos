@@ -12,6 +12,7 @@
 #import "ReposViewController.h"
 #import "NewsfeedViewController.h"
 #import "GistsViewController.h"
+#import "ProfileViewController.h"
 #import "KeychainHelper.h"
 #import "SSKeychain.h"
 
@@ -178,6 +179,7 @@
         NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
         ReposViewController *reposController = [[ReposViewController alloc] init];
         GistsViewController *gistsController = [[GistsViewController alloc] init];
+        ProfileViewController *profileController = [[ProfileViewController alloc] init];
         
         UINavigationController *newsfeedNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
         newsfeedNavController.tabBarItem.title = @"News Feed";
@@ -191,10 +193,15 @@
         gistsNavController.tabBarItem.title = @"Gists";
         UIImage *gistsIconImage = [UIImage imageNamed:@"gists_icon.png"];
         
+        UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:profileController];
+        profileNavController.tabBarItem.title = @"Profile";
+        UIImage *profileIconImage = [UIImage imageNamed:@"profile_icon.png"];
+        
         NSArray *viewControllers = [NSArray arrayWithObjects:
                                     newsfeedNavController,
                                     reposNavController,
                                     gistsNavController,
+                                    profileNavController,
                                     nil];
         UITabBarController *tabController = [[UITabBarController alloc] init];
         [tabController setViewControllers:viewControllers];
@@ -203,10 +210,12 @@
         UITabBarItem *item0 = [tabController.tabBar.items objectAtIndex:0];
         UITabBarItem *item1 = [tabController.tabBar.items objectAtIndex:1];
         UITabBarItem *item2 = [tabController.tabBar.items objectAtIndex:2];
+        UITabBarItem *item3 = [tabController.tabBar.items objectAtIndex:3];
         
         [item0 setFinishedSelectedImage:newsIconImage withFinishedUnselectedImage:newsIconImage];
         [item1 setFinishedSelectedImage:reposIconImage withFinishedUnselectedImage:reposIconImage];
         [item2 setFinishedSelectedImage:gistsIconImage withFinishedUnselectedImage:gistsIconImage];
+        [item3 setFinishedSelectedImage:profileIconImage withFinishedUnselectedImage:profileIconImage];
         
         [self.window setRootViewController:tabController];
     } else {
