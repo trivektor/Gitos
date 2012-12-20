@@ -53,7 +53,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"News Feed";
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    
     UINib *nib = [UINib nibWithNibName:@"NewsFeed" bundle:nil];
     
     [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
