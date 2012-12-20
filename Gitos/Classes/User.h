@@ -22,7 +22,8 @@
 @property (nonatomic, strong) NSString *publicGists;
 @property (nonatomic, strong) NSString *privateGists;
 @property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *followers;
+@property (nonatomic) NSInteger followers;
+@property (nonatomic, strong) NSString *following;
 @property (nonatomic, strong) NSString *company;
 @property (nonatomic, strong) NSString *blog;
 @property (nonatomic, strong) NSString *createdAt;

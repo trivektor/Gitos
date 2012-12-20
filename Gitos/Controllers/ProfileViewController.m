@@ -39,9 +39,10 @@
     
     UINib *nib = [UINib nibWithNibName:@"ProfileCell" bundle:nil];
     [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
-    profileTable.dataSource = self;
-    profileTable.delegate = self;
+    profileTable.dataSource     = self;
+    profileTable.delegate       = self;
     profileTable.backgroundView = nil;
+    profileTable.scrollEnabled  = NO;
     [self getUserInfo];
 }
 
@@ -92,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,15 +105,33 @@
     }
     
     if (indexPath.row == 0) {
+
         cell.fieldIcon.image    = [UIImage imageNamed:@"location_icon.png"];
         cell.fieldDetails.text  = self.user.location;
+
     } else if (indexPath.row == 1) {
+
         cell.fieldIcon.image    = [UIImage imageNamed:@"link_icon.png"];
         cell.fieldDetails.text  = self.user.blog;
+
     } else if (indexPath.row == 2) {
+
         cell.fieldIcon.image    = [UIImage imageNamed:@"email_icon"];
         cell.fieldDetails.text  = self.user.email;
+
+    } else if (indexPath.row == 3) {
+
+        cell.fieldIcon.image    = [UIImage imageNamed:@"followers_icon.png"];
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"%i", self.user.followers];
+
+    } else if (indexPath.row == 4) {
+
+        cell.fieldIcon.image    = [UIImage imageNamed:@"company_icon.png"];
+        cell.fieldDetails.text  = self.user.company;
+        
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

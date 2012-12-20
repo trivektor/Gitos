@@ -13,7 +13,7 @@
 @implementation User
 
 @synthesize name, login, receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl,
-            location, publicGists, privateGists, email, followers, blog, createdAt;
+            location, publicGists, privateGists, email, followers, following, blog, createdAt, company;
 
 - (id)initWithOptions:(NSDictionary *)options
 {
@@ -28,9 +28,11 @@
     self.publicGists        = [options valueForKey:@"public_gists"];
     self.privateGists       = [options valueForKey:@"private_gists"];
     self.email              = [options valueForKey:@"email"];
-    self.followers          = [options valueForKey:@"followers"];
+    self.followers          = [[options valueForKey:@"followers"] integerValue];
+    self.following          = [options valueForKey:@"following"];
     self.createdAt          = [options valueForKey:@"created_at"];
     self.blog               = [options valueForKey:@"blog"];
+    self.company            = [options valueForKey:@"company"];
 
     return self;
 }

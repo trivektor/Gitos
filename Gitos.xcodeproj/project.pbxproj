@@ -31,6 +31,9 @@
 		B5CB3CAA1682D66F00566E19 /* email_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3CA91682D66F00566E19 /* email_icon.png */; };
 		B5CB3CAD1682D6A700566E19 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CB3CAC1682D6A700566E19 /* ProfileCell.m */; };
 		B5CB3CAF1682D6BE00566E19 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3CAE1682D6BE00566E19 /* ProfileCell.xib */; };
+		B5CB3CB11682DC5D00566E19 /* followers_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3CB01682DC5D00566E19 /* followers_icon.png */; };
+		B5CB3CBB1682E42100566E19 /* company_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3CBA1682E42100566E19 /* company_icon.png */; };
+		B5CB3CBE1682E53700566E19 /* link_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3CBD1682E53700566E19 /* link_icon.png */; };
 		B5CC190116822847000D32B3 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC190016822847000D32B3 /* User.m */; };
 		B5CC1919168229AE000D32B3 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1905168229AE000D32B3 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5CC191A168229AE000D32B3 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1907168229AE000D32B3 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -110,6 +113,9 @@
 		B5CB3CAB1682D6A700566E19 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		B5CB3CAC1682D6A700566E19 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		B5CB3CAE1682D6BE00566E19 /* ProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		B5CB3CB01682DC5D00566E19 /* followers_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followers_icon.png; sourceTree = "<group>"; };
+		B5CB3CBA1682E42100566E19 /* company_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = company_icon.png; sourceTree = "<group>"; };
+		B5CB3CBD1682E53700566E19 /* link_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link_icon.png; sourceTree = "<group>"; };
 		B5CC18FF16822847000D32B3 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		B5CC190016822847000D32B3 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		B5CC1904168229AE000D32B3 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -350,9 +356,12 @@
 				B5CB3C8D168289C300566E19 /* tabbar_bg.png */,
 				B5CB3C871682870800566E19 /* tabbar_bg.png */,
 				B5CB3C9F1682D0B000566E19 /* location_icon.png */,
+				B5CB3CBD1682E53700566E19 /* link_icon.png */,
+				B5CB3CBA1682E42100566E19 /* company_icon.png */,
 				B5CB3C85168280D900566E19 /* gists_icon.png */,
 				B5CB3CA31682D61400566E19 /* email_icon.png */,
 				B5CB3CA41682D61400566E19 /* link_icon.png */,
+				B5CB3CB01682DC5D00566E19 /* followers_icon.png */,
 				B5CB3CA51682D61400566E19 /* location_icon.png */,
 				B5CB3CA11682D27C00566E19 /* link_icon.png */,
 				B5CB3C8116827FFB00566E19 /* news_icon.png */,
@@ -487,6 +496,9 @@
 				B5CB3CA81682D61400566E19 /* location_icon.png in Resources */,
 				B5CB3CAA1682D66F00566E19 /* email_icon.png in Resources */,
 				B5CB3CAF1682D6BE00566E19 /* ProfileCell.xib in Resources */,
+				B5CB3CB11682DC5D00566E19 /* followers_icon.png in Resources */,
+				B5CB3CBB1682E42100566E19 /* company_icon.png in Resources */,
+				B5CB3CBE1682E53700566E19 /* link_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
