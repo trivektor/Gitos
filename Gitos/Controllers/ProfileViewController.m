@@ -10,6 +10,7 @@
 #import "SSKeychain.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
+#import "ProfileCell.h"
 
 @interface ProfileViewController ()
 
@@ -35,6 +36,9 @@
     // Do any additional setup after loading the view from its nib.
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.title = @"Profile";
+    
+    UINib *nib = [UINib nibWithNibName:@"ProfileCell" bundle:nil];
+    [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
     profileTable.dataSource = self;
     profileTable.delegate = self;
     profileTable.backgroundView = nil;
@@ -93,23 +97,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [profileTable dequeueReusableCellWithIdentifier:@"Cell"];
+    ProfileCell *cell = [profileTable dequeueReusableCellWithIdentifier:@"ProfileCell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[ProfileCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProfileCell"];
     }
     
     if (indexPath.row == 0) {
-        cell.imageView.image = [UIImage imageNamed:@"location_icon.png"];
-        cell.textLabel.text = self.user.location;
+        cell.fieldIcon.image    = [UIImage imageNamed:@"location_icon.png"];
+        cell.fieldDetails.text  = self.user.location;
     } else if (indexPath.row == 1) {
-        cell.imageView.image = [UIImage imageNamed:@"link_icon.png"];
-        if (self.user.blog.length > 0) {
-            cell.textLabel.text = self.user.blog;
-        }
+        cell.fieldIcon.image    = [UIImage imageNamed:@"link_icon.png"];
+        cell.fieldDetails.text  = self.user.blog;
     } else if (indexPath.row == 2) {
-        cell.imageView.image = [UIImage imageNamed:@"email_icon"];
-        cell.textLabel.text = self.user.email;
+        cell.fieldIcon.image    = [UIImage imageNamed:@"email_icon"];
+        cell.fieldDetails.text  = self.user.email;
     }
     
     return cell;
