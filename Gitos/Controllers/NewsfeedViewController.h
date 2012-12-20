@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "SpinnerView.h"
 
 @interface NewsfeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -16,6 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray *newsFeed;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) SpinnerView *spinnerView;
 
 - (void)getUserInfoAndNewsFeed;
 - (void)getUserNewsFeed;

@@ -12,6 +12,7 @@
 #import "SSKeychain.h"
 #import "User.h"
 #import "NewsFeedCell.h"
+#import "SpinnerView.h"
 
 @interface NewsfeedViewController ()
 
@@ -37,7 +38,7 @@
 
 @implementation NewsfeedViewController
 
-@synthesize newsFeed, user;
+@synthesize newsFeed, user, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +61,7 @@
     [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
     [newsFeedTable setAutoresizingMask:YES];
 
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self getUserInfoAndNewsFeed];
 }
 
@@ -172,6 +174,8 @@
          NSString *response = [operation responseString];
 
          self.newsFeed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+         
+         [self.spinnerView removeFromSuperview];
 
          [newsFeedTable reloadData];
      }
