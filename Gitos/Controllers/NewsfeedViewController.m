@@ -113,9 +113,26 @@
     return self.newsFeed.count;
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"NewsFeed"];
+//    if (!cell) {
+//        cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsFeed"];
+//    }
+//    //[cell.actionDescription sizeToFitFixedWith:301];
+//    
+//    return cell.actionDescription.frame.size.height + cell.actionDate.frame.size.height + 10;
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"NewsFeed"];
+    
+    if (!cell) {
+        cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsFeed"];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     NSDictionary *item = [self.newsFeed objectAtIndex:indexPath.row];
 
@@ -155,8 +172,6 @@
     }
     
     cell.actionDate.text = [item valueForKey:@"created_at"];
-    [cell.actionDescription sizeToFitFixedWith:301];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return  cell;
 }

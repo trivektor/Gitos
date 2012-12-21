@@ -42,7 +42,7 @@
 							<object class="IBUILabel" id="934470383">
 								<reference key="NSNextResponder" ref="260140167"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{10, 5}, {301, 21}}</string>
+								<string key="NSFrame">{{10, 4}, {301, 21}}</string>
 								<reference key="NSSuperview" ref="260140167"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -54,7 +54,7 @@
 								<string key="IBUIText">Label</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC40MzQ4ODkxOTAxIDAuNDEyNzg4MjQwMiAwLjQyMjU3MzQ1NDYAA</bytes>
+									<bytes key="NSRGB">MC4zODUwODYzMTc4IDAuMzcxNjc2OTk1OSAwLjM4OTk0NzM4NTIAA</bytes>
 								</object>
 								<object class="NSColor" key="IBUIHighlightedColor" id="652409262">
 									<int key="NSColorSpace">3</int>
@@ -65,11 +65,11 @@
 									<string key="name">ArialMT</string>
 									<string key="family">Arial</string>
 									<int key="traits">0</int>
-									<double key="pointSize">14</double>
+									<double key="pointSize">12.5</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">ArialMT</string>
-									<double key="NSSize">14</double>
+									<double key="NSSize">12.5</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -94,11 +94,13 @@
 								<reference key="IBUIHighlightedColor" ref="652409262"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<int key="type">1</int>
+									<string key="name">ArialMT</string>
+									<string key="family">Arial</string>
+									<int key="traits">0</int>
 									<double key="pointSize">12</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica</string>
+									<string key="NSName">ArialMT</string>
 									<double key="NSSize">12</double>
 									<int key="NSfFlags">16</int>
 								</object>
