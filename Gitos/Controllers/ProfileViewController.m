@@ -106,31 +106,32 @@
     
     if (indexPath.row == 0) {
 
-        cell.fieldIcon.image    = [UIImage imageNamed:@"location_icon.png"];
+        cell.fieldIcon.image    = [UIImage imageNamed:@"07-map-marker.png"];
         cell.fieldDetails.text  = self.user.location;
 
     } else if (indexPath.row == 1) {
 
-        cell.fieldIcon.image    = [UIImage imageNamed:@"link_icon.png"];
+        cell.fieldIcon.image    = [UIImage imageNamed:@"71-compass.png"];
         cell.fieldDetails.text  = self.user.blog;
 
     } else if (indexPath.row == 2) {
 
-        cell.fieldIcon.image    = [UIImage imageNamed:@"email_icon"];
+        cell.fieldIcon.image    = [UIImage imageNamed:@"287-at.png"];
         cell.fieldDetails.text  = self.user.email;
 
     } else if (indexPath.row == 3) {
 
-        cell.fieldIcon.image    = [UIImage imageNamed:@"followers_icon.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"%i", self.user.followers];
+        cell.fieldIcon.image    = [UIImage imageNamed:@"112-group.png"];
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"%i followers", self.user.followers];
 
     } else if (indexPath.row == 4) {
 
-        cell.fieldIcon.image    = [UIImage imageNamed:@"company_icon.png"];
+        cell.fieldIcon.image    = [UIImage imageNamed:@"37-suitcase.png"];
         cell.fieldDetails.text  = self.user.company;
         
     }
     
+    cell.fieldIcon.contentMode = UIViewContentModeScaleAspectFit;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
