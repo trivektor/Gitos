@@ -145,8 +145,6 @@
     avatar.layer.masksToBounds = YES;
     
     nameLabel.text = self.user.name;
-    
-    joinDateLabel.text = self.user.createdAt;
 }
 
 @end
