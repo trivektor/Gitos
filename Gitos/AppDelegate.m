@@ -183,19 +183,19 @@
         
         UINavigationController *newsfeedNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
         newsfeedNavController.tabBarItem.title = @"News Feed";
-        UIImage *newsIconImage = [UIImage imageNamed:@"news_icon.png"];
+        UIImage *newsIconImage = [UIImage imageNamed:@"275-broadcast.png"];
         
         UINavigationController *reposNavController = [[UINavigationController alloc] initWithRootViewController:reposController];
         reposNavController.tabBarItem.title = @"Repos";
-        UIImage *reposIconImage = [UIImage imageNamed:@"repos_icon.png"];
+        UIImage *reposIconImage = [UIImage imageNamed:@"33-cabinet.png"];
         
         UINavigationController *gistsNavController = [[UINavigationController alloc] initWithRootViewController:gistsController];
         gistsNavController.tabBarItem.title = @"Gists";
-        UIImage *gistsIconImage = [UIImage imageNamed:@"gists_icon.png"];
+        UIImage *gistsIconImage = [UIImage imageNamed:@"179-notepad.png"];
         
         UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:profileController];
         profileNavController.tabBarItem.title = @"Profile";
-        UIImage *profileIconImage = [UIImage imageNamed:@"profile_icon.png"];
+        UIImage *profileIconImage = [UIImage imageNamed:@"253-person.png"];
         
         NSArray *viewControllers = [NSArray arrayWithObjects:
                                     newsfeedNavController,
