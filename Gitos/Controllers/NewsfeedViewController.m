@@ -59,7 +59,7 @@
     UINib *nib = [UINib nibWithNibName:@"NewsFeed" bundle:nil];
     
     [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
-    [newsFeedTable setAutoresizingMask:YES];
+    [newsFeedTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
 
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self getUserInfoAndNewsFeed];

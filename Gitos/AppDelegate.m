@@ -41,6 +41,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    //[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    
     [self validateAuthenticationToken];
     return YES;
 }
@@ -85,6 +88,36 @@
             abort();
         } 
     }
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [self sendDeviceTokenToServer:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"failed to register for remote notification");
+    NSLog(@"%@", error);
+}
+
+- (void)sendDeviceTokenToServer:(NSData *)deviceToken
+{
+    NSLog(@"%@", [self stringWithDeviceToken:deviceToken]);
+}
+
+// http://stackoverflow.com/questions/1959600/how-to-use-objective-c-to-send-device-token-for-push-notifications-and-other-use
+- (NSString *)stringWithDeviceToken:(NSData *)deviceToken
+{
+    const char* data = [deviceToken bytes];
+
+    NSMutableString* token = [NSMutableString string];
+
+    for (int i = 0; i < [deviceToken length]; i++) {
+        [token appendFormat:@"%02.2hhX", data[i]];
+    }
+
+    return [token copy];
 }
 
 #pragma mark - Core Data stack

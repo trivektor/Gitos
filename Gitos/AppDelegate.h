@@ -19,5 +19,7 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)validateAuthenticationToken;
+- (void)sendDeviceTokenToServer:(NSData *)deviceToken;
+- (NSString *)stringWithDeviceToken:(NSData *)deviceToken;
 
 @end
