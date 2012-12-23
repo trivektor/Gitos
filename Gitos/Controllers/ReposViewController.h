@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
-@interface ReposViewController : UIViewController
+@interface ReposViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, retain) User *user;
+@property (nonatomic, weak) IBOutlet UITableView *reposTable;
+@property (nonatomic, retain) NSMutableArray *repos;
+
+- (void)getUserInfoAndRepos;
+- (void)getUserRepos;
 
 @end

@@ -7,12 +7,17 @@
 //
 
 #import "ReposViewController.h"
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "SSKeychain.h"
 
 @interface ReposViewController ()
 
 @end
 
 @implementation ReposViewController
+
+@synthesize user, reposTable, repos;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,12 +34,100 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Repositories";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    [reposTable setDelegate:self];
+    [reposTable setDataSource:self];
+    [reposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    
+    [self getUserInfoAndRepos];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)getUserInfoAndRepos
+{
+    // Revisit the code below. It's awkward that this has to be done in every controller
+    // In the future when I'm getting better with iOS/Objective-C, I should figure out how to share
+    // the user's information application wide
+    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+
+    NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   accessToken, @"access_token",
+                                   @"bearer", @"token_type",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:userUrl.absoluteString parameters:params];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+         
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+         
+         self.user = [[User alloc] initWithOptions:json];
+         [self getUserRepos];
+     }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+
+    [operation start];
+}
+
+- (void)getUserRepos
+{
+    NSURL *reposURL = [NSURL URLWithString:self.user.reposUrl];
+    
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:reposURL];
+    
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:self.user.reposUrl parameters:nil];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+        
+        self.repos = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+        [reposTable reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+    [operation start];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.repos.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self.reposTable dequeueReusableCellWithIdentifier:@"RepoCell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"RepoCell"];
+    }
+    
+    NSDictionary *repo = [self.repos objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [repo valueForKey:@"name"];
+    
+    return cell;
 }
 
 @end
