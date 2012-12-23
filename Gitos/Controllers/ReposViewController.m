@@ -10,6 +10,7 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
+#import "RepoCell.h"
 
 @interface ReposViewController ()
 
@@ -35,6 +36,8 @@
     self.navigationItem.title = @"Repositories";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
+    UINib *nib = [UINib nibWithNibName:@"RepoCell" bundle:nil];
+    [reposTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
     [reposTable setDelegate:self];
     [reposTable setDataSource:self];
     [reposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
@@ -115,18 +118,47 @@
     return self.repos.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.reposTable dequeueReusableCellWithIdentifier:@"RepoCell"];
+    RepoCell *cell = [self.reposTable dequeueReusableCellWithIdentifier:@"RepoCell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"RepoCell"];
+        cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"RepoCell"];
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *repo = [self.repos objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [repo valueForKey:@"name"];
+    cell.repoNameLabel.text = [repo valueForKey:@"name"];
     
+    // Float the Forks and Watchers labels side by side
+    // http://stackoverflow.com/questions/5891384/place-two-uilabels-side-by-side-left-and-right-without-knowing-string-length-of
+    NSString *forks = [NSString stringWithFormat:@"Forks: %@", [[repo valueForKey:@"forks_count"] stringValue]];
+    
+    NSString *watchers = [NSString stringWithFormat:@"Watchers: %@", [repo valueForKey:@"watchers"]];
+    
+    CGSize forksSize = [forks sizeWithFont:cell.forkLabel.font];
+    CGSize watchersSize = [watchers sizeWithFont:cell.starLabel.font];
+    
+    cell.forkLabel.text = forks;
+    cell.starLabel.text = watchers;
+    
+    cell.forkLabel.frame = CGRectMake(cell.forkLabel.frame.origin.x,
+                                      cell.forkLabel.frame.origin.y,
+                                      forksSize.width,
+                                      forksSize.height);
+
+    cell.starLabel.frame = CGRectMake(cell.starLabel.frame.origin.x,
+                                      cell.starLabel.frame.origin.y,
+                                      watchersSize.width,
+                                      watchersSize.height);
+
     return cell;
 }
 
