@@ -41,6 +41,9 @@
     [reposTable setDelegate:self];
     [reposTable setDataSource:self];
     [reposTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    [reposTable setBackgroundView:nil];
+    [reposTable setSeparatorColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [self getUserInfoAndRepos];
 }
@@ -139,9 +142,9 @@
     
     // Float the Forks and Watchers labels side by side
     // http://stackoverflow.com/questions/5891384/place-two-uilabels-side-by-side-left-and-right-without-knowing-string-length-of
-    NSString *forks = [NSString stringWithFormat:@"Forks: %@", [[repo valueForKey:@"forks_count"] stringValue]];
+    NSString *forks = [NSString stringWithFormat:@"%@", [[repo valueForKey:@"forks_count"] stringValue]];
     
-    NSString *watchers = [NSString stringWithFormat:@"Watchers: %@", [repo valueForKey:@"watchers"]];
+    NSString *watchers = [NSString stringWithFormat:@"%@", [repo valueForKey:@"watchers"]];
     
     CGSize forksSize = [forks sizeWithFont:cell.forkLabel.font];
     CGSize watchersSize = [watchers sizeWithFont:cell.starLabel.font];
@@ -158,6 +161,8 @@
                                       cell.starLabel.frame.origin.y,
                                       watchersSize.width,
                                       watchersSize.height);
+    
+    cell.backgroundColor = [UIColor clearColor];
 
     return cell;
 }
