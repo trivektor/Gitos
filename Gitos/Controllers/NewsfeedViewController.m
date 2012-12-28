@@ -60,6 +60,8 @@
     
     [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
     [newsFeedTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    [newsFeedTable setBackgroundView:nil];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
 
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self getUserInfoAndNewsFeed];
@@ -172,6 +174,7 @@
     }
     
     cell.actionDate.text = [item valueForKey:@"created_at"];
+    cell.backgroundColor = [UIColor clearColor];
 
     return  cell;
 }
