@@ -13,6 +13,7 @@
 #import "NewsfeedViewController.h"
 #import "GistsViewController.h"
 #import "ProfileViewController.h"
+#import "StarredViewController.h"
 #import "KeychainHelper.h"
 #import "SSKeychain.h"
 
@@ -213,6 +214,7 @@
         ReposViewController *reposController = [[ReposViewController alloc] init];
         GistsViewController *gistsController = [[GistsViewController alloc] init];
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
+        StarredViewController *starredController = [[StarredViewController alloc] init];
         
         UINavigationController *newsfeedNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
         newsfeedNavController.tabBarItem.title = @"News Feed";
@@ -225,6 +227,10 @@
         UINavigationController *gistsNavController = [[UINavigationController alloc] initWithRootViewController:gistsController];
         gistsNavController.tabBarItem.title = @"Gists";
         UIImage *gistsIconImage = [UIImage imageNamed:@"179-notepad.png"];
+
+        UINavigationController *starredNavController = [[UINavigationController alloc] initWithRootViewController:starredController];
+        starredNavController.tabBarItem.title = @"Starred";
+        UIImage *starredIconImage = [UIImage imageNamed:@"28-star_w.png"];
         
         UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:profileController];
         profileNavController.tabBarItem.title = @"Profile";
@@ -233,6 +239,7 @@
         NSArray *viewControllers = [NSArray arrayWithObjects:
                                     newsfeedNavController,
                                     reposNavController,
+                                    starredNavController,
                                     gistsNavController,
                                     profileNavController,
                                     nil];
@@ -244,11 +251,13 @@
         UITabBarItem *item1 = [tabController.tabBar.items objectAtIndex:1];
         UITabBarItem *item2 = [tabController.tabBar.items objectAtIndex:2];
         UITabBarItem *item3 = [tabController.tabBar.items objectAtIndex:3];
+        UITabBarItem *item4 = [tabController.tabBar.items objectAtIndex:4];
         
         [item0 setFinishedSelectedImage:newsIconImage withFinishedUnselectedImage:newsIconImage];
         [item1 setFinishedSelectedImage:reposIconImage withFinishedUnselectedImage:reposIconImage];
-        [item2 setFinishedSelectedImage:gistsIconImage withFinishedUnselectedImage:gistsIconImage];
-        [item3 setFinishedSelectedImage:profileIconImage withFinishedUnselectedImage:profileIconImage];
+        [item2 setFinishedSelectedImage:starredIconImage withFinishedUnselectedImage:starredIconImage];
+        [item3 setFinishedSelectedImage:gistsIconImage withFinishedUnselectedImage:gistsIconImage];
+        [item4 setFinishedSelectedImage:profileIconImage withFinishedUnselectedImage:profileIconImage];
         
         [self.window setRootViewController:tabController];
     } else {

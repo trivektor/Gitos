@@ -86,6 +86,10 @@
 		B5ED8FA3168D64E800F3F4F6 /* 28-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ED8FA1168D64E800F3F4F6 /* 28-star@2x.png */; };
 		B5ED8FA71691598200F3F4F6 /* RepoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED8FA51691598200F3F4F6 /* RepoViewController.m */; };
 		B5ED8FA81691598200F3F4F6 /* RepoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED8FA61691598200F3F4F6 /* RepoViewController.xib */; };
+		B5ED8FAC169161FA00F3F4F6 /* StarredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED8FAA169161FA00F3F4F6 /* StarredViewController.m */; };
+		B5ED8FAD169161FA00F3F4F6 /* StarredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED8FAB169161FA00F3F4F6 /* StarredViewController.xib */; };
+		B5ED8FB01691627C00F3F4F6 /* 28-star_w.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ED8FAE1691627C00F3F4F6 /* 28-star_w.png */; };
+		B5ED8FB11691627C00F3F4F6 /* 28-star_w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ED8FAF1691627C00F3F4F6 /* 28-star_w@2x.png */; };
 		B5F5C7041675742500C4F0E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F5C7031675742500C4F0E4 /* UIKit.framework */; };
 		B5F5C7061675742500C4F0E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F5C7051675742500C4F0E4 /* Foundation.framework */; };
 		B5F5C7081675742500C4F0E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F5C7071675742500C4F0E4 /* CoreGraphics.framework */; };
@@ -223,6 +227,11 @@
 		B5ED8FA41691598200F3F4F6 /* RepoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoViewController.h; sourceTree = "<group>"; };
 		B5ED8FA51691598200F3F4F6 /* RepoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoViewController.m; sourceTree = "<group>"; };
 		B5ED8FA61691598200F3F4F6 /* RepoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoViewController.xib; sourceTree = "<group>"; };
+		B5ED8FA9169161FA00F3F4F6 /* StarredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarredViewController.h; sourceTree = "<group>"; };
+		B5ED8FAA169161FA00F3F4F6 /* StarredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarredViewController.m; sourceTree = "<group>"; };
+		B5ED8FAB169161FA00F3F4F6 /* StarredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarredViewController.xib; sourceTree = "<group>"; };
+		B5ED8FAE1691627C00F3F4F6 /* 28-star_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star_w.png"; sourceTree = "<group>"; };
+		B5ED8FAF1691627C00F3F4F6 /* 28-star_w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star_w@2x.png"; sourceTree = "<group>"; };
 		B5F5C6FF1675742500C4F0E4 /* Gitos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gitos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F5C7031675742500C4F0E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5F5C7051675742500C4F0E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -435,6 +444,9 @@
 				B5ED8FA41691598200F3F4F6 /* RepoViewController.h */,
 				B5ED8FA51691598200F3F4F6 /* RepoViewController.m */,
 				B5ED8FA61691598200F3F4F6 /* RepoViewController.xib */,
+				B5ED8FA9169161FA00F3F4F6 /* StarredViewController.h */,
+				B5ED8FAA169161FA00F3F4F6 /* StarredViewController.m */,
+				B5ED8FAB169161FA00F3F4F6 /* StarredViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -449,6 +461,8 @@
 				B5ED8F9B168D639100F3F4F6 /* 12-eye.png */,
 				B5ED8F9C168D639100F3F4F6 /* 12-eye@2x.png */,
 				B5ED8F931686F17F00F3F4F6 /* 255-box.png */,
+				B5ED8FAE1691627C00F3F4F6 /* 28-star_w.png */,
+				B5ED8FAF1691627C00F3F4F6 /* 28-star_w@2x.png */,
 				B5ED8F941686F17F00F3F4F6 /* 255-box@2x.png */,
 				B5ED8FA0168D64E800F3F4F6 /* 28-star.png */,
 				B5ED8FA1168D64E800F3F4F6 /* 28-star@2x.png */,
@@ -665,6 +679,9 @@
 				B5ED8FA2168D64E800F3F4F6 /* 28-star.png in Resources */,
 				B5ED8FA3168D64E800F3F4F6 /* 28-star@2x.png in Resources */,
 				B5ED8FA81691598200F3F4F6 /* RepoViewController.xib in Resources */,
+				B5ED8FAD169161FA00F3F4F6 /* StarredViewController.xib in Resources */,
+				B5ED8FB01691627C00F3F4F6 /* 28-star_w.png in Resources */,
+				B5ED8FB11691627C00F3F4F6 /* 28-star_w@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,6 +727,7 @@
 				B5CB3CAD1682D6A700566E19 /* ProfileCell.m in Sources */,
 				B5ED8F901686EEBD00F3F4F6 /* RepoCell.m in Sources */,
 				B5ED8FA71691598200F3F4F6 /* RepoViewController.m in Sources */,
+				B5ED8FAC169161FA00F3F4F6 /* StarredViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
