@@ -22,6 +22,7 @@
     self.followingUrl       = [options valueForKey:@"follwowing_url"];
     self.receivedEventsUrl  = [options valueForKey:@"received_events_url"];
     self.avatarUrl          = [options valueForKey:@"avatar_url"];
+    self.starredUrl         = [[options valueForKey:@"url"] stringByAppendingString:@"/starred"];
     self.htmlUrl            = [options valueForKey:@"html_url"];
     self.reposUrl           = [options valueForKey:@"repos_url"];
     self.location           = [options valueForKey:@"location"];

@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
-@interface StarredViewController : UIViewController
+@interface StarredViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    
+    __weak IBOutlet UITableView *starredReposTable;
+}
+
+@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) NSMutableArray *starredRepos;
+
+- (void)getUserInfo;
+- (void)getStarredRepos;
 
 @end
