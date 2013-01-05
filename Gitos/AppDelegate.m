@@ -17,6 +17,10 @@
 #import "KeychainHelper.h"
 #import "SSKeychain.h"
 
+@interface UINavigationController (autorotate)
+
+@end
+
 @implementation UINavigationController (autorotate)
 
 - (NSUInteger)supportedInterfaceOrientations

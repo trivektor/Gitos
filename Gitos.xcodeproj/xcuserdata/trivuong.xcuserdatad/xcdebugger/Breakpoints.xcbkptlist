@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/AppDelegate.m"
-         timestampString = "378626848.134138"
+         timestampString = "379061099.588039"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "212"
-         endingLineNumber = "212"
+         startingLineNumber = "216"
+         endingLineNumber = "216"
          landmarkName = "-validateAuthenticationToken"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,7 +47,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/NewsfeedViewController.m"
-         timestampString = "378376046.270172"
+         timestampString = "379060857.16496"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "114"

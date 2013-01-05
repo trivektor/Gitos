@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5ACFE841698026F008E56C1 /* header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE831698026F008E56C1 /* header_bg.png */; };
 		B5CB3C76168267AF00566E19 /* NewsFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CB3C75168267AF00566E19 /* NewsFeedCell.m */; };
 		B5CB3C78168267BF00566E19 /* NewsFeed.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C77168267BF00566E19 /* NewsFeed.xib */; };
 		B5CB3C7A16827CE000566E19 /* news_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CB3C7916827CE000566E19 /* news_icon.png */; };
@@ -130,6 +131,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5ACFE831698026F008E56C1 /* header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bg.png; sourceTree = "<group>"; };
 		B5CB3C74168267AF00566E19 /* NewsFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedCell.h; sourceTree = "<group>"; };
 		B5CB3C75168267AF00566E19 /* NewsFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedCell.m; sourceTree = "<group>"; };
 		B5CB3C77168267BF00566E19 /* NewsFeed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsFeed.xib; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 				B5CB3C871682870800566E19 /* tabbar_bg.png */,
 				B5ED8F761684397E00F3F4F6 /* 07-map-marker.png */,
 				B5ED8F9B168D639100F3F4F6 /* 12-eye.png */,
+				B5ACFE831698026F008E56C1 /* header_bg.png */,
 				B5ED8F9C168D639100F3F4F6 /* 12-eye@2x.png */,
 				B5ED8F931686F17F00F3F4F6 /* 255-box.png */,
 				B5ED8FAE1691627C00F3F4F6 /* 28-star_w.png */,
@@ -682,6 +685,7 @@
 				B5ED8FAD169161FA00F3F4F6 /* StarredViewController.xib in Resources */,
 				B5ED8FB01691627C00F3F4F6 /* 28-star_w.png in Resources */,
 				B5ED8FB11691627C00F3F4F6 /* 28-star_w@2x.png in Resources */,
+				B5ACFE841698026F008E56C1 /* header_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,10 +802,14 @@
 		B5F5C7231675742500C4F0E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: tri vuong (72TC755987)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tri vuong (72TC755987)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gitos/Gitos-Prefix.pch";
 				INFOPLIST_FILE = "Gitos/Gitos-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "403592B6-6F74-4814-BCCD-7F02F62489F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "403592B6-6F74-4814-BCCD-7F02F62489F9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
