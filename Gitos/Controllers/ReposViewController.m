@@ -18,7 +18,7 @@
 
 @implementation ReposViewController
 
-@synthesize user, reposTable, repos;
+@synthesize user, reposTable, repos, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +45,8 @@
     [reposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [reposTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
     [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
+    
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     
     [self getUserInfoAndRepos];
 }
@@ -105,6 +107,9 @@
         
         self.repos = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
         [reposTable reloadData];
+        
+        [self.spinnerView removeFromSuperview];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "SpinnerView.h"
 #import "User.h"
 
 @interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
@@ -18,6 +19,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *joinDateLabel;
 
 @property (nonatomic, strong) User *user;
+@property (nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)getUserInfo;
 - (void)displayUsernameAndAvatar;

@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpinnerView.h"
 #import "User.h"
 
 @interface ReposViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, retain) User *user;
+@property (nonatomic, strong) User *user;
 @property (nonatomic, weak) IBOutlet UITableView *reposTable;
-@property (nonatomic, retain) NSMutableArray *repos;
+@property (nonatomic, strong) NSMutableArray *repos;
+@property (nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)getUserInfoAndRepos;
 - (void)getUserRepos;

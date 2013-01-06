@@ -46,9 +46,9 @@
     [indicator startAnimating];
     
     // Just to show we've done something, let's make the background black
-    spinnerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"spinner_background.png"]];
-    // UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"spinner_background.png"]];
-    // [spinnerView addSubview:background];
+    spinnerView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
+    spinnerView.layer.cornerRadius = 4.0;
+    spinnerView.layer.masksToBounds = YES;
     [superView addSubview:spinnerView];
     return spinnerView;
 }

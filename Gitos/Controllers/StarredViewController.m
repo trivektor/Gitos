@@ -18,7 +18,7 @@
 
 @implementation StarredViewController
 
-@synthesize user, starredRepos, currentPage;
+@synthesize user, starredRepos, currentPage, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +45,8 @@
     [starredReposTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [starredReposTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
     [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
+    
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 
     [self getUserInfo];
 }
@@ -108,6 +110,8 @@
          [self.starredRepos addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
 
          [starredReposTable reloadData];
+         
+         [self.spinnerView removeFromSuperview];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error.localizedDescription);

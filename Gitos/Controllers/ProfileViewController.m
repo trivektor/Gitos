@@ -18,7 +18,7 @@
 
 @implementation ProfileViewController
 
-@synthesize avatar, profileTable, user, nameLabel, joinDateLabel;
+@synthesize avatar, profileTable, user, nameLabel, joinDateLabel, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +44,9 @@
     [profileTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
     profileTable.backgroundView = nil;
     profileTable.scrollEnabled  = NO;
+    
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    
     [self getUserInfo];
 }
 
@@ -79,6 +82,8 @@
          self.user = [[User alloc] initWithOptions:json];
          [self displayUsernameAndAvatar];
          [profileTable reloadData];
+         
+         [self.spinnerView removeFromSuperview];
      }
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
