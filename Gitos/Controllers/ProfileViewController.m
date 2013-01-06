@@ -38,9 +38,10 @@
     self.navigationItem.title = @"Profile";
     
     UINib *nib = [UINib nibWithNibName:@"ProfileCell" bundle:nil];
+    
     [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
-    profileTable.dataSource     = self;
-    profileTable.delegate       = self;
+    [profileTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [profileTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
     profileTable.backgroundView = nil;
     profileTable.scrollEnabled  = NO;
     [self getUserInfo];
