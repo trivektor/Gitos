@@ -16,10 +16,11 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *newsFeed;
-@property (nonatomic, retain) User *user;
-@property (nonatomic, retain) SpinnerView *spinnerView;
+@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic) NSInteger currentPage;
 
 - (void)getUserInfoAndNewsFeed;
-- (void)getUserNewsFeed;
+- (void)getUserNewsFeed:(NSInteger)page;
 
 @end

@@ -38,13 +38,15 @@
 
 @implementation NewsfeedViewController
 
-@synthesize newsFeed, user, spinnerView;
+@synthesize newsFeed, user, spinnerView, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.newsFeed = [[NSMutableArray alloc] initWithCapacity:0];
+        self.currentPage = 1;
     }
     return self;
 }
@@ -97,7 +99,7 @@
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
 
          self.user = [[User alloc] initWithOptions:json];
-         [self getUserNewsFeed];
+         [self getUserNewsFeed:self.currentPage++];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
      }];
@@ -171,6 +173,9 @@
         NSString *action = [[item valueForKey:@"payload"] valueForKey:@"action"];
         cell.actionDescription.text = [NSString stringWithFormat:@"%@ %@ issue:%@", actor, action, issue];
 
+    } else if ([eventType isEqualToString:@"MemberEvent"]) {
+        NSString *member = [[[item valueForKey:@"payload"] valueForKey:@"member"] valueForKey:@"login"];
+        cell.actionDescription.text = [NSString stringWithFormat:@"%@ added %@ to %@", actor, member, repoName];
     }
     
     cell.actionDate.text = [item valueForKey:@"created_at"];
@@ -179,11 +184,22 @@
     return  cell;
 }
 
-- (void)getUserNewsFeed
+- (void)scrollViewDidEndDecelerating:(UITableView *)tableView {
+    if (tableView.contentOffset.y > 0) {
+        self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+        [self getUserNewsFeed:self.currentPage++];
+    }
+}
+
+- (void)getUserNewsFeed:(NSInteger)page
 {
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:self.user.receivedEventsUrl]];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [NSString stringWithFormat:@"%i", self.currentPage], @"page",
+                                   nil];
 
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:self.user.receivedEventsUrl parameters:nil];
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:self.user.receivedEventsUrl parameters:params];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
@@ -191,7 +207,7 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
 
-         self.newsFeed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+         [self.newsFeed addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
          
          [self.spinnerView removeFromSuperview];
 
