@@ -18,13 +18,15 @@
 
 @implementation StarredViewController
 
-@synthesize user, starredRepos;
+@synthesize user, starredRepos, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.currentPage = 1;
+        self.starredRepos = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -77,7 +79,7 @@
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
          
          self.user = [[User alloc] initWithOptions:json];
-         [self getStarredRepos];
+         [self getStarredReposForPage:self.currentPage++];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"error 1");
@@ -86,13 +88,16 @@
     [operation start];
 }
 
-- (void)getStarredRepos
+- (void)getStarredReposForPage:(NSInteger)page
 {
     NSURL *starredReposUrl = [NSURL URLWithString:self.user.starredUrl];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredReposUrl];
     
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:starredReposUrl.absoluteString parameters:nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   [NSString stringWithFormat:@"%i", self.currentPage], @"page", nil];
+    
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:starredReposUrl.absoluteString parameters:params];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
     
@@ -100,8 +105,8 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
          
-         self.starredRepos = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-         NSLog(@"%i", self.starredRepos.count);
+         [self.starredRepos addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+
          [starredReposTable reloadData];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -179,5 +184,10 @@
     return cell;
 }
 
+- (void)scrollViewDidEndDecelerating:(UITableView *)tableView {
+    if (tableView.contentOffset.y > 0) {
+        [self getStarredReposForPage:self.currentPage++];
+    }
+}
 
 @end

@@ -17,8 +17,9 @@
 
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSMutableArray *starredRepos;
+@property (nonatomic) NSInteger currentPage;
 
 - (void)getUserInfo;
-- (void)getStarredRepos;
+- (void)getStarredReposForPage:(NSInteger)page;
 
 @end
