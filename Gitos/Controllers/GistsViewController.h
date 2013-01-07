@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SpinnerView.h"
 #import "User.h"
+#import "RelativeDateDescriptor.h"
 
 @interface GistsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -19,6 +20,8 @@
 @property (nonatomic) NSInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *gists;
 @property (nonatomic, strong) User *user;
+@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 - (void)getUserInfo;
 - (void)getUserGists:(NSInteger)page;

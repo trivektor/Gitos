@@ -10,7 +10,8 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
-#import "RepoCell.h"
+#import "GistCell.h"
+#import "RelativeDateDescriptor.h"
 
 @interface GistsViewController ()
 
@@ -27,6 +28,8 @@
         // Custom initialization
         self.gists = [[NSMutableArray alloc] initWithCapacity:0];
         self.currentPage = 0;
+        self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@" postDateDescriptionFormat:@"in %@"];
+        self.dateFormatter  = [[NSDateFormatter alloc] init];
     }
     return self;
 }
@@ -38,8 +41,8 @@
     self.navigationItem.title = @"Gists";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
-    UINib *nib = [UINib nibWithNibName:@"RepoCell" bundle:nil];
-    [gistsTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
+    UINib *nib = [UINib nibWithNibName:@"GistCell" bundle:nil];
+    [gistsTable registerNib:nib forCellReuseIdentifier:@"GistCell"];
     [gistsTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
     [gistsTable setBackgroundView:nil];
     [gistsTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
@@ -69,55 +72,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RepoCell *cell = [gistsTable dequeueReusableCellWithIdentifier:@"RepoCell"];
+    GistCell *cell = [gistsTable dequeueReusableCellWithIdentifier:@"GistCell"];
     
     if (!cell) {
-        cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"RepoCell"];
+        cell = [[GistCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"GistCell"];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *gist = [self.gists objectAtIndex:indexPath.row];
     
-    cell.repoNameLabel.text = [NSString stringWithFormat:@"gist:%@", [gist valueForKey:@"id"]];
+    cell.gistName.text = [NSString stringWithFormat:@"gist:%@", [gist valueForKey:@"id"]];
     
-    // Float the Forks and Watchers labels side by side
-    // http://stackoverflow.com/questions/5891384/place-two-uilabels-side-by-side-left-and-right-without-knowing-string-length-of
-    NSInteger _forks = [[gist valueForKey:@"forks_count"] integerValue];
-    NSString *forks;
-    
-    NSInteger MAX_COUNT = 1000.0;
-    
-    if (_forks > MAX_COUNT) {
-        forks = [NSString stringWithFormat:@"%.1fk", _forks/MAX_COUNT*1.0];
+    if ([gist valueForKey:@"description"] != [NSNull null]) {
+        cell.gistDescription.text = [gist valueForKey:@"description"];
     } else {
-        forks = [NSString stringWithFormat:@"%i", _forks];
+        cell.gistDescription.text = @"n/a";
     }
     
-    NSInteger _watchers = [[gist valueForKey:@"watchers"] integerValue];
-    NSString *watchers;
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+    NSDate *date  = [self.dateFormatter dateFromString:[gist valueForKey:@"created_at"]];
     
-    if (_watchers > MAX_COUNT) {
-        watchers = [NSString stringWithFormat:@"%.1fk", _watchers/MAX_COUNT*1.0];
-    } else {
-        watchers = [NSString stringWithFormat:@"%i", _watchers];
-    }
-    
-    CGSize forksSize = [forks sizeWithFont:cell.forkLabel.font];
-    CGSize watchersSize = [watchers sizeWithFont:cell.starLabel.font];
-    
-    cell.forkLabel.text = forks;
-    cell.starLabel.text = watchers;
-    
-    cell.forkLabel.frame = CGRectMake(cell.forkLabel.frame.origin.x,
-                                      cell.forkLabel.frame.origin.y,
-                                      forksSize.width,
-                                      forksSize.height);
-    
-    cell.starLabel.frame = CGRectMake(cell.starLabel.frame.origin.x,
-                                      cell.starLabel.frame.origin.y,
-                                      watchersSize.width,
-                                      watchersSize.height);
+    cell.gistCreatedAt.text = [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
     
     cell.backgroundColor = [UIColor whiteColor];
     
