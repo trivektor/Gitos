@@ -79,7 +79,7 @@
 							<object class="IBUILabel" id="71171519">
 								<reference key="NSNextResponder" ref="553531773"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{216, 18}, {34, 12}}</string>
+								<string key="NSFrame">{{203, 18}, {34, 12}}</string>
 								<reference key="NSSuperview" ref="553531773"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="749923962"/>
@@ -110,7 +110,7 @@
 							<object class="IBUILabel" id="115450876">
 								<reference key="NSNextResponder" ref="553531773"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{270, 18}, {37, 12}}</string>
+								<string key="NSFrame">{{258, 18}, {37, 12}}</string>
 								<reference key="NSSuperview" ref="553531773"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -132,7 +132,7 @@
 							<object class="IBUIImageView" id="548761330">
 								<reference key="NSNextResponder" ref="553531773"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{196, 17}, {15, 15}}</string>
+								<string key="NSFrame">{{185, 17}, {15, 15}}</string>
 								<reference key="NSSuperview" ref="553531773"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="71171519"/>
@@ -149,7 +149,7 @@
 							<object class="IBUIImageView" id="749923962">
 								<reference key="NSNextResponder" ref="553531773"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{253, 17}, {13, 13}}</string>
+								<string key="NSFrame">{{242, 17}, {13, 13}}</string>
 								<reference key="NSSuperview" ref="553531773"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="115450876"/>
@@ -243,8 +243,8 @@
 							<reference ref="71171519"/>
 							<reference ref="115450876"/>
 							<reference ref="548761330"/>
-							<reference ref="749923962"/>
 							<reference ref="79145223"/>
+							<reference ref="749923962"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

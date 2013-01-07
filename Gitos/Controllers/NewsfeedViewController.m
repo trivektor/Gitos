@@ -192,8 +192,10 @@
     return  cell;
 }
 
-- (void)scrollViewDidEndDecelerating:(UITableView *)tableView {
-    if (tableView.contentOffset.y > 0) {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        // Bottom of UITableView reached
         self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
         [self getUserNewsFeed:self.currentPage++];
     }
@@ -204,7 +206,7 @@
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:self.user.receivedEventsUrl]];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%i", self.currentPage], @"page",
+                                   [NSString stringWithFormat:@"%i", page], @"page",
                                    nil];
 
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:self.user.receivedEventsUrl parameters:params];

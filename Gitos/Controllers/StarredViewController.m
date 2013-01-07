@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
 #import "RepoCell.h"
+#import "SpinnerView.h"
 
 @interface StarredViewController ()
 
@@ -97,7 +98,8 @@
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:starredReposUrl];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%i", self.currentPage], @"page", nil];
+                                   [NSString stringWithFormat:@"%i", page], @"page",
+                                   nil];
     
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:starredReposUrl.absoluteString parameters:params];
     
@@ -162,7 +164,7 @@
     NSString *watchers;
     
     if (_watchers > MAX_COUNT) {
-        watchers = [NSString stringWithFormat:@"%.1dk", _watchers/MAX_COUNT];
+        watchers = [NSString stringWithFormat:@"%.1fk", _watchers/MAX_COUNT*1.0];
     } else {
         watchers = [NSString stringWithFormat:@"%i", _watchers];
     }
@@ -188,8 +190,11 @@
     return cell;
 }
 
-- (void)scrollViewDidEndDecelerating:(UITableView *)tableView {
-    if (tableView.contentOffset.y > 0) {
+// https://github.com/stephenjames/ContinuousTableview/blob/master/Classes/RootViewController.m
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
         [self getStarredReposForPage:self.currentPage++];
     }
 }
