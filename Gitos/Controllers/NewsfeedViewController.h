@@ -19,6 +19,7 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) SpinnerView *spinnerView;
 @property (nonatomic) NSInteger currentPage;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 - (void)getUserInfoAndNewsFeed;
 - (void)getUserNewsFeed:(NSInteger)page;
