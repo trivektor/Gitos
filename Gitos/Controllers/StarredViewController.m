@@ -155,7 +155,7 @@
     NSInteger MAX_COUNT = 1000.0;
     
     if (_forks > MAX_COUNT) {
-        forks = [NSString stringWithFormat:@"%.1dk", _forks/MAX_COUNT];
+        forks = [NSString stringWithFormat:@"%.1fk", _forks/MAX_COUNT*1.0];
     } else {
         forks = [NSString stringWithFormat:@"%i", _forks];
     }

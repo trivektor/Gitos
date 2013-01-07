@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpinnerView.h"
+#import "User.h"
 
-@interface GistsViewController : UIViewController
+@interface GistsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    __weak IBOutlet UITableView *gistsTable;
+}
+
+@property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic) NSInteger currentPage;
+@property (nonatomic, strong) NSMutableArray *gists;
+@property (nonatomic, strong) User *user;
+
+- (void)getUserInfo;
+- (void)getUserGists:(NSInteger)page;
 
 @end
