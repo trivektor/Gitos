@@ -13,6 +13,7 @@
 #import "User.h"
 #import "NewsFeedCell.h"
 #import "SpinnerView.h"
+#import "RelativeDateDescriptor.h"
 
 @interface NewsfeedViewController ()
 
@@ -38,16 +39,18 @@
 
 @implementation NewsfeedViewController
 
-@synthesize newsFeed, user, spinnerView, currentPage;
+@synthesize newsFeed, user, spinnerView, currentPage, relativeDateDescriptor;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.newsFeed = [[NSMutableArray alloc] initWithCapacity:0];
-        self.dateFormatter = [[NSDateFormatter alloc] init];
-        self.currentPage = 1;
+        self.newsFeed       = [[NSMutableArray alloc] initWithCapacity:0];
+        self.dateFormatter  = [[NSDateFormatter alloc] init];
+        self.todaysDate     = [NSDate date];
+        self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+        self.currentPage    = 1;
     }
     return self;
 }
@@ -179,16 +182,10 @@
         cell.actionDescription.text = [NSString stringWithFormat:@"%@ added %@ to %@", actor, member, repoName];
     }
     
-    //cell.actionDate.text = [item valueForKey:@"created_at"];
-    
     [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
     NSDate *date  = [self.dateFormatter dateFromString:[item valueForKey:@"created_at"]];
-    
-    // Convert to new Date Format
-    [self.dateFormatter setDateFormat:@"MMM d yy, HH:mm a"];
-    NSString *newDate = [self.dateFormatter stringFromDate:date];
-    
-    cell.actionDate.text = newDate;
+        
+    cell.actionDate.text = [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
     
     cell.backgroundColor = [UIColor clearColor];
 

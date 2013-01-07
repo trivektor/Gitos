@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "SpinnerView.h"
+#import "RelativeDateDescriptor.h"
 
 @interface NewsfeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) SpinnerView *spinnerView;
 @property (nonatomic) NSInteger currentPage;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) RelativeDateDescriptor *relativeDateDescriptor;
+@property (nonatomic) NSDate *todaysDate;
 
 - (void)getUserInfoAndNewsFeed;
 - (void)getUserNewsFeed:(NSInteger)page;
