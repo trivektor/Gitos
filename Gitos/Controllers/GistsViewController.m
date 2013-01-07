@@ -101,6 +101,15 @@
 
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
+        // Bottom of UITableView reached
+        self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+        [self getUserGists:self.currentPage++];
+    }
+}
+
 - (void)getUserInfo
 {
     NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
