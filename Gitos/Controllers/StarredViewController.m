@@ -113,10 +113,11 @@
 
          [starredReposTable reloadData];
          
-         [self.spinnerView removeFromSuperview];
+         [self.spinnerView setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error.localizedDescription);
+         [self.spinnerView setHidden:YES];
      }];
     
     [operation start];
@@ -194,7 +195,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
-        self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+        [self.spinnerView setHidden:NO];
         [self getStarredReposForPage:self.currentPage++];
     }
 }

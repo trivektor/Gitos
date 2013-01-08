@@ -27,7 +27,7 @@
     if (self) {
         // Custom initialization
         self.gists = [[NSMutableArray alloc] initWithCapacity:0];
-        self.currentPage = 0;
+        self.currentPage = 1;
         self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@" postDateDescriptionFormat:@"in %@"];
         self.dateFormatter  = [[NSDateFormatter alloc] init];
     }
@@ -78,7 +78,7 @@
         cell = [[GistCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"GistCell"];
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *gist = [self.gists objectAtIndex:indexPath.row];
     
@@ -105,7 +105,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+        [self.spinnerView setHidden:NO];
         [self getUserGists:self.currentPage++];
     }
 }
@@ -162,11 +162,10 @@
          
          [self.gists addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
          [gistsTable reloadData];
-         [self.spinnerView removeFromSuperview];
+         [self.spinnerView setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@", error.localizedDescription);
-         NSLog(@"%@", self.user.gistsUrl);
+         [self.spinnerView setHidden:YES];
      }];
     
     [operation start];

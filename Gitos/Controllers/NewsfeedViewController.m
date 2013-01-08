@@ -196,7 +196,7 @@
 {
     if (([scrollView contentOffset].y + scrollView.frame.size.height) == scrollView.contentSize.height) {
         // Bottom of UITableView reached
-        self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+        [self.spinnerView setHidden:NO];
         [self getUserNewsFeed:self.currentPage++];
     }
 }
@@ -219,12 +219,12 @@
 
          [self.newsFeed addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
          
-         [self.spinnerView removeFromSuperview];
+         [self.spinnerView setHidden:YES];
 
          [newsFeedTable reloadData];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"an exception happened");
+         [self.spinnerView setHidden:YES];
      }
      ];
 
