@@ -68,6 +68,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:nil];
+    [backButton setTintColor:[UIColor colorWithRed:202/255.0 green:0 blue:0 alpha:1]];
+    [self.navigationItem setBackBarButtonItem:backButton];
+
     if (indexPath.row == 0) {
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.user = self.user;
