@@ -24,6 +24,7 @@
         // Custom initialization
         self.options = [[NSMutableArray alloc] initWithCapacity:0];
         [self.options addObject:@"Profile"];
+        [self.options addObject:@"Sign out"];
     }
     return self;
 }
@@ -76,6 +77,13 @@
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.user = self.user;
         [self.navigationController pushViewController:profileController animated:YES];
+    }
+
+    if (indexPath.row == 1) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Go ahead, make my day" otherButtonTitles:nil];
+        actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+        return;
     }
 }
 

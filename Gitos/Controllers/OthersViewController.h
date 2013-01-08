@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 
-@interface OthersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface OthersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
     __weak IBOutlet UITableView *optionsTable;
 }
