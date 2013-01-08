@@ -14,6 +14,7 @@
 #import "GistsViewController.h"
 #import "ProfileViewController.h"
 #import "StarredViewController.h"
+#import "OthersViewController.h"
 #import "KeychainHelper.h"
 #import "SSKeychain.h"
 
@@ -214,11 +215,12 @@
     NSLog(@"authToken when app starts is %@", authToken);
     
     if (authToken != nil && authToken != @"") {
-        NewsfeedViewController *newsfeedController = [[NewsfeedViewController alloc] init];
-        ReposViewController *reposController = [[ReposViewController alloc] init];
-        GistsViewController *gistsController = [[GistsViewController alloc] init];
-        ProfileViewController *profileController = [[ProfileViewController alloc] init];
-        StarredViewController *starredController = [[StarredViewController alloc] init];
+        NewsfeedViewController *newsfeedController  = [[NewsfeedViewController alloc] init];
+        ReposViewController *reposController        = [[ReposViewController alloc] init];
+        GistsViewController *gistsController        = [[GistsViewController alloc] init];
+        ProfileViewController *profileController    = [[ProfileViewController alloc] init];
+        StarredViewController *starredController    = [[StarredViewController alloc] init];
+        OthersViewController *othersController      = [[OthersViewController alloc] init];
         
         UINavigationController *newsfeedNavController = [[UINavigationController alloc] initWithRootViewController:newsfeedController];
         newsfeedNavController.tabBarItem.title = @"News Feed";
@@ -240,12 +242,16 @@
         profileNavController.tabBarItem.title = @"Profile";
         UIImage *profileIconImage = [UIImage imageNamed:@"253-person.png"];
         
+        UINavigationController *othersNavController = [[UINavigationController alloc] initWithRootViewController:othersController];
+        othersNavController.tabBarItem.title = @"More";
+        UIImage *othersIconImage = [UIImage imageNamed:@"256-box2.png"];
+
         NSArray *viewControllers = [NSArray arrayWithObjects:
                                     newsfeedNavController,
                                     reposNavController,
                                     starredNavController,
                                     gistsNavController,
-                                    profileNavController,
+                                    othersNavController,
                                     nil];
         UITabBarController *tabController = [[UITabBarController alloc] init];
         [tabController setViewControllers:viewControllers];
@@ -261,7 +267,8 @@
         [item1 setFinishedSelectedImage:reposIconImage withFinishedUnselectedImage:reposIconImage];
         [item2 setFinishedSelectedImage:starredIconImage withFinishedUnselectedImage:starredIconImage];
         [item3 setFinishedSelectedImage:gistsIconImage withFinishedUnselectedImage:gistsIconImage];
-        [item4 setFinishedSelectedImage:profileIconImage withFinishedUnselectedImage:profileIconImage];
+        //[item4 setFinishedSelectedImage:profileIconImage withFinishedUnselectedImage:profileIconImage];
+        [item4 setFinishedSelectedImage:othersIconImage withFinishedUnselectedImage:othersIconImage];
         
         [self.window setRootViewController:tabController];
     } else {
