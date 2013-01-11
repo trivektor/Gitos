@@ -10,6 +10,7 @@
 #import "URLParser.h"
 #import "SSKeychain.h"
 #import "NSDictionary+UrlEncoding.h"
+#import "AppInitialization.h"
 
 @interface LoginViewController ()
 
@@ -38,14 +39,20 @@
     
     [webView setDelegate:self];
     
-    NSString *clientId = @"d60ccaa192ed899f048a";
-    NSString *oauthURLString = [@"https://github.com/login/oauth/authorize?client_id=" stringByAppendingString:clientId];
-    oauthURLString = [oauthURLString stringByAppendingString:@"&scope=user,public_repo,repo,repo:status,notifications,gist"];
-    NSURL *oauthURL = [NSURL URLWithString:oauthURLString];
+    NSString *authToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
-    NSURLRequest *oauthRequest = [NSURLRequest requestWithURL:oauthURL];
-    
-    [webView loadRequest:oauthRequest];
+    if (authToken) {
+        [AppInitialization run:self.view.window];
+    } else {
+        NSString *clientId = @"d60ccaa192ed899f048a";
+        NSString *oauthURLString = [@"https://github.com/login/oauth/authorize?client_id=" stringByAppendingString:clientId];
+        oauthURLString = [oauthURLString stringByAppendingString:@"&scope=user,public_repo,repo,repo:status,notifications,gist"];
+        NSURL *oauthURL = [NSURL URLWithString:oauthURLString];
+        
+        NSURLRequest *oauthRequest = [NSURLRequest requestWithURL:oauthURL];
+        
+        [webView loadRequest:oauthRequest];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +126,7 @@
         {
             NSLog(@"storing accesstoken");
             [SSKeychain setPassword:accesstoken forService:@"access_token" account:@"gitos"];
+            [AppInitialization run:self.view.window];
             return;
         }
     }

@@ -49,6 +49,7 @@
 		B5CC1920168229AE000D32B3 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1914168229AE000D32B3 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5CC1921168229AE000D32B3 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1916168229AE000D32B3 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5CC1922168229AE000D32B3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1918168229AE000D32B3 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5DF89E6169FD60800114862 /* AppInitialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DF89E5169FD60800114862 /* AppInitialization.m */; };
 		B5E2CA91169A79C70004E9A7 /* RelativeDateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E2CA90169A79C70004E9A7 /* RelativeDateDescriptor.m */; };
 		B5E2CA99169A99C30004E9A7 /* GistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E2CA98169A99C30004E9A7 /* GistCell.m */; };
 		B5E2CA9B169A9AFE0004E9A7 /* GistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E2CA9A169A9AFE0004E9A7 /* GistCell.xib */; };
@@ -201,6 +202,8 @@
 		B5CC1916168229AE000D32B3 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		B5CC1917168229AE000D32B3 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		B5CC1918168229AE000D32B3 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		B5DF89E4169FD60800114862 /* AppInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInitialization.h; sourceTree = "<group>"; };
+		B5DF89E5169FD60800114862 /* AppInitialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInitialization.m; sourceTree = "<group>"; };
 		B5E2CA8F169A79C70004E9A7 /* RelativeDateDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelativeDateDescriptor.h; sourceTree = "<group>"; };
 		B5E2CA90169A79C70004E9A7 /* RelativeDateDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelativeDateDescriptor.m; sourceTree = "<group>"; };
 		B5E2CA97169A99C30004E9A7 /* GistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCell.h; sourceTree = "<group>"; };
@@ -584,6 +587,8 @@
 				B5CC190016822847000D32B3 /* User.m */,
 				B5CB3C9316828E2200566E19 /* SpinnerView.h */,
 				B5CB3C9416828E2200566E19 /* SpinnerView.m */,
+				B5DF89E4169FD60800114862 /* AppInitialization.h */,
+				B5DF89E5169FD60800114862 /* AppInitialization.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -786,6 +791,7 @@
 				B5E2CA91169A79C70004E9A7 /* RelativeDateDescriptor.m in Sources */,
 				B5E2CA99169A99C30004E9A7 /* GistCell.m in Sources */,
 				B5E2CAA7169C05EF0004E9A7 /* OthersViewController.m in Sources */,
+				B5DF89E6169FD60800114862 /* AppInitialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
