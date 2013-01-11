@@ -14,6 +14,7 @@
 #import "NewsFeedCell.h"
 #import "SpinnerView.h"
 #import "RelativeDateDescriptor.h"
+#import "SVPullToRefresh.h"
 
 @interface NewsfeedViewController ()
 
@@ -70,6 +71,7 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
 
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    [self setupPullToRefresh];
     [self getUserInfoAndNewsFeed];
 }
 
@@ -221,15 +223,25 @@
          
          [self.spinnerView setHidden:YES];
 
+         [newsFeedTable.pullToRefreshView stopAnimating];
          [newsFeedTable reloadData];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          [self.spinnerView setHidden:YES];
+         [newsFeedTable.pullToRefreshView stopAnimating];
      }
      ];
 
     [operation start];
 
+}
+
+- (void)setupPullToRefresh
+{
+    self.currentPage = 1;
+    [newsFeedTable addPullToRefreshWithActionHandler:^{
+        [self getUserNewsFeed:self.currentPage++];
+    }];
 }
 
 @end

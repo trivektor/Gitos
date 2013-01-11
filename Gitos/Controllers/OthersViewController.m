@@ -94,16 +94,6 @@
     if (buttonIndex == 0) {
         [SSKeychain deletePasswordForService:@"access_token" account:@"gitos"];
         
-//        NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:@""];
-//        [request setHTTPMethod:@"POST"];
-//        [request setHTTPBody:[post dataUsingEncoding:NSUTF8StringEncoding]];
-//        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-//        [request addValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@",charset] forHTTPHeaderField:@"Content-Type"];
-//        
-//        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//        [request setHTTPBody:[paramString dataUsingEncoding:NSUTF8StringEncoding]];
-
-        
         LoginViewController *loginController = [[LoginViewController alloc] init];
         
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:loginController];

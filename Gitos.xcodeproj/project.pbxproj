@@ -50,6 +50,8 @@
 		B5CC1921168229AE000D32B3 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1916168229AE000D32B3 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5CC1922168229AE000D32B3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1918168229AE000D32B3 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5DF89E6169FD60800114862 /* AppInitialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DF89E5169FD60800114862 /* AppInitialization.m */; };
+		B5DF89EF169FFFC200114862 /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DF89EE169FFFC200114862 /* SVPullToRefresh.m */; };
+		B5DF89F116A000C200114862 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DF89F016A000C200114862 /* QuartzCore.framework */; };
 		B5E2CA91169A79C70004E9A7 /* RelativeDateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E2CA90169A79C70004E9A7 /* RelativeDateDescriptor.m */; };
 		B5E2CA99169A99C30004E9A7 /* GistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E2CA98169A99C30004E9A7 /* GistCell.m */; };
 		B5E2CA9B169A9AFE0004E9A7 /* GistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5E2CA9A169A9AFE0004E9A7 /* GistCell.xib */; };
@@ -204,6 +206,9 @@
 		B5CC1918168229AE000D32B3 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		B5DF89E4169FD60800114862 /* AppInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInitialization.h; sourceTree = "<group>"; };
 		B5DF89E5169FD60800114862 /* AppInitialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInitialization.m; sourceTree = "<group>"; };
+		B5DF89ED169FFFC200114862 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		B5DF89EE169FFFC200114862 /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
+		B5DF89F016A000C200114862 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B5E2CA8F169A79C70004E9A7 /* RelativeDateDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelativeDateDescriptor.h; sourceTree = "<group>"; };
 		B5E2CA90169A79C70004E9A7 /* RelativeDateDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelativeDateDescriptor.m; sourceTree = "<group>"; };
 		B5E2CA97169A99C30004E9A7 /* GistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistCell.h; sourceTree = "<group>"; };
@@ -328,6 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5DF89F116A000C200114862 /* QuartzCore.framework in Frameworks */,
 				B5F5C7661675A7A100C4F0E4 /* Security.framework in Frameworks */,
 				B5F5C7041675742500C4F0E4 /* UIKit.framework in Frameworks */,
 				B5F5C7061675742500C4F0E4 /* Foundation.framework in Frameworks */,
@@ -386,10 +392,21 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		B5DF89EC169FFFC200114862 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B5DF89ED169FFFC200114862 /* SVPullToRefresh.h */,
+				B5DF89EE169FFFC200114862 /* SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
 		B5F5C6F41675742500C4F0E4 = {
 			isa = PBXGroup;
 			children = (
+				B5DF89F016A000C200114862 /* QuartzCore.framework */,
 				B5ACFE8F1698B81A008E56C1 /* icon@2x_et.png */,
+				B5DF89EC169FFFC200114862 /* SVPullToRefresh */,
 				B5ACFE8D1698B80F008E56C1 /* Icon.png */,
 				B5CC1903168229AE000D32B3 /* AFNetworking */,
 				B5F5C70B1675742500C4F0E4 /* Gitos */,
@@ -792,6 +809,7 @@
 				B5E2CA99169A99C30004E9A7 /* GistCell.m in Sources */,
 				B5E2CAA7169C05EF0004E9A7 /* OthersViewController.m in Sources */,
 				B5DF89E6169FD60800114862 /* AppInitialization.m in Sources */,
+				B5DF89EF169FFFC200114862 /* SVPullToRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,5 +26,6 @@
 
 - (void)getUserInfoAndNewsFeed;
 - (void)getUserNewsFeed:(NSInteger)page;
+- (void)setupPullToRefresh;
 
 @end

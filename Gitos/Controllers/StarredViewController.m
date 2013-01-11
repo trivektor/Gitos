@@ -12,6 +12,7 @@
 #import "SSKeychain.h"
 #import "RepoCell.h"
 #import "SpinnerView.h"
+#import "SVPullToRefresh.h"
 
 @interface StarredViewController ()
 
@@ -48,7 +49,8 @@
     [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
     
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-
+    
+    [self setupPullToRefresh];
     [self getUserInfo];
 }
 
@@ -111,6 +113,7 @@
          
          [self.starredRepos addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
 
+         [starredReposTable.pullToRefreshView stopAnimating];
          [starredReposTable reloadData];
          
          [self.spinnerView setHidden:YES];
@@ -198,6 +201,14 @@
         [self.spinnerView setHidden:NO];
         [self getStarredReposForPage:self.currentPage++];
     }
+}
+
+- (void)setupPullToRefresh
+{
+    self.currentPage = 1;
+    [starredReposTable addPullToRefreshWithActionHandler:^{
+        [self getStarredReposForPage:self.currentPage++];
+    }];
 }
 
 @end

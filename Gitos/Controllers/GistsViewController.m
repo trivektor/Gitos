@@ -12,6 +12,7 @@
 #import "SSKeychain.h"
 #import "GistCell.h"
 #import "RelativeDateDescriptor.h"
+#import "SVPullToRefresh.h"
 
 @interface GistsViewController ()
 
@@ -51,6 +52,7 @@
     
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     
+    [self setupPullToRefresh];
     [self getUserInfo];
 }
 
@@ -161,6 +163,7 @@
          NSString *response = [operation responseString];
          
          [self.gists addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+         [gistsTable.pullToRefreshView stopAnimating];
          [gistsTable reloadData];
          [self.spinnerView setHidden:YES];
      }
@@ -169,6 +172,14 @@
      }];
     
     [operation start];
+}
+
+- (void)setupPullToRefresh
+{
+    self.currentPage = 1;
+    [gistsTable addPullToRefreshWithActionHandler:^{
+        [self getUserGists:self.currentPage];
+    }];
 }
 
 @end

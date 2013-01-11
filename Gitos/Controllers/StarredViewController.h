@@ -23,5 +23,6 @@
 
 - (void)getUserInfo;
 - (void)getStarredReposForPage:(NSInteger)page;
+- (void)setupPullToRefresh;
 
 @end

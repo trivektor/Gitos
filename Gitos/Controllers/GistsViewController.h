@@ -25,5 +25,6 @@
 
 - (void)getUserInfo;
 - (void)getUserGists:(NSInteger)page;
+- (void)setupPullToRefresh;
 
 @end
