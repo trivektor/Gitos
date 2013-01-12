@@ -87,6 +87,16 @@
 
 - (void)authenticate
 {
+    NSString *username = [usernameField text];
+    NSString *password = [passwordField text];
+
+    if (username.length == 0 || password.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert setMessage:@"Please enter both username and password"];
+        [alert show];
+        return;
+    }
+
     NSURL *url = [NSURL URLWithString:@"https://api.github.com"];
     
     NSMutableArray *scopes = [[NSMutableArray alloc] initWithObjects:@"user", @"public_repo", @"repo", @"repo:status",
@@ -100,7 +110,7 @@
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
-    [httpClient setAuthorizationHeaderWithUsername:[usernameField text] password:[passwordField text]];
+    [httpClient setAuthorizationHeaderWithUsername:username password:password];
     
     NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST" path:@"/authorizations" parameters:oauthParams];
     
