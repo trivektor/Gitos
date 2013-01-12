@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface LoginViewController : UIViewController <UIWebViewDelegate>
+@interface LoginViewController : UIViewController
 {
     
-    __weak IBOutlet UIWebView *webView;
+    __weak IBOutlet UITextField *usernameField;
+    __weak IBOutlet UITextField *passwordField;
+    __weak IBOutlet UIButton *loginButton;
 }
 
-@property(nonatomic, strong) NSURLConnection *tokenRequestConnection;
-@property(nonatomic, strong) NSMutableData *data;
+- (IBAction)loginButtonClicked:(id)sender;
 
 @end

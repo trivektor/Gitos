@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B501128B16A1459900044C85 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = B501128A16A1459900044C85 /* AFOAuth2Client.m */; };
 		B5ACFE841698026F008E56C1 /* header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE831698026F008E56C1 /* header_bg.png */; };
 		B5ACFE8616980886008E56C1 /* tabbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE8516980886008E56C1 /* tabbar_bg.png */; };
 		B5ACFE8E1698B80F008E56C1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE8D1698B80F008E56C1 /* Icon.png */; };
@@ -146,6 +147,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B501128916A1459900044C85 /* AFOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Client.h; sourceTree = "<group>"; };
+		B501128A16A1459900044C85 /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
 		B5ACFE831698026F008E56C1 /* header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bg.png; sourceTree = "<group>"; };
 		B5ACFE8516980886008E56C1 /* tabbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_bg.png; sourceTree = "<group>"; };
 		B5ACFE8D1698B80F008E56C1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -345,6 +348,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B501128816A1459900044C85 /* AFOAuth2Client */ = {
+			isa = PBXGroup;
+			children = (
+				B501128916A1459900044C85 /* AFOAuth2Client.h */,
+				B501128A16A1459900044C85 /* AFOAuth2Client.m */,
+			);
+			path = AFOAuth2Client;
+			sourceTree = "<group>";
+		};
 		B5CB3C73168267A400566E19 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +420,7 @@
 				B5ACFE8F1698B81A008E56C1 /* icon@2x_et.png */,
 				B5DF89EC169FFFC200114862 /* SVPullToRefresh */,
 				B5ACFE8D1698B80F008E56C1 /* Icon.png */,
+				B501128816A1459900044C85 /* AFOAuth2Client */,
 				B5CC1903168229AE000D32B3 /* AFNetworking */,
 				B5F5C70B1675742500C4F0E4 /* Gitos */,
 				B5F5C7021675742500C4F0E4 /* Frameworks */,
@@ -810,6 +823,7 @@
 				B5E2CAA7169C05EF0004E9A7 /* OthersViewController.m in Sources */,
 				B5DF89E6169FD60800114862 /* AppInitialization.m in Sources */,
 				B5DF89EF169FFFC200114862 /* SVPullToRefresh.m in Sources */,
+				B501128B16A1459900044C85 /* AFOAuth2Client.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
