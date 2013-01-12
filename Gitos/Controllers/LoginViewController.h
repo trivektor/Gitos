@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
     
     __weak IBOutlet UITextField *usernameField;
     __weak IBOutlet UITextField *passwordField;
-    __weak IBOutlet UIButton *loginButton;
+    __weak IBOutlet UITableView *loginTable;
 }
 
-- (IBAction)loginButtonClicked:(id)sender;
+@property(nonatomic, strong) IBOutlet UITableViewCell *usernameCell;
+@property(nonatomic, strong) IBOutlet UITableViewCell *passwordCell;
+
+- (void)authenticate;
 
 @end

@@ -20,6 +20,8 @@
 
 @implementation LoginViewController
 
+@synthesize usernameCell, passwordCell;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,6 +38,16 @@
     [self.navigationItem setTitle:@"Login"];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(authenticate)];
+    [submitButton setTintColor:[UIColor colorWithRed:202/255.0 green:0 blue:0 alpha:1]];
+    [self.navigationItem setRightBarButtonItem:submitButton];
+    
+    [loginTable setBackgroundView:nil];
+    [loginTable setScrollEnabled:NO];
+    [loginTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [loginTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +56,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loginButtonClicked:(id)sender
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) return usernameCell;
+    if (indexPath.row == 1) return passwordCell;
+    return nil;
+}
+
+- (void)authenticate
 {
     NSLog(@"authenticating");
     NSURL *url = [NSURL URLWithString:@"https://api.github.com"];
@@ -57,21 +86,21 @@
                                         @"d60ccaa192ed899f048a", @"client_id",
                                         @"64b5131fb3bfc2ab86a71c84f92bf969e86feaef", @"client_secret",
                                         nil];
-
+    
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setParameterEncoding:AFJSONParameterEncoding];
     [httpClient setAuthorizationHeaderWithUsername:[usernameField text] password:[passwordField text]];
-
+    
     NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"POST" path:@"/authorizations" parameters:oauthParams];
-
+    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
-
+    
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject) {
          NSString *response = [operation responseString];
-
+         
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-
+         
          NSString *token = [json valueForKey:@"token"];
          [SSKeychain setPassword:token forService:@"access_token" account:@"gitos"];
          [AppInitialization run:self.view.window];
@@ -79,7 +108,7 @@
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"OAuth request failed: %@", error);
      }];
-
+    
     [operation start];
 }
 
