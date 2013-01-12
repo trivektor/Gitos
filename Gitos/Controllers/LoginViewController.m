@@ -13,6 +13,7 @@
 #import "AppInitialization.h"
 #import "AFOAuth2Client.h"
 #import "AFJSONRequestOperation.h"
+#import "AppConfig.h"
 
 @interface LoginViewController ()
 
@@ -20,7 +21,7 @@
 
 @implementation LoginViewController
 
-@synthesize usernameCell, passwordCell;
+@synthesize usernameCell, passwordCell, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +48,9 @@
 
 - (void)performHousekeepingTasks
 {
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    [self.spinnerView setHidden:YES];
+
     [self.navigationItem setTitle:@"Login"];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
@@ -90,6 +94,7 @@
     NSString *username = [usernameField text];
     NSString *password = [passwordField text];
 
+    // Prompt if username of password was blank
     if (username.length == 0 || password.length == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert setMessage:@"Please enter both username and password"];
@@ -97,7 +102,7 @@
         return;
     }
 
-    NSURL *url = [NSURL URLWithString:@"https://api.github.com"];
+    NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
     
     NSMutableArray *scopes = [[NSMutableArray alloc] initWithObjects:@"user", @"public_repo", @"repo", @"repo:status",
                               @"notifications", @"gist", nil];
@@ -118,6 +123,7 @@
     
     [operation setCompletionBlockWithSuccess:
      ^(AFHTTPRequestOperation *operation, id responseObject) {
+         [self.spinnerView setHidden:NO];
          NSString *response = [operation responseString];
          
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -127,10 +133,21 @@
          [AppInitialization run:self.view.window];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"OAuth request failed: %@", error);
+         [self.spinnerView setHidden:YES];
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+         [alert setMessage:[json valueForKey:@"message"]];
+         [alert show];
      }];
     
     [operation start];
+    [self.spinnerView setHidden:NO];
+    [usernameField resignFirstResponder];
+    [passwordField resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField

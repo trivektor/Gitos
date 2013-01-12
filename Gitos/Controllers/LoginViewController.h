@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "SpinnerView.h"
 
 @interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
@@ -19,6 +20,7 @@
 
 @property(nonatomic, strong) IBOutlet UITableViewCell *usernameCell;
 @property(nonatomic, strong) IBOutlet UITableViewCell *passwordCell;
+@property(nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)performHousekeepingTasks;
 - (void)authenticate;
