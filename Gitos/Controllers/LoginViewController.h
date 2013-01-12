@@ -20,6 +20,8 @@
 @property(nonatomic, strong) IBOutlet UITableViewCell *usernameCell;
 @property(nonatomic, strong) IBOutlet UITableViewCell *passwordCell;
 
+- (void)performHousekeepingTasks;
 - (void)authenticate;
+- (void)setDelegates;
 
 @end

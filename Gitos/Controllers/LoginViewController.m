@@ -35,6 +35,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self performHousekeepingTasks];
+    [self setDelegates];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)performHousekeepingTasks
+{
     [self.navigationItem setTitle:@"Login"];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
@@ -50,10 +62,10 @@
     [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)setDelegates
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [usernameField setDelegate:self];
+    [passwordField setDelegate:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -75,7 +87,6 @@
 
 - (void)authenticate
 {
-    NSLog(@"authenticating");
     NSURL *url = [NSURL URLWithString:@"https://api.github.com"];
     
     NSMutableArray *scopes = [[NSMutableArray alloc] initWithObjects:@"user", @"public_repo", @"repo", @"repo:status",
@@ -110,6 +121,17 @@
      }];
     
     [operation start];
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
