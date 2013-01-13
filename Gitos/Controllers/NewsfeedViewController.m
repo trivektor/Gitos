@@ -15,6 +15,7 @@
 #import "SpinnerView.h"
 #import "RelativeDateDescriptor.h"
 #import "SVPullToRefresh.h"
+#import "TimelineEvent.h"
 
 @interface NewsfeedViewController ()
 
@@ -143,53 +144,14 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     NSDictionary *item = [self.newsFeed objectAtIndex:indexPath.row];
-
-    NSString *eventType = [item valueForKey:@"type"];
-    NSString *actor     = [[item valueForKey:@"actor"] valueForKey:@"login"];
-    NSString *repoName  = [[item valueForKey:@"repo"] valueForKey:@"name"];
-
-    if ([eventType isEqualToString:@"ForkEvent"]) {
-
-        cell.actionDescription.text = [NSString stringWithFormat:@"%@ forked %@", actor, repoName];
-
-    } else if ([eventType isEqualToString:@"WatchEvent"]) {
-
-        cell.actionDescription.text = [NSString stringWithFormat:@"%@ watched %@", actor, repoName];
-
-    } else if ([eventType isEqualToString:@"CreateEvent"]) {
-
-        cell.actionDescription.text = [NSString stringWithFormat:@"%@ created %@", actor, repoName];
-
-    } else if ([eventType isEqualToString:@"FollowEvent"]) {
-        
-        NSString *target = [[[item valueForKey:@"payload"] valueForKey:@"target"] valueForKey:@"login"];
-        cell.actionDescription.text = [NSString stringWithFormat:@"%@ started following %@", actor, target];
-        
-    } else if ([eventType isEqualToString:@"GistEvent"]) {
-
-        NSString *action = [[item valueForKey:@"payload"] valueForKey:@"action"];
-        NSString *gist = [[[item valueForKey:@"payload"] valueForKey:@"gist"] valueForKey:@"id"];
-        cell.actionDescription.text = [NSString stringWithFormat:@"%@ %@ gist:%@", actor, action, gist];
-
-    } else if ([eventType isEqualToString:@"IssuesEvent"]) {
-
-        NSString *issue = [[[item valueForKey:@"payload"] valueForKey:@"issue"] valueForKey:@"id"];
-        NSString *action = [[item valueForKey:@"payload"] valueForKey:@"action"];
-        cell.actionDescription.text = [NSString stringWithFormat:@"%@ %@ issue:%@", actor, action, issue];
-
-    } else if ([eventType isEqualToString:@"MemberEvent"]) {
-        NSString *member = [[[item valueForKey:@"payload"] valueForKey:@"member"] valueForKey:@"login"];
-        cell.actionDescription.text = [NSString stringWithFormat:@"%@ added %@ to %@", actor, member, repoName];
-    }
     
-    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-    NSDate *date  = [self.dateFormatter dateFromString:[item valueForKey:@"created_at"]];
-        
-    cell.actionDate.text = [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
-    
-    cell.backgroundColor = [UIColor clearColor];
+    TimelineEvent *event = [[TimelineEvent alloc] initWithOptions:item];
+
+    cell.actionDescription.text = [event toString];
+    cell.actionDate.text        = [event toDateString];
+    cell.backgroundColor        = [UIColor clearColor];
 
     return  cell;
 }

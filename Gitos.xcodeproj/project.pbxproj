@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B501128B16A1459900044C85 /* AFOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = B501128A16A1459900044C85 /* AFOAuth2Client.m */; };
+		B501129016A2183700044C85 /* NewsfeedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B501128E16A2183700044C85 /* NewsfeedDetailsViewController.m */; };
+		B501129116A2183700044C85 /* NewsfeedDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B501128F16A2183700044C85 /* NewsfeedDetailsViewController.xib */; };
+		B501129416A2190300044C85 /* TimelineEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B501129316A2190300044C85 /* TimelineEvent.m */; };
 		B5ACFE841698026F008E56C1 /* header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE831698026F008E56C1 /* header_bg.png */; };
 		B5ACFE8616980886008E56C1 /* tabbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE8516980886008E56C1 /* tabbar_bg.png */; };
 		B5ACFE8E1698B80F008E56C1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE8D1698B80F008E56C1 /* Icon.png */; };
@@ -149,6 +152,11 @@
 /* Begin PBXFileReference section */
 		B501128916A1459900044C85 /* AFOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Client.h; sourceTree = "<group>"; };
 		B501128A16A1459900044C85 /* AFOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Client.m; sourceTree = "<group>"; };
+		B501128D16A2183700044C85 /* NewsfeedDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedDetailsViewController.h; sourceTree = "<group>"; };
+		B501128E16A2183700044C85 /* NewsfeedDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedDetailsViewController.m; sourceTree = "<group>"; };
+		B501128F16A2183700044C85 /* NewsfeedDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedDetailsViewController.xib; sourceTree = "<group>"; };
+		B501129216A2190300044C85 /* TimelineEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEvent.h; sourceTree = "<group>"; };
+		B501129316A2190300044C85 /* TimelineEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEvent.m; sourceTree = "<group>"; };
 		B5ACFE831698026F008E56C1 /* header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bg.png; sourceTree = "<group>"; };
 		B5ACFE8516980886008E56C1 /* tabbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_bg.png; sourceTree = "<group>"; };
 		B5ACFE8D1698B80F008E56C1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -517,6 +525,9 @@
 				B5E2CAA4169C05EF0004E9A7 /* OthersViewController.h */,
 				B5E2CAA5169C05EF0004E9A7 /* OthersViewController.m */,
 				B5E2CAA6169C05EF0004E9A7 /* OthersViewController.xib */,
+				B501128D16A2183700044C85 /* NewsfeedDetailsViewController.h */,
+				B501128E16A2183700044C85 /* NewsfeedDetailsViewController.m */,
+				B501128F16A2183700044C85 /* NewsfeedDetailsViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -619,6 +630,8 @@
 				B5CB3C9416828E2200566E19 /* SpinnerView.m */,
 				B5DF89E4169FD60800114862 /* AppInitialization.h */,
 				B5DF89E5169FD60800114862 /* AppInitialization.m */,
+				B501129216A2190300044C85 /* TimelineEvent.h */,
+				B501129316A2190300044C85 /* TimelineEvent.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -772,6 +785,7 @@
 				B5E2CAAD169C074C0004E9A7 /* 259-list@2x.png in Resources */,
 				B5E2CAB0169C09800004E9A7 /* 256-box2.png in Resources */,
 				B5E2CAB1169C09800004E9A7 /* 256-box2@2x.png in Resources */,
+				B501129116A2183700044C85 /* NewsfeedDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +838,8 @@
 				B5DF89E6169FD60800114862 /* AppInitialization.m in Sources */,
 				B5DF89EF169FFFC200114862 /* SVPullToRefresh.m in Sources */,
 				B501128B16A1459900044C85 /* AFOAuth2Client.m in Sources */,
+				B501129016A2183700044C85 /* NewsfeedDetailsViewController.m in Sources */,
+				B501129416A2190300044C85 /* TimelineEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
