@@ -150,6 +150,8 @@
 {
     NewsfeedDetailsViewController *newsfeedDetailsController = [[NewsfeedDetailsViewController alloc] init];
     newsfeedDetailsController.event = [self.newsFeed objectAtIndex:indexPath.row];
+    newsfeedDetailsController.currentPage = (indexPath.row / 30) + 1;
+    newsfeedDetailsController.username = self.user.login;
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     

@@ -11,6 +11,7 @@
 
 @interface TimelineEvent : NSObject
 
+@property(nonatomic) NSInteger eventId;
 @property(nonatomic, strong) NSString *type;
 @property(nonatomic, strong) NSString *createdAt;
 @property(nonatomic, strong) NSDictionary *actor;

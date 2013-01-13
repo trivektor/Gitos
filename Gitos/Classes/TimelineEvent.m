@@ -10,12 +10,13 @@
 
 @implementation TimelineEvent
 
-@synthesize type, createdAt, actor, payload, repo, todayDate, relativeDateDescriptor;
+@synthesize eventId, type, createdAt, actor, payload, repo, todayDate, relativeDateDescriptor;
 
 - (id)initWithOptions:(NSDictionary *)options
 {
     self = [super init];
 
+    self.eventId        = [[options valueForKey:@"id"] intValue];
     self.type           = [options valueForKey:@"type"];
     self.actor          = [options valueForKey:@"actor"];
     self.payload        = [options valueForKey:@"payload"];

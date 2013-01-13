@@ -14,7 +14,7 @@
 
 @implementation NewsfeedDetailsViewController
 
-@synthesize event;
+@synthesize event, currentPage, username;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +30,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://thawing-crag-8872.herokuapp.com/events/%d?page=%d&username=%@", self.event.eventId, self.currentPage, self.username]];
+    
+    NSLog(@"%@", [url absoluteString]);
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,6 +49,7 @@
 - (void)performHouseKeepingTasks
 {
     [self.navigationItem setTitle:@"Details"];
+    [webView setDelegate:self];
 }
 
 @end

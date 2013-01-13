@@ -10,8 +10,13 @@
 #import "TimelineEvent.h"
 
 @interface NewsfeedDetailsViewController : UIViewController
+{
+    __weak IBOutlet UIWebView *webView;
+}
 
 @property(nonatomic, strong) TimelineEvent *event;
+@property(nonatomic) int currentPage;
+@property(nonatomic, strong) NSString *username;
 
 - (void)performHouseKeepingTasks;
 
