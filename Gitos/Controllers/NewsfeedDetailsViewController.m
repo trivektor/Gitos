@@ -7,6 +7,7 @@
 //
 
 #import "NewsfeedDetailsViewController.h"
+#import "AppConfig.h"
 
 @interface NewsfeedDetailsViewController ()
 
@@ -30,14 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://thawing-crag-8872.herokuapp.com/events/%d?page=%d&username=%@", self.event.eventId, self.currentPage, self.username]];
-    
-    NSLog(@"%@", [url absoluteString]);
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    [webView loadRequest:request];
+    [self loadNewsfeedDetails];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +44,40 @@
 {
     [self.navigationItem setTitle:@"Details"];
     [webView setDelegate:self];
+    
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeedDetails)];
+    
+    [reloadButton setTintColor:[UIColor colorWithRed:209/255.0 green:0 blue:0 alpha:1]];
+    [self.navigationItem setRightBarButtonItem:reloadButton];
+}
+
+- (void)loadNewsfeedDetails
+{
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    NSString *urlString = [AppConfig getConfigValue:@"GitosHost"];
+    urlString = [urlString stringByAppendingFormat:@"/events/%d?page=%d&username=%@",
+                 self.event.eventId,
+                 self.currentPage,
+                 self.username];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSLog(@"%@", urlString);
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [webView loadRequest:request];
+}
+
+- (void)reloadNewsfeedDetails
+{
+    [self.spinnerView setHidden:NO];
+    [webView reload];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.spinnerView setHidden:YES];
 }
 
 @end
