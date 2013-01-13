@@ -11,6 +11,30 @@
 		B501129016A2183700044C85 /* NewsfeedDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B501128E16A2183700044C85 /* NewsfeedDetailsViewController.m */; };
 		B501129116A2183700044C85 /* NewsfeedDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B501128F16A2183700044C85 /* NewsfeedDetailsViewController.xib */; };
 		B501129416A2190300044C85 /* TimelineEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B501129316A2190300044C85 /* TimelineEvent.m */; };
+		B55514CA16A33C89004D5713 /* barButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B116A33C89004D5713 /* barButton.png */; };
+		B55514CB16A33C89004D5713 /* barButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B216A33C89004D5713 /* barButton@2x.png */; };
+		B55514CC16A33C89004D5713 /* barButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B316A33C89004D5713 /* barButtonBack.png */; };
+		B55514CD16A33C89004D5713 /* barButtonBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B416A33C89004D5713 /* barButtonBack@2x.png */; };
+		B55514CE16A33C89004D5713 /* barButtonBackDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B516A33C89004D5713 /* barButtonBackDisabled.png */; };
+		B55514CF16A33C89004D5713 /* barButtonBackDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B616A33C89004D5713 /* barButtonBackDisabled@2x.png */; };
+		B55514D016A33C89004D5713 /* barButtonBackPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B716A33C89004D5713 /* barButtonBackPressed.png */; };
+		B55514D116A33C89004D5713 /* barButtonBackPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B816A33C89004D5713 /* barButtonBackPressed@2x.png */; };
+		B55514D216A33C89004D5713 /* barButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514B916A33C89004D5713 /* barButtonDisabled.png */; };
+		B55514D316A33C89004D5713 /* barButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514BA16A33C89004D5713 /* barButtonDisabled@2x.png */; };
+		B55514D416A33C89004D5713 /* barButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514BB16A33C89004D5713 /* barButtonPressed.png */; };
+		B55514D516A33C89004D5713 /* barButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B55514BC16A33C89004D5713 /* barButtonPressed@2x.png */; };
+		B55514D616A33C89004D5713 /* barButton.idraw in Resources */ = {isa = PBXBuildFile; fileRef = B55514BE16A33C89004D5713 /* barButton.idraw */; };
+		B55514D716A33C89004D5713 /* barButton.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55514BF16A33C89004D5713 /* barButton.svg */; };
+		B55514D816A33C89004D5713 /* barButtonBack.idraw in Resources */ = {isa = PBXBuildFile; fileRef = B55514C016A33C89004D5713 /* barButtonBack.idraw */; };
+		B55514D916A33C89004D5713 /* barButtonBack.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55514C116A33C89004D5713 /* barButtonBack.svg */; };
+		B55514DA16A33C89004D5713 /* barButtonBackDisabled.idraw in Resources */ = {isa = PBXBuildFile; fileRef = B55514C216A33C89004D5713 /* barButtonBackDisabled.idraw */; };
+		B55514DB16A33C89004D5713 /* barButtonBackDisabled.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55514C316A33C89004D5713 /* barButtonBackDisabled.svg */; };
+		B55514DC16A33C89004D5713 /* barButtonBackPressed.idraw in Resources */ = {isa = PBXBuildFile; fileRef = B55514C416A33C89004D5713 /* barButtonBackPressed.idraw */; };
+		B55514DD16A33C89004D5713 /* barButtonBackPressed.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55514C516A33C89004D5713 /* barButtonBackPressed.svg */; };
+		B55514DE16A33C89004D5713 /* barButtonDisabled.idraw in Resources */ = {isa = PBXBuildFile; fileRef = B55514C616A33C89004D5713 /* barButtonDisabled.idraw */; };
+		B55514DF16A33C89004D5713 /* barButtonDisabled.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55514C716A33C89004D5713 /* barButtonDisabled.svg */; };
+		B55514E016A33C89004D5713 /* barButtonPressed.idraw in Resources */ = {isa = PBXBuildFile; fileRef = B55514C816A33C89004D5713 /* barButtonPressed.idraw */; };
+		B55514E116A33C89004D5713 /* barButtonPressed.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55514C916A33C89004D5713 /* barButtonPressed.svg */; };
 		B5ACFE841698026F008E56C1 /* header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE831698026F008E56C1 /* header_bg.png */; };
 		B5ACFE8616980886008E56C1 /* tabbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE8516980886008E56C1 /* tabbar_bg.png */; };
 		B5ACFE8E1698B80F008E56C1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ACFE8D1698B80F008E56C1 /* Icon.png */; };
@@ -157,6 +181,30 @@
 		B501128F16A2183700044C85 /* NewsfeedDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsfeedDetailsViewController.xib; sourceTree = "<group>"; };
 		B501129216A2190300044C85 /* TimelineEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineEvent.h; sourceTree = "<group>"; };
 		B501129316A2190300044C85 /* TimelineEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineEvent.m; sourceTree = "<group>"; };
+		B55514B116A33C89004D5713 /* barButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barButton.png; sourceTree = "<group>"; };
+		B55514B216A33C89004D5713 /* barButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barButton@2x.png"; sourceTree = "<group>"; };
+		B55514B316A33C89004D5713 /* barButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barButtonBack.png; sourceTree = "<group>"; };
+		B55514B416A33C89004D5713 /* barButtonBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barButtonBack@2x.png"; sourceTree = "<group>"; };
+		B55514B516A33C89004D5713 /* barButtonBackDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barButtonBackDisabled.png; sourceTree = "<group>"; };
+		B55514B616A33C89004D5713 /* barButtonBackDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barButtonBackDisabled@2x.png"; sourceTree = "<group>"; };
+		B55514B716A33C89004D5713 /* barButtonBackPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barButtonBackPressed.png; sourceTree = "<group>"; };
+		B55514B816A33C89004D5713 /* barButtonBackPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barButtonBackPressed@2x.png"; sourceTree = "<group>"; };
+		B55514B916A33C89004D5713 /* barButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barButtonDisabled.png; sourceTree = "<group>"; };
+		B55514BA16A33C89004D5713 /* barButtonDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barButtonDisabled@2x.png"; sourceTree = "<group>"; };
+		B55514BB16A33C89004D5713 /* barButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barButtonPressed.png; sourceTree = "<group>"; };
+		B55514BC16A33C89004D5713 /* barButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barButtonPressed@2x.png"; sourceTree = "<group>"; };
+		B55514BE16A33C89004D5713 /* barButton.idraw */ = {isa = PBXFileReference; lastKnownFileType = file; path = barButton.idraw; sourceTree = "<group>"; };
+		B55514BF16A33C89004D5713 /* barButton.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButton.svg; sourceTree = "<group>"; };
+		B55514C016A33C89004D5713 /* barButtonBack.idraw */ = {isa = PBXFileReference; lastKnownFileType = file; path = barButtonBack.idraw; sourceTree = "<group>"; };
+		B55514C116A33C89004D5713 /* barButtonBack.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButtonBack.svg; sourceTree = "<group>"; };
+		B55514C216A33C89004D5713 /* barButtonBackDisabled.idraw */ = {isa = PBXFileReference; lastKnownFileType = file; path = barButtonBackDisabled.idraw; sourceTree = "<group>"; };
+		B55514C316A33C89004D5713 /* barButtonBackDisabled.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButtonBackDisabled.svg; sourceTree = "<group>"; };
+		B55514C416A33C89004D5713 /* barButtonBackPressed.idraw */ = {isa = PBXFileReference; lastKnownFileType = file; path = barButtonBackPressed.idraw; sourceTree = "<group>"; };
+		B55514C516A33C89004D5713 /* barButtonBackPressed.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButtonBackPressed.svg; sourceTree = "<group>"; };
+		B55514C616A33C89004D5713 /* barButtonDisabled.idraw */ = {isa = PBXFileReference; lastKnownFileType = file; path = barButtonDisabled.idraw; sourceTree = "<group>"; };
+		B55514C716A33C89004D5713 /* barButtonDisabled.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButtonDisabled.svg; sourceTree = "<group>"; };
+		B55514C816A33C89004D5713 /* barButtonPressed.idraw */ = {isa = PBXFileReference; lastKnownFileType = file; path = barButtonPressed.idraw; sourceTree = "<group>"; };
+		B55514C916A33C89004D5713 /* barButtonPressed.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = barButtonPressed.svg; sourceTree = "<group>"; };
 		B5ACFE831698026F008E56C1 /* header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bg.png; sourceTree = "<group>"; };
 		B5ACFE8516980886008E56C1 /* tabbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_bg.png; sourceTree = "<group>"; };
 		B5ACFE8D1698B80F008E56C1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -365,6 +413,45 @@
 			path = AFOAuth2Client;
 			sourceTree = "<group>";
 		};
+		B55514B016A33C89004D5713 /* UIBarButton */ = {
+			isa = PBXGroup;
+			children = (
+				B55514B116A33C89004D5713 /* barButton.png */,
+				B55514B216A33C89004D5713 /* barButton@2x.png */,
+				B55514B316A33C89004D5713 /* barButtonBack.png */,
+				B55514B416A33C89004D5713 /* barButtonBack@2x.png */,
+				B55514B516A33C89004D5713 /* barButtonBackDisabled.png */,
+				B55514B616A33C89004D5713 /* barButtonBackDisabled@2x.png */,
+				B55514B716A33C89004D5713 /* barButtonBackPressed.png */,
+				B55514B816A33C89004D5713 /* barButtonBackPressed@2x.png */,
+				B55514B916A33C89004D5713 /* barButtonDisabled.png */,
+				B55514BA16A33C89004D5713 /* barButtonDisabled@2x.png */,
+				B55514BB16A33C89004D5713 /* barButtonPressed.png */,
+				B55514BC16A33C89004D5713 /* barButtonPressed@2x.png */,
+				B55514BD16A33C89004D5713 /* vector */,
+			);
+			path = UIBarButton;
+			sourceTree = "<group>";
+		};
+		B55514BD16A33C89004D5713 /* vector */ = {
+			isa = PBXGroup;
+			children = (
+				B55514BE16A33C89004D5713 /* barButton.idraw */,
+				B55514BF16A33C89004D5713 /* barButton.svg */,
+				B55514C016A33C89004D5713 /* barButtonBack.idraw */,
+				B55514C116A33C89004D5713 /* barButtonBack.svg */,
+				B55514C216A33C89004D5713 /* barButtonBackDisabled.idraw */,
+				B55514C316A33C89004D5713 /* barButtonBackDisabled.svg */,
+				B55514C416A33C89004D5713 /* barButtonBackPressed.idraw */,
+				B55514C516A33C89004D5713 /* barButtonBackPressed.svg */,
+				B55514C616A33C89004D5713 /* barButtonDisabled.idraw */,
+				B55514C716A33C89004D5713 /* barButtonDisabled.svg */,
+				B55514C816A33C89004D5713 /* barButtonPressed.idraw */,
+				B55514C916A33C89004D5713 /* barButtonPressed.svg */,
+			);
+			path = vector;
+			sourceTree = "<group>";
+		};
 		B5CB3C73168267A400566E19 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +640,7 @@
 				B5ED8F941686F17F00F3F4F6 /* 255-box@2x.png */,
 				B5ED8FA0168D64E800F3F4F6 /* 28-star.png */,
 				B5ED8FA1168D64E800F3F4F6 /* 28-star@2x.png */,
+				B55514B016A33C89004D5713 /* UIBarButton */,
 				B5ED8F861684419A00F3F4F6 /* 37-suitcase.png */,
 				B5ED8F871684419A00F3F4F6 /* 37-suitcase@2x.png */,
 				B5ED8F771684397E00F3F4F6 /* 07-map-marker@2x.png */,
@@ -786,6 +874,30 @@
 				B5E2CAB0169C09800004E9A7 /* 256-box2.png in Resources */,
 				B5E2CAB1169C09800004E9A7 /* 256-box2@2x.png in Resources */,
 				B501129116A2183700044C85 /* NewsfeedDetailsViewController.xib in Resources */,
+				B55514CA16A33C89004D5713 /* barButton.png in Resources */,
+				B55514CB16A33C89004D5713 /* barButton@2x.png in Resources */,
+				B55514CC16A33C89004D5713 /* barButtonBack.png in Resources */,
+				B55514CD16A33C89004D5713 /* barButtonBack@2x.png in Resources */,
+				B55514CE16A33C89004D5713 /* barButtonBackDisabled.png in Resources */,
+				B55514CF16A33C89004D5713 /* barButtonBackDisabled@2x.png in Resources */,
+				B55514D016A33C89004D5713 /* barButtonBackPressed.png in Resources */,
+				B55514D116A33C89004D5713 /* barButtonBackPressed@2x.png in Resources */,
+				B55514D216A33C89004D5713 /* barButtonDisabled.png in Resources */,
+				B55514D316A33C89004D5713 /* barButtonDisabled@2x.png in Resources */,
+				B55514D416A33C89004D5713 /* barButtonPressed.png in Resources */,
+				B55514D516A33C89004D5713 /* barButtonPressed@2x.png in Resources */,
+				B55514D616A33C89004D5713 /* barButton.idraw in Resources */,
+				B55514D716A33C89004D5713 /* barButton.svg in Resources */,
+				B55514D816A33C89004D5713 /* barButtonBack.idraw in Resources */,
+				B55514D916A33C89004D5713 /* barButtonBack.svg in Resources */,
+				B55514DA16A33C89004D5713 /* barButtonBackDisabled.idraw in Resources */,
+				B55514DB16A33C89004D5713 /* barButtonBackDisabled.svg in Resources */,
+				B55514DC16A33C89004D5713 /* barButtonBackPressed.idraw in Resources */,
+				B55514DD16A33C89004D5713 /* barButtonBackPressed.svg in Resources */,
+				B55514DE16A33C89004D5713 /* barButtonDisabled.idraw in Resources */,
+				B55514DF16A33C89004D5713 /* barButtonDisabled.svg in Resources */,
+				B55514E016A33C89004D5713 /* barButtonPressed.idraw in Resources */,
+				B55514E116A33C89004D5713 /* barButtonPressed.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

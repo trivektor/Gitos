@@ -45,9 +45,12 @@
     [self.navigationItem setTitle:@"Details"];
     [webView setDelegate:self];
     
+    UIImage *reloadButtonImage = [[UIImage imageNamed:@"barButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 5)];
+
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:reloadButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeedDetails)];
     
-    [reloadButton setTintColor:[UIColor colorWithRed:209/255.0 green:0 blue:0 alpha:1]];
     [self.navigationItem setRightBarButtonItem:reloadButton];
 }
 
