@@ -10,7 +10,7 @@
 
 @implementation NewsFeedCell
 
-@synthesize actionDescription, actionDate;
+@synthesize actionDescription, actionDate, event;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -26,6 +26,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)displayEvent
+{
+    self.actionDescription.text = [self.event toString];
+    self.actionDate.text        = [self.event toDateString];
+    self.backgroundColor        = [UIColor clearColor];
+    self.selectionStyle         = UITableViewCellSelectionStyleNone;
 }
 
 @end

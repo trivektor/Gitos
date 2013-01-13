@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimelineEvent.h"
 
 @interface NewsFeedCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *actionDescription;
 @property (nonatomic, weak) IBOutlet UILabel *actionDate;
+@property (nonatomic, strong) TimelineEvent *event;
+
+- (void)displayEvent;
 
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimelineEvent.h"
 
 @interface NewsfeedDetailsViewController : UIViewController
+
+@property(nonatomic, strong) TimelineEvent *event;
+
+- (void)performHouseKeepingTasks;
 
 @end

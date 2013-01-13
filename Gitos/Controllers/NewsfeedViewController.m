@@ -7,6 +7,7 @@
 //
 
 #import "NewsfeedViewController.h"
+#import "NewsfeedDetailsViewController.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
@@ -41,7 +42,7 @@
 
 @implementation NewsfeedViewController
 
-@synthesize newsFeed, user, spinnerView, currentPage, relativeDateDescriptor;
+@synthesize newsFeed, user, spinnerView, currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,9 +50,6 @@
     if (self) {
         // Custom initialization
         self.newsFeed       = [[NSMutableArray alloc] initWithCapacity:0];
-        self.dateFormatter  = [[NSDateFormatter alloc] init];
-        self.todaysDate     = [NSDate date];
-        self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
         self.currentPage    = 1;
     }
     return self;
@@ -142,18 +140,23 @@
     if (!cell) {
         cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsFeed"];
     }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    NSDictionary *item = [self.newsFeed objectAtIndex:indexPath.row];
-    
-    TimelineEvent *event = [[TimelineEvent alloc] initWithOptions:item];
-
-    cell.actionDescription.text = [event toString];
-    cell.actionDate.text        = [event toDateString];
-    cell.backgroundColor        = [UIColor clearColor];
+    cell.event = [self.newsFeed objectAtIndex:indexPath.row];
+    [cell displayEvent];
 
     return  cell;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NewsfeedDetailsViewController *newsfeedDetailsController = [[NewsfeedDetailsViewController alloc] init];
+    newsfeedDetailsController.event = [self.newsFeed objectAtIndex:indexPath.row];
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    
+    [backButton setTintColor:[UIColor colorWithRed:209/255.0 green:0 blue:0 alpha:1]];
+    [self.navigationItem setBackBarButtonItem:backButton];
+    
+    [self.navigationController pushViewController:newsfeedDetailsController animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -181,7 +184,11 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
 
-         [self.newsFeed addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+         NSArray *newsfeed = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         for (int i=0; i < newsfeed.count; i++) {
+             [self.newsFeed addObject:[[TimelineEvent alloc] initWithOptions:[newsfeed objectAtIndex:i]]];
+         }
          
          [self.spinnerView setHidden:YES];
 
