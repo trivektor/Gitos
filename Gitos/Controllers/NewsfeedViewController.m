@@ -152,10 +152,6 @@
     newsfeedDetailsController.event = [self.newsFeed objectAtIndex:indexPath.row];
     newsfeedDetailsController.currentPage = (indexPath.row / 30) + 1;
     newsfeedDetailsController.username = self.user.login;
-    
-    UIImage *backButtonImage = [[UIImage imageNamed:@"barButtonBack.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 5)];
-
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     

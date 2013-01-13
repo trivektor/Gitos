@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/AppDelegate.m"
-         timestampString = "379575046.574703"
+         timestampString = "379797372.786365"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "219"
+         endingLineNumber = "219"
          landmarkName = "-validateAuthenticationToken"
          landmarkType = "5">
       </FileBreakpoint>
