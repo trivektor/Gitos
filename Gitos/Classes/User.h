@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *company;
 @property (nonatomic, strong) NSString *blog;
 @property (nonatomic, strong) NSString *createdAt;
+@property (nonatomic, strong) NSString *bio;
 
 - (id)initWithOptions:(NSDictionary *)options;
 

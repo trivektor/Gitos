@@ -13,7 +13,7 @@
 @implementation User
 
 @synthesize name, login, url, receivedEventsUrl, followingUrl, avatarUrl, htmlUrl, starredUrl, reposUrl, gistsUrl,
-            location, publicGists, privateGists, email, followers, following, blog, createdAt, company;
+            location, publicGists, privateGists, email, followers, following, blog, createdAt, company, bio;
 
 - (id)initWithOptions:(NSDictionary *)options
 {
@@ -36,6 +36,7 @@
     self.createdAt          = [options valueForKey:@"created_at"];
     self.blog               = [options valueForKey:@"blog"];
     self.company            = [options valueForKey:@"company"];
+    self.bio                = [options valueForKey:@"bio"];
 
     return self;
 }
