@@ -24,9 +24,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.options = [[NSMutableArray alloc] initWithCapacity:0];
-        [self.options addObject:@"Profile"];
-        [self.options addObject:@"Sign out"];
+        self.options = [[NSMutableArray alloc] initWithObjects:@"Profile",
+                        @"Explore", @"Organizations", @"Sign out", nil];
     }
     return self;
 }
@@ -63,6 +62,23 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
 
+    switch (indexPath.row) {
+        case 0:
+            cell.imageView.image = [UIImage imageNamed:@"111-user.png"];
+            break;
+        case 1:
+            cell.imageView.image = [UIImage imageNamed:@"151-telescope.png"];
+            break;
+        case 2:
+            cell.imageView.image = [UIImage imageNamed:@"300-orgchart.png"];
+            break;
+        case 3:
+            cell.imageView.image = [UIImage imageNamed:@"102-walk.png"];
+            break;
+        default:
+            break;
+    }
+
     cell.textLabel.text = [self.options objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellAccessoryNone;
 
@@ -81,7 +97,8 @@
         [self.navigationController pushViewController:profileController animated:YES];
     }
 
-    if (indexPath.row == 1) {
+    // 'Sign out' was clicked
+    if (indexPath.row == [self.options count] - 1) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Go ahead, make my day" otherButtonTitles:nil];
         actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
@@ -91,7 +108,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // Sign out was clicked
+    // 'OK' was clicked
     if (buttonIndex == 0) {
         [SSKeychain deletePasswordForService:@"access_token" account:@"gitos"];
         
