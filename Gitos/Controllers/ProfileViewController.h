@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <MessageUI/MessageUI.h>
 #import "SpinnerView.h"
 #import "User.h"
 
-@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 {
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UILabel *nameLabel;
@@ -27,6 +28,8 @@
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) SpinnerView *spinnerView;
 
+- (void)performHouseKeepingTasks;
+- (void)prepareProfileTable;
 - (void)getUserInfo;
 - (void)displayUsernameAndAvatar;
 

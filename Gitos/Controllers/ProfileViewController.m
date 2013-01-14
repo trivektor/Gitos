@@ -36,20 +36,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self performHouseKeepingTasks];
+    [self prepareProfileTable];
+    [self getUserInfo];
+}
+
+- (void)performHouseKeepingTasks
+{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.title = @"Profile";
-    
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+}
+
+- (void)prepareProfileTable
+{
     UINib *nib = [UINib nibWithNibName:@"ProfileCell" bundle:nil];
-    
+
     [profileTable registerNib:nib forCellReuseIdentifier:@"ProfileCell"];
     [profileTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [profileTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
-    profileTable.backgroundView = nil;
-    profileTable.scrollEnabled  = NO;
-    
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
-    
-    [self getUserInfo];
+    [profileTable setBackgroundView:nil];
+    [profileTable setScrollEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,7 +137,7 @@
     } else if (indexPath.row == 3) {
 
         cell.fieldIcon.image    = [UIImage imageNamed:@"112-group.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"%i followers", self.user.followers];
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"%i followers, %i following", self.user.followers, self.user.following];
 
     } else if (indexPath.row == 4) {
 
@@ -149,10 +156,33 @@
         cell.fieldDetails.text  = [NSString stringWithFormat:@"Joined: %@", [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]]];
     }
     
-    cell.fieldIcon.contentMode = UIViewContentModeScaleAspectFit;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.fieldIcon.contentMode  = UIViewContentModeScaleAspectFit;
+    cell.selectionStyle         = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor        = [UIColor clearColor];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 2) {
+        // Popup the mail composer when clicking on email
+        // http://stackoverflow.com/questions/9024994/open-mail-and-safari-from-uitableviewcell
+        if ([MFMailComposeViewController canSendMail]) {
+            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+            mailViewController.mailComposeDelegate = self;
+            [mailViewController setSubject:@"Hello"];
+            [mailViewController setToRecipients:[NSArray arrayWithObject:self.user.email]];
+            [self presentViewController:mailViewController animated:YES completion:nil];
+        }
+    } else if (indexPath.row == 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.user.blog]];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)displayUsernameAndAvatar

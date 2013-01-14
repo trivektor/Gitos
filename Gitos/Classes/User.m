@@ -32,7 +32,7 @@
     self.privateGists       = [options valueForKey:@"private_gists"];
     self.email              = [options valueForKey:@"email"];
     self.followers          = [[options valueForKey:@"followers"] integerValue];
-    self.following          = [options valueForKey:@"following"];
+    self.following          = [[options valueForKey:@"following"] integerValue];
     self.createdAt          = [options valueForKey:@"created_at"];
     self.blog               = [options valueForKey:@"blog"];
     self.company            = [options valueForKey:@"company"];
