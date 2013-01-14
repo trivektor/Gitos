@@ -193,8 +193,12 @@
     avatar.layer.cornerRadius = 5.0;
     avatar.layer.masksToBounds = YES;
     
-    nameLabel.text = self.user.name;
-    loginLabel.text = self.user.login;
+    if (self.user.name) {
+        nameLabel.text  = self.user.name;
+        loginLabel.text = self.user.login;
+    } else {
+        loginLabel.text = self.user.name;
+    }
 }
 
 @end
