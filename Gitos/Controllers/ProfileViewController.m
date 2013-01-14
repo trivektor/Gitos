@@ -11,6 +11,8 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "ProfileCell.h"
+#import "RelativeDateDescriptor.h"
+#import "AppConfig.h"
 
 @interface ProfileViewController ()
 
@@ -18,7 +20,7 @@
 
 @implementation ProfileViewController
 
-@synthesize avatar, profileTable, user, nameLabel, joinDateLabel, spinnerView;
+@synthesize user, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,7 +62,7 @@
 {
     NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
-    NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
+    NSURL *userUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@/user", [AppConfig getConfigValue:@"GithubApiHost"]]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
     
@@ -99,7 +101,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,17 +115,17 @@
     if (indexPath.row == 0) {
 
         cell.fieldIcon.image    = [UIImage imageNamed:@"07-map-marker.png"];
-        cell.fieldDetails.text  = self.user.location;
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"Location: %@", self.user.location];
 
     } else if (indexPath.row == 1) {
 
         cell.fieldIcon.image    = [UIImage imageNamed:@"71-compass.png"];
-        cell.fieldDetails.text  = self.user.blog;
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"Website: %@", self.user.blog];
 
     } else if (indexPath.row == 2) {
 
         cell.fieldIcon.image    = [UIImage imageNamed:@"287-at.png"];
-        cell.fieldDetails.text  = self.user.email;
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"Email: %@", self.user.email];
 
     } else if (indexPath.row == 3) {
 
@@ -133,8 +135,18 @@
     } else if (indexPath.row == 4) {
 
         cell.fieldIcon.image    = [UIImage imageNamed:@"37-suitcase.png"];
-        cell.fieldDetails.text  = self.user.company;
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"Company: %@", self.user.company];
         
+    } else if (indexPath.row == 5) {
+
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+        NSDate *date  = [dateFormatter dateFromString:self.user.createdAt];
+
+        RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
+
+        cell.fieldIcon.image    = [UIImage imageNamed:@"83-calendar.png"];
+        cell.fieldDetails.text  = [NSString stringWithFormat:@"Joined: %@", [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]]];
     }
     
     cell.fieldIcon.contentMode = UIViewContentModeScaleAspectFit;
@@ -152,6 +164,7 @@
     avatar.layer.masksToBounds = YES;
     
     nameLabel.text = self.user.name;
+    loginLabel.text = self.user.login;
 }
 
 @end

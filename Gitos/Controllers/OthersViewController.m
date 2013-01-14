@@ -64,6 +64,7 @@
     }
 
     cell.textLabel.text = [self.options objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellAccessoryNone;
 
     return cell;
 }
