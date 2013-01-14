@@ -45,7 +45,7 @@
     [self.navigationItem setTitle:@"Details"];
     [webView setDelegate:self];
 
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithTitle:@"Reload" style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeedDetails)];
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeedDetails)];
     
     [self.navigationItem setRightBarButtonItem:reloadButton];
 }

@@ -59,19 +59,34 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"News Feed";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
-    
-    UINib *nib = [UINib nibWithNibName:@"NewsFeed" bundle:nil];
-    
-    [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
-    [newsFeedTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    [newsFeedTable setBackgroundView:nil];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-
-    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    [self performHouseKeepingTasks];
+    [self prepareTableView];
     [self setupPullToRefresh];
     [self getUserInfoAndNewsFeed];
+}
+
+- (void)performHouseKeepingTasks
+{
+    self.navigationItem.title = @"News Feed";
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeed)];
+    [self.navigationItem setRightBarButtonItem:reloadButton];
+}
+
+- (void)prepareTableView
+{
+    // Load 'NewsFeed' nib
+    UINib *nib = [UINib nibWithNibName:@"NewsFeed" bundle:nil];
+    [newsFeedTable registerNib:nib forCellReuseIdentifier:@"NewsFeed"];
+    
+    // Auto resize
+    [newsFeedTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    
+    // Remove background
+    [newsFeedTable setBackgroundView:nil];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,17 +136,6 @@
 {
     return self.newsFeed.count;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NewsFeedCell *cell = [newsFeedTable dequeueReusableCellWithIdentifier:@"NewsFeed"];
-//    if (!cell) {
-//        cell = [[NewsFeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewsFeed"];
-//    }
-//    //[cell.actionDescription sizeToFitFixedWith:301];
-//    
-//    return cell.actionDescription.frame.size.height + cell.actionDate.frame.size.height + 10;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -212,6 +216,15 @@
     [newsFeedTable addPullToRefreshWithActionHandler:^{
         [self getUserNewsFeed:self.currentPage++];
     }];
+}
+
+- (void)reloadNewsfeed
+{
+    [self.spinnerView setHidden:NO];
+    self.currentPage = 1;
+    [self.newsFeed removeAllObjects];
+    [newsFeedTable reloadData];
+    [self getUserNewsFeed:self.currentPage++];
 }
 
 @end

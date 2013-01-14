@@ -22,8 +22,11 @@
 @property (nonatomic, strong) SpinnerView *spinnerView;
 @property (nonatomic) NSInteger currentPage;
 
+- (void)performHouseKeepingTasks;
+- (void)prepareTableView;
 - (void)getUserInfoAndNewsFeed;
 - (void)getUserNewsFeed:(NSInteger)page;
 - (void)setupPullToRefresh;
+- (void)reloadNewsfeed;
 
 @end
