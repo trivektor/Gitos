@@ -73,7 +73,7 @@
             cell.imageView.image = [UIImage imageNamed:@"300-orgchart.png"];
             break;
         case 3:
-            cell.imageView.image = [UIImage imageNamed:@"102-walk.png"];
+            cell.imageView.image = [UIImage imageNamed:@"63-runner.png"];
             break;
         default:
             break;
