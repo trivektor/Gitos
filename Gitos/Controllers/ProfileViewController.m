@@ -43,6 +43,8 @@
 
 - (void)performHouseKeepingTasks
 {
+    [scrollView setContentSize:self.view.frame.size];
+    [self adjustFrameHeight];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.title = @"Profile";
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
@@ -57,6 +59,19 @@
     [profileTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
     [profileTable setBackgroundView:nil];
     [profileTable setScrollEnabled:NO];
+}
+
+// Adjust the frame size of UIScrollView
+// http://stackoverflow.com/questions/2944294/how-i-auto-size-a-uiscrollview-to-fit-the-content
+- (void)adjustFrameHeight
+{
+    CGFloat scrollViewHeight = 0.0f;
+    for (UIView* view in scrollView.subviews)
+    {
+        scrollViewHeight += view.frame.size.height;
+    }
+    
+    [scrollView setContentSize:(CGSizeMake(320, scrollViewHeight + 35))];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,7 +123,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,46 +134,7 @@
         cell = [[ProfileCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProfileCell"];
     }
     
-    if (indexPath.row == 0) {
-
-        cell.fieldIcon.image    = [UIImage imageNamed:@"07-map-marker.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"Location: %@", self.user.location];
-
-    } else if (indexPath.row == 1) {
-
-        cell.fieldIcon.image    = [UIImage imageNamed:@"71-compass.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"Website: %@", self.user.blog];
-
-    } else if (indexPath.row == 2) {
-
-        cell.fieldIcon.image    = [UIImage imageNamed:@"287-at.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"Email: %@", self.user.email];
-
-    } else if (indexPath.row == 3) {
-
-        cell.fieldIcon.image    = [UIImage imageNamed:@"112-group.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"%i followers, %i following", self.user.followers, self.user.following];
-
-    } else if (indexPath.row == 4) {
-
-        cell.fieldIcon.image    = [UIImage imageNamed:@"37-suitcase.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"Company: %@", self.user.company];
-        
-    } else if (indexPath.row == 5) {
-
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-        NSDate *date  = [dateFormatter dateFromString:self.user.createdAt];
-
-        RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
-
-        cell.fieldIcon.image    = [UIImage imageNamed:@"83-calendar.png"];
-        cell.fieldDetails.text  = [NSString stringWithFormat:@"Joined: %@", [relativeDateDescriptor describeDate:date relativeTo:[NSDate date]]];
-    }
-    
-    cell.fieldIcon.contentMode  = UIViewContentModeScaleAspectFit;
-    cell.selectionStyle         = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor        = [UIColor clearColor];
+    [cell displayByIndexPath:indexPath forUser:self.user];
     
     return cell;
 }

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface ProfileCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIImageView *fieldIcon;
 @property (nonatomic, weak) IBOutlet UILabel *fieldDetails;
+
+- (void)displayByIndexPath:(NSIndexPath *)indexPath forUser:(User *)user;
 
 @end

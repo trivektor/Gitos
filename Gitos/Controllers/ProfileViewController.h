@@ -14,6 +14,7 @@
 
 @interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 {
+    __weak IBOutlet UIScrollView *scrollView;
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UILabel *nameLabel;
     __weak IBOutlet UITableView *profileTable;
@@ -32,5 +33,6 @@
 - (void)prepareProfileTable;
 - (void)getUserInfo;
 - (void)displayUsernameAndAvatar;
+- (void)adjustFrameHeight;
 
 @end
