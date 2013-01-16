@@ -50,6 +50,11 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self.spinnerView setHidden:YES];
+    [searchResultsTable setContentInset:UIEdgeInsetsMake(0, 0, 48, 0)];
+    [searchResultsTable setScrollIndicatorInsets:UIEdgeInsetsMake(0, 0, 48, 0)];
+    CGRect frame = [searchResultsTable frame];
+    frame.size.height = frame.size.height - self.tabBarController.tabBar.frame.size.height - searchBar.frame.size.height - self.navigationController.navigationBar.frame.size.height + 4;
+    [searchResultsTable setFrame:frame];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
