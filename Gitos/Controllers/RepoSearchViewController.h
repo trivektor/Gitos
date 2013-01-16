@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "User.h"
+#import "SpinnerView.h"
 
 @interface RepoSearchViewController : UIViewController <UISearchBarDelegate, UITabBarControllerDelegate, UITableViewDataSource, UISearchDisplayDelegate>
 {
@@ -15,6 +17,7 @@
     __weak IBOutlet UITableView *searchResultsTable;
 }
 
+@property(nonatomic, strong) SpinnerView *spinnerView;
 @property(nonatomic, strong) NSMutableArray *searchResults;
 @property(nonatomic, strong) User *user;
 

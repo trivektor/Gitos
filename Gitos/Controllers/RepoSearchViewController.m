@@ -19,7 +19,7 @@
 
 @implementation RepoSearchViewController
 
-@synthesize user, searchResults;
+@synthesize user, searchResults, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,6 +48,8 @@
 {
     [self.navigationItem setTitle:@"Search"];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    [self.spinnerView setHidden:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -77,7 +79,8 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
 {
-    NSLog(@"searching");
+    [self.spinnerView setHidden:NO];
+    [searchBar resignFirstResponder];
     NSString *term = [_searchBar text];
     NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
@@ -106,12 +109,31 @@
          
          [searchResultsTable reloadData];
          [searchBar resignFirstResponder];
+         [self.spinnerView setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
      }];
     
     [operation start];
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)_searchBar
+{
+    searchBar.showsCancelButton = YES;
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)_searchBar
+{
+    searchBar.showsCancelButton = NO;
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)_searchBar
+{
+    [searchBar resignFirstResponder];
 }
 
 @end
