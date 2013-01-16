@@ -10,6 +10,7 @@
 #import "ProfileViewController.h"
 #import "SSKeychain.h"
 #import "LoginViewController.h"
+#import "RepoSearchViewController.h"
 
 @interface OthersViewController ()
 
@@ -25,7 +26,7 @@
     if (self) {
         // Custom initialization
         self.options = [[NSMutableArray alloc] initWithObjects:@"Profile",
-                        @"Explore", @"Organizations", @"Sign out", nil];
+                        @"Explore", @"Organizations", @"Search", @"Sign out", nil];
     }
     return self;
 }
@@ -73,6 +74,9 @@
             cell.imageView.image = [UIImage imageNamed:@"300-orgchart.png"];
             break;
         case 3:
+            cell.imageView.image = [UIImage imageNamed:@"06-magnify.png"];
+            break;
+        case 4:
             cell.imageView.image = [UIImage imageNamed:@"63-runner.png"];
             break;
         default:
@@ -95,6 +99,11 @@
         ProfileViewController *profileController = [[ProfileViewController alloc] init];
         profileController.user = self.user;
         [self.navigationController pushViewController:profileController animated:YES];
+    }
+
+    if (indexPath.row == 3) {
+        RepoSearchViewController *repoSearchController = [[RepoSearchViewController alloc] init];
+        [self.navigationController pushViewController:repoSearchController animated:YES];
     }
 
     // 'Sign out' was clicked

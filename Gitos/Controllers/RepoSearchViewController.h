@@ -1,0 +1,23 @@
+//
+//  RepoSearchViewController.h
+//  Gitos
+//
+//  Created by Tri Vuong on 1/15/13.
+//  Copyright (c) 2013 Crafted By Tri. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "User.h"
+
+@interface RepoSearchViewController : UIViewController <UISearchBarDelegate, UITabBarControllerDelegate, UITableViewDataSource, UISearchDisplayDelegate>
+{
+    __weak IBOutlet UISearchBar *searchBar;
+    __weak IBOutlet UITableView *searchResultsTable;
+}
+
+@property(nonatomic, strong) NSMutableArray *searchResults;
+@property(nonatomic, strong) User *user;
+
+- (void)performHouseKeepingTasks;
+
+@end
