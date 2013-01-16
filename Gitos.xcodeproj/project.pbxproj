@@ -111,6 +111,8 @@
 		B5CC1920168229AE000D32B3 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1914168229AE000D32B3 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5CC1921168229AE000D32B3 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1916168229AE000D32B3 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5CC1922168229AE000D32B3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CC1918168229AE000D32B3 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5CD491B16A69AC7000659B3 /* RepoSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CD491A16A69AC7000659B3 /* RepoSearchResultCell.xib */; };
+		B5CD491F16A69AF8000659B3 /* RepoSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CD491E16A69AF8000659B3 /* RepoSearchResultCell.m */; };
 		B5DF89E6169FD60800114862 /* AppInitialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DF89E5169FD60800114862 /* AppInitialization.m */; };
 		B5DF89EF169FFFC200114862 /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B5DF89EE169FFFC200114862 /* SVPullToRefresh.m */; };
 		B5DF89F116A000C200114862 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5DF89F016A000C200114862 /* QuartzCore.framework */; };
@@ -331,6 +333,9 @@
 		B5CC1916168229AE000D32B3 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		B5CC1917168229AE000D32B3 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		B5CC1918168229AE000D32B3 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		B5CD491A16A69AC7000659B3 /* RepoSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoSearchResultCell.xib; sourceTree = "<group>"; };
+		B5CD491D16A69AF8000659B3 /* RepoSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepoSearchResultCell.h; path = Cells/RepoSearchResultCell.h; sourceTree = "<group>"; };
+		B5CD491E16A69AF8000659B3 /* RepoSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RepoSearchResultCell.m; path = Cells/RepoSearchResultCell.m; sourceTree = "<group>"; };
 		B5DF89E4169FD60800114862 /* AppInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInitialization.h; sourceTree = "<group>"; };
 		B5DF89E5169FD60800114862 /* AppInitialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInitialization.m; sourceTree = "<group>"; };
 		B5DF89ED169FFFC200114862 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
@@ -534,6 +539,9 @@
 				B5E2CA97169A99C30004E9A7 /* GistCell.h */,
 				B5E2CA98169A99C30004E9A7 /* GistCell.m */,
 				B5E2CA9A169A9AFE0004E9A7 /* GistCell.xib */,
+				B5CD491A16A69AC7000659B3 /* RepoSearchResultCell.xib */,
+				B5CD491D16A69AF8000659B3 /* RepoSearchResultCell.h */,
+				B5CD491E16A69AF8000659B3 /* RepoSearchResultCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1028,6 +1036,7 @@
 				B580E7AC16A65F4D000EFAC8 /* RepoSearchViewController.xib in Resources */,
 				B580E7B216A66343000EFAC8 /* 06-magnify.png in Resources */,
 				B580E7B316A66343000EFAC8 /* 06-magnify@2x.png in Resources */,
+				B5CD491B16A69AC7000659B3 /* RepoSearchResultCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1084,6 +1093,7 @@
 				B501129416A2190300044C85 /* TimelineEvent.m in Sources */,
 				B580E7AB16A65F4D000EFAC8 /* RepoSearchViewController.m in Sources */,
 				B580E7AF16A661E4000EFAC8 /* Repo.m in Sources */,
+				B5CD491F16A69AF8000659B3 /* RepoSearchResultCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

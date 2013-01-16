@@ -22,5 +22,6 @@
 @property(nonatomic, strong) User *user;
 
 - (void)performHouseKeepingTasks;
+- (void)prepareTableView;
 
 @end

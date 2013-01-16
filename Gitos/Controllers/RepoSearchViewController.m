@@ -12,6 +12,7 @@
 #import "AFJSONRequestOperation.h"
 #import "AppConfig.h"
 #import "Repo.h"
+#import "RepoSearchResultCell.h"
 
 @interface RepoSearchViewController ()
 
@@ -36,6 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self performHouseKeepingTasks];
+    [self prepareTableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,6 +59,13 @@
     [searchResultsTable setFrame:frame];
 }
 
+- (void)prepareTableView
+{
+    UINib *nib = [UINib nibWithNibName:@"RepoSearchResultCell" bundle:nil];
+
+    [searchResultsTable registerNib:nib forCellReuseIdentifier:@"RepoSearchResultCell"];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -67,17 +76,27 @@
     return [self.searchResults count];
 }
 
+//- (NSInteger)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 64;
+//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [searchResultsTable dequeueReusableCellWithIdentifier:@"SearchResultCell"];
+    RepoSearchResultCell *cell = [searchResultsTable dequeueReusableCellWithIdentifier:@"RepoSearchResultCell"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SearchResultCell"];
+        cell = [[RepoSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RepoSearchResultCell"];
     }
     
     NSDictionary *r = [self.searchResults objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [r objectForKey:@"name"];
+    [cell.repoNameLabel setText:[r objectForKey:@"name"]];
+    if ([r objectForKey:@"description"] != [NSNull null]) {
+        [cell.repoDescriptionLabel setText:[r objectForKey:@"description"]];
+    } else {
+        [cell.repoDescriptionLabel setText:@"no description"];
+    }
     
     return cell;
 }
