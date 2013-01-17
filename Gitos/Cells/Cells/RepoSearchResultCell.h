@@ -16,5 +16,10 @@
 @property(nonatomic, strong) IBOutlet UILabel *repoNameLabel;
 @property(nonatomic, strong) IBOutlet UILabel *repoDescriptionLabel;
 @property(nonatomic, strong) IBOutlet UILabel *repoDetailsLabel;
+@property(nonatomic, strong) NSDictionary *repoDetails;
+
+- (void)render;
+- (void)renderName;
+- (void)renderDescription;
 
 @end

@@ -11,7 +11,7 @@
 #import "User.h"
 #import "SpinnerView.h"
 
-@interface RepoSearchViewController : UIViewController <UISearchBarDelegate, UITabBarControllerDelegate, UITableViewDataSource, UISearchDisplayDelegate>
+@interface RepoSearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     __weak IBOutlet UISearchBar *searchBar;
     __weak IBOutlet UITableView *searchResultsTable;

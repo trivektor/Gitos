@@ -76,10 +76,10 @@
     return [self.searchResults count];
 }
 
-//- (NSInteger)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 64;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 68;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -88,16 +88,9 @@
     if (!cell) {
         cell = [[RepoSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RepoSearchResultCell"];
     }
-    
-    NSDictionary *r = [self.searchResults objectAtIndex:indexPath.row];
-    
-    [cell.repoNameLabel setText:[r objectForKey:@"name"]];
-    if ([r objectForKey:@"description"] != [NSNull null]) {
-        [cell.repoDescriptionLabel setText:[r objectForKey:@"description"]];
-    } else {
-        [cell.repoDescriptionLabel setText:@"no description"];
-    }
-    
+
+    cell.repoDetails = [self.searchResults objectAtIndex:indexPath.row];
+    [cell render];
     return cell;
 }
 
