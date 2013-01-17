@@ -46,9 +46,7 @@
     }
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-    [dateFormatter setTimeZone:gmt];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:sszzz"];
     NSDate *pushedAt  = [dateFormatter dateFromString:[self.repoDetails objectForKey:@"pushed_at"]];
 
     NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:0];
@@ -57,6 +55,9 @@
     [labels addObject:[NSString stringWithFormat:@"%i watchers", [[self.repoDetails objectForKey:@"watchers"] integerValue]]];
     [labels addObject:[NSString stringWithFormat:@"last activity %@", [relativeDateDescriptor describeDate:pushedAt relativeTo:[NSDate date]]]];
     [self.repoDetailsLabel setText:[labels componentsJoinedByString:@" | "]];
+//    [self.repoDetailsLabel setNumberOfLines:0];
+//    [self.repoDetailsLabel setLineBreakMode:NSLineBreakByWordWrapping];
+//    [self.repoDetailsLabel sizeToFit];
 }
 
 - (void)renderName
@@ -67,7 +68,12 @@
 - (void)renderDescription
 {
     NSString *description = [self.repoDetails objectForKey:@"description"];
-
+    
+    if (description == (id)[NSNull null]) {
+        [self.repoDescriptionLabel setText:@"no description"];
+        return;
+    }
+    
     if (description.length == 0) {
         [self.repoDescriptionLabel setText:@"no description"];
     } else {
