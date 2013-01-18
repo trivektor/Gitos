@@ -49,7 +49,7 @@
 						<string key="IBPlaceholder">Search repositories</string>
 						<object class="NSColor" key="IBTintColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC42ODAzMTQ0MDQ0IDAuNjcyNjcwNDIyMyAwLjY4Nzk1ODM4NjUAA</bytes>
+							<bytes key="NSRGB">MSAxIDEAA</bytes>
 						</object>
 						<object class="IBUITextInputTraits" key="IBTextInputTraits">
 							<int key="IBUIAutocorrectionType">1</int>

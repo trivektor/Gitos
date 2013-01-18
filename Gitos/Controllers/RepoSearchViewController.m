@@ -57,6 +57,23 @@
     CGRect frame = [searchResultsTable frame];
     frame.size.height = frame.size.height - self.tabBarController.tabBar.frame.size.height - searchBar.frame.size.height - self.navigationController.navigationBar.frame.size.height + 4;
     [searchResultsTable setFrame:frame];
+    [searchBar setTintColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
+
+    for (UIView *v in searchBar.subviews) {
+        if ([v isKindOfClass:[UITextField class]]) {
+            UITextField *searchField = (UITextField *)v;
+            [searchField setBorderStyle:UITextBorderStyleNone];
+            [searchField.layer setBorderWidth:1.0f];
+            [searchField.layer setBorderColor:[[UIColor colorWithRed:178/255.0 green:178/255.0 blue:178/255.0 alpha:1] CGColor]];
+            [searchField.layer setCornerRadius:3.0f];
+            [searchField.layer setShadowOpacity:0.0f];
+            [searchField.layer setMasksToBounds:YES];
+            [searchField setBackgroundColor:[UIColor whiteColor]];
+            [searchField setBackground:nil];
+            break;
+        }
+    }
+
 }
 
 - (void)prepareTableView
@@ -139,6 +156,13 @@
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)_searchBar
 {
     searchBar.showsCancelButton = YES;
+    for (UIView *v in searchBar.subviews) {
+        if ([v isKindOfClass:[UIButton class]]) {
+            UIButton *cancelButton = (UIButton *)v;
+            [cancelButton setTintColor:[UIColor colorWithRed:143/255.0 green:143/255.0 blue:143/255.0 alpha:1]];
+            break;
+        }
+    }
     return YES;
 }
 
