@@ -51,7 +51,7 @@
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self.spinnerView setHidden:YES];
 
-    [self.navigationItem setTitle:@"Login"];
+    [self.navigationItem setTitle:@"Login to Github"];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
@@ -109,8 +109,8 @@
     
     NSMutableDictionary *oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                         scopes, @"scopes",
-                                        @"d60ccaa192ed899f048a", @"client_id",
-                                        @"64b5131fb3bfc2ab86a71c84f92bf969e86feaef", @"client_secret",
+                                        @"75f198a854031c317e62", @"client_id",
+                                        @"07d3e053d06132245799f4afe45b90d2780a89a8", @"client_secret",
                                         nil];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];

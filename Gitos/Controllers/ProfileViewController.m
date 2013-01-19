@@ -169,11 +169,12 @@
     avatar.layer.cornerRadius = 5.0;
     avatar.layer.masksToBounds = YES;
     
-    if (self.user.name) {
+    if (self.user.name == (id)[NSNull null]) {
+        nameLabel.text = self.user.login;
+        loginLabel.hidden = YES;
+    } else {
         nameLabel.text  = self.user.name;
         loginLabel.text = self.user.login;
-    } else {
-        loginLabel.text = self.user.name;
     }
 }
 

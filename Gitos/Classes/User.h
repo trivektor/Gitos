@@ -33,5 +33,6 @@
 @property (nonatomic, strong) NSString *bio;
 
 - (id)initWithOptions:(NSDictionary *)options;
+- (void)handleNullValues;
 
 @end

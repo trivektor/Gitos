@@ -37,14 +37,17 @@
     self.createdAt          = [options valueForKey:@"created_at"];
     self.blog               = [options valueForKey:@"blog"];
     self.company            = [options valueForKey:@"company"];
-
-    if ([options valueForKey:@"bio"] == [NSNull null]) {
-        self.bio = @"n/a";
-    } else {
-        self.bio = [options valueForKey:@"bio"];
-    }
+    [self handleNullValues];
 
     return self;
+}
+
+- (void)handleNullValues
+{
+    if (self.email == (id)[NSNull null] || self.email.length == 0) self.email = @"n/a";
+    if (self.blog == (id)[NSNull null]) self.blog = @"n/a";
+    if (self.location == (id)[NSNull null]) self.location = @"n/a";
+    if (self.company == (id)[NSNull null]) self.company = @"n/a";
 }
 
 @end
