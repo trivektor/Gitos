@@ -12,9 +12,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "231"
-         endingLineNumber = "231"
-         landmarkName = "-validateAuthenticationToken"
-         landmarkType = "5">
+         endingLineNumber = "231">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -47,11 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/StarredViewController.m"
-         timestampString = "380270525.689372"
+         timestampString = "380271576.173778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
          landmarkName = "-getStarredReposForPage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/StarredViewController.m"
-         timestampString = "380270525.689372"
+         timestampString = "380271576.173778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "123"
-         endingLineNumber = "123"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
          landmarkName = "-getStarredReposForPage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +71,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/StarredViewController.m"
-         timestampString = "380270525.689372"
+         timestampString = "380271576.173778"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
          landmarkName = "-getStarredReposForPage:"
          landmarkType = "5">
       </FileBreakpoint>

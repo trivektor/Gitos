@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Repo.h"
 
 @interface RepoViewController : UIViewController
+
+@property(nonatomic, strong) Repo *repo;
 
 @end

@@ -12,6 +12,7 @@
 #import "SSKeychain.h"
 #import "RepoCell.h"
 #import "Repo.h"
+#import "RepoViewController.h"
 
 @interface ReposViewController ()
 
@@ -26,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.repos = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -106,7 +108,12 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
         
-        self.repos = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+        NSMutableArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        for (int i=0; i < [json count]; i++) {
+            [self.repos addObject:[[Repo alloc] initWithData:[json objectAtIndex:i]]];
+        }
+
         [reposTable reloadData];
         
         [self.spinnerView removeFromSuperview];
@@ -143,7 +150,7 @@
         cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    cell.repo = [[Repo alloc] initWithData:[self.repos objectAtIndex:indexPath.row]];
+    cell.repo = [self.repos objectAtIndex:indexPath.row];
     [cell render];
 
     return cell;
@@ -151,9 +158,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *repo = [self.repos objectAtIndex:indexPath.row];
-    
-    
+    RepoViewController *repoController = [[RepoViewController alloc] init];
+    repoController.repo = [self.repos objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:repoController animated:YES];
 }
 
 @end
