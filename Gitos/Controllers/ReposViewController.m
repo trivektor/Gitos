@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
 #import "RepoCell.h"
+#import "Repo.h"
 
 @interface ReposViewController ()
 
@@ -134,43 +135,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RepoCell *cell = [self.reposTable dequeueReusableCellWithIdentifier:@"RepoCell"];
+    static NSString *cellIdentifier = @"RepoCell";
+
+    RepoCell *cell = [self.reposTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"RepoCell"];
+        cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    NSDictionary *repo = [self.repos objectAtIndex:indexPath.row];
-    
-    cell.repoNameLabel.text = [repo valueForKey:@"name"];
-    
-    // Float the Forks and Watchers labels side by side
-    // http://stackoverflow.com/questions/5891384/place-two-uilabels-side-by-side-left-and-right-without-knowing-string-length-of
-    NSString *forks = [NSString stringWithFormat:@"%@", [[repo valueForKey:@"forks_count"] stringValue]];
-    
-    NSString *watchers = [NSString stringWithFormat:@"%@", [repo valueForKey:@"watchers"]];
-    
-    CGSize forksSize = [forks sizeWithFont:cell.forkLabel.font];
-    CGSize watchersSize = [watchers sizeWithFont:cell.starLabel.font];
-    
-    cell.forkLabel.text = forks;
-    cell.starLabel.text = watchers;
-    
-    cell.forkLabel.frame = CGRectMake(cell.forkLabel.frame.origin.x,
-                                      cell.forkLabel.frame.origin.y,
-                                      forksSize.width,
-                                      forksSize.height);
 
-    cell.starLabel.frame = CGRectMake(cell.starLabel.frame.origin.x,
-                                      cell.starLabel.frame.origin.y,
-                                      watchersSize.width,
-                                      watchersSize.height);
-    
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.repo = [[Repo alloc] initWithData:[self.repos objectAtIndex:indexPath.row]];
+    [cell render];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *repo = [self.repos objectAtIndex:indexPath.row];
+    
+    
 }
 
 @end

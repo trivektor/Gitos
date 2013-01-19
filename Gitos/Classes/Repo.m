@@ -21,4 +21,19 @@
     return self;
 }
 
+- (NSString *)getName
+{
+    return [self.data valueForKey:@"name"];
+}
+
+- (NSInteger)getForks
+{
+    return [[self.data valueForKey:@"forks"] integerValue];
+}
+
+- (NSInteger)getWatchers
+{
+    return [[self.data valueForKey:@"watchers"] integerValue];
+}
+
 @end

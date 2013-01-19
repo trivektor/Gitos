@@ -14,4 +14,8 @@
 
 - (id)initWithData:(NSDictionary *)data;
 
+- (NSString *)getName;
+- (NSInteger)getForks;
+- (NSInteger)getWatchers;
+
 @end
