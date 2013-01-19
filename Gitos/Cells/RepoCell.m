@@ -34,9 +34,26 @@
 
     // Float the Forks and Watchers labels side by side
     // http://stackoverflow.com/questions/5891384/place-two-uilabels-side-by-side-left-and-right-without-knowing-string-length-of
-    NSString *forks = [NSString stringWithFormat:@"%i", [self.repo getForks]];
 
-    NSString *watchers = [NSString stringWithFormat:@"%i", [self.repo getWatchers]];
+    NSInteger _forks = [self.repo getForks];
+    NSString *forks;
+
+    NSInteger MAX_COUNT = 1000.0;
+
+    if (_forks > MAX_COUNT) {
+        forks = [NSString stringWithFormat:@"%.1fk", _forks/MAX_COUNT*1.0];
+    } else {
+        forks = [NSString stringWithFormat:@"%i", _forks];
+    }
+
+    NSInteger _watchers = [self.repo getWatchers];
+    NSString *watchers;
+
+    if (_watchers > MAX_COUNT) {
+        watchers = [NSString stringWithFormat:@"%.1fk", _watchers/MAX_COUNT*1.0];
+    } else {
+        watchers = [NSString stringWithFormat:@"%i", _watchers];
+    }
 
     CGSize forksSize = [forks sizeWithFont:self.forkLabel.font];
     CGSize watchersSize = [watchers sizeWithFont:self.starLabel.font];

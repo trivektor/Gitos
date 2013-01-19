@@ -13,6 +13,7 @@
 #import "RepoCell.h"
 #import "SpinnerView.h"
 #import "SVPullToRefresh.h"
+#import "Repo.h"
 
 @interface StarredViewController ()
 
@@ -139,57 +140,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RepoCell *cell = [starredReposTable dequeueReusableCellWithIdentifier:@"RepoCell"];
+    static NSString *cellIdentifier = @"RepoCell";
+
+    RepoCell *cell = [starredReposTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"RepoCell"];
+        cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NSDictionary *repo = [self.starredRepos objectAtIndex:indexPath.row];
-    
-    cell.repoNameLabel.text = [repo valueForKey:@"name"];
-    
-    // Float the Forks and Watchers labels side by side
-    // http://stackoverflow.com/questions/5891384/place-two-uilabels-side-by-side-left-and-right-without-knowing-string-length-of
-    NSInteger _forks = [[repo valueForKey:@"forks_count"] integerValue];
-    NSString *forks;
-    
-    NSInteger MAX_COUNT = 1000.0;
-    
-    if (_forks > MAX_COUNT) {
-        forks = [NSString stringWithFormat:@"%.1fk", _forks/MAX_COUNT*1.0];
-    } else {
-        forks = [NSString stringWithFormat:@"%i", _forks];
-    }
-    
-    NSInteger _watchers = [[repo valueForKey:@"watchers"] integerValue];
-    NSString *watchers;
-    
-    if (_watchers > MAX_COUNT) {
-        watchers = [NSString stringWithFormat:@"%.1fk", _watchers/MAX_COUNT*1.0];
-    } else {
-        watchers = [NSString stringWithFormat:@"%i", _watchers];
-    }
-    
-    CGSize forksSize = [forks sizeWithFont:cell.forkLabel.font];
-    CGSize watchersSize = [watchers sizeWithFont:cell.starLabel.font];
-    
-    cell.forkLabel.text = forks;
-    cell.starLabel.text = watchers;
-    
-    cell.forkLabel.frame = CGRectMake(cell.forkLabel.frame.origin.x,
-                                      cell.forkLabel.frame.origin.y,
-                                      forksSize.width,
-                                      forksSize.height);
-    
-    cell.starLabel.frame = CGRectMake(cell.starLabel.frame.origin.x,
-                                      cell.starLabel.frame.origin.y,
-                                      watchersSize.width,
-                                      watchersSize.height);
-    
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.repo = [[Repo alloc] initWithData:repo];
+    [cell render];
     
     return cell;
 }
