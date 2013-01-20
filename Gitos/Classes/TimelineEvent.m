@@ -79,6 +79,11 @@
         NSArray *ref = [[self.payload valueForKey:@"ref"] componentsSeparatedByString:@"/"];
         NSString *branch = [ref lastObject];
         return [NSString stringWithFormat:@"%@ pushed to %@ at %@", actorName, branch, repoName];
+    } else if ([eventType isEqualToString:@"PullRequestEvent"]) {
+        // Pull Request Event
+        NSString *action = [self.payload valueForKey:@"action"];
+        NSInteger pullRequestNumber = [[self.payload valueForKey:@"number"] integerValue];
+        return [NSString stringWithFormat:@"%@ %@ pull request %@/%i", actorName, action, repoName, pullRequestNumber];
     }
 
     return @"";
