@@ -18,5 +18,6 @@
 - (NSInteger)getForks;
 - (NSInteger)getWatchers;
 - (NSString *)getLanguage;
+- (NSString *)getBranchesUrl;
 
 @end

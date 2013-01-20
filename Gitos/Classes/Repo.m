@@ -41,4 +41,10 @@
     return [self.data valueForKey:@"language"];
 }
 
+- (NSString *)getBranchesUrl
+{
+    NSString *url = [self.data valueForKey:@"url"];
+    return [url stringByAppendingFormat:@"/branches"];
+}
+
 @end
