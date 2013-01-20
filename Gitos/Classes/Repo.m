@@ -36,4 +36,9 @@
     return [[self.data valueForKey:@"watchers"] integerValue];
 }
 
+- (NSString *)getLanguage
+{
+    return [self.data valueForKey:@"language"];
+}
+
 @end

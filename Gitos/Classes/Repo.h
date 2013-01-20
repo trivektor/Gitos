@@ -17,5 +17,6 @@
 - (NSString *)getName;
 - (NSInteger)getForks;
 - (NSInteger)getWatchers;
+- (NSString *)getLanguage;
 
 @end
