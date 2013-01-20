@@ -63,6 +63,8 @@
 		B55D8E2016AC7030009CB90F /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E1F16AC7030009CB90F /* RepoTreeCell.m */; };
 		B55D8E2316AC70BD009CB90F /* RepoTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E2216AC70BD009CB90F /* RepoTreeNode.m */; };
 		B55D8E2616AC750E009CB90F /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E2516AC750D009CB90F /* Branch.m */; };
+		B55D8E2916AC8D4B009CB90F /* file_16.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E2716AC8D4B009CB90F /* file_16.png */; };
+		B55D8E2A16AC8D4B009CB90F /* folder_16.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E2816AC8D4B009CB90F /* folder_16.png */; };
 		B580E79616A52087000EFAC8 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79416A52087000EFAC8 /* 179-notepad.png */; };
 		B580E79716A52087000EFAC8 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79516A52087000EFAC8 /* 179-notepad@2x.png */; };
 		B580E79E16A52119000EFAC8 /* 291-idcard.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79C16A52119000EFAC8 /* 291-idcard.png */; };
@@ -279,6 +281,8 @@
 		B55D8E2216AC70BD009CB90F /* RepoTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeNode.m; sourceTree = "<group>"; };
 		B55D8E2416AC750D009CB90F /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Branch.h; sourceTree = "<group>"; };
 		B55D8E2516AC750D009CB90F /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
+		B55D8E2716AC8D4B009CB90F /* file_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_16.png; sourceTree = "<group>"; };
+		B55D8E2816AC8D4B009CB90F /* folder_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_16.png; sourceTree = "<group>"; };
 		B580E79416A52087000EFAC8 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		B580E79516A52087000EFAC8 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad@2x.png"; sourceTree = "<group>"; };
 		B580E79C16A52119000EFAC8 /* 291-idcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "291-idcard.png"; sourceTree = "<group>"; };
@@ -737,6 +741,8 @@
 				B55514FB16A3CEC7004D5713 /* glyphicons_081_refresh@2x.png */,
 				B55514EE16A3CD90004D5713 /* glyphicons_081_refresh.png */,
 				B555150616A3D49B004D5713 /* 83-calendar.png */,
+				B55D8E2716AC8D4B009CB90F /* file_16.png */,
+				B55D8E2816AC8D4B009CB90F /* folder_16.png */,
 				B555150716A3D49B004D5713 /* 83-calendar@2x.png */,
 				B55514F216A3CE6D004D5713 /* glyphicons_081_refresh.png */,
 				B580E7A016A52C8A000EFAC8 /* 351-bankers-box.png */,
@@ -1070,6 +1076,8 @@
 				B5CD491B16A69AC7000659B3 /* RepoSearchResultCell.xib in Resources */,
 				B55D8E0F16AB9B0D009CB90F /* RepoDetailsCell.xib in Resources */,
 				B55D8E1D16AC6FFC009CB90F /* RepoTreeViewController.xib in Resources */,
+				B55D8E2916AC8D4B009CB90F /* file_16.png in Resources */,
+				B55D8E2A16AC8D4B009CB90F /* folder_16.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

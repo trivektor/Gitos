@@ -26,4 +26,14 @@
     return self;
 }
 
+- (BOOL)isTree
+{
+    return [self.type isEqualToString:@"tree"];
+}
+
+- (BOOL)isBlob
+{
+    return [self.type isEqualToString:@"blob"];
+}
+
 @end

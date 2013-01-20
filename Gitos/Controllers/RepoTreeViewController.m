@@ -120,4 +120,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    RepoTreeNode *node = [self.treeData objectAtIndex:indexPath.row];
+//    RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
+//    repoTreeController.branch = self.branch;
+//    repoTreeController.repo = self.repo;
+
+}
+
 @end

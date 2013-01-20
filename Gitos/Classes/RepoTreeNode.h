@@ -18,5 +18,7 @@
 @property (nonatomic, strong) NSString *url;
 
 - (id)initWithData:(NSDictionary *)data;
+- (BOOL)isTree;
+- (BOOL)isBlob;
 
 @end

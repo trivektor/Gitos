@@ -30,6 +30,11 @@
 
 - (void)render
 {
+    if ([self.node isTree]) {
+        self.imageView.image = [UIImage imageNamed:@"folder_16.png"];
+    } else if ([self.node isBlob]) {
+        self.imageView.image = [UIImage imageNamed:@"file_16.png"];
+    }
     self.textLabel.font = [UIFont fontWithName:@"Arial" size:13.0];
     self.textLabel.text = [self.node path];
 }
