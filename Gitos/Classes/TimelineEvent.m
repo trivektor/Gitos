@@ -40,7 +40,7 @@
         return [NSString stringWithFormat:@"%@ forked %@", actorName, repoName];
     } else if ([eventType isEqualToString:@"WatchEvent"]) {
         // Watch Event
-        return [NSString stringWithFormat:@"%@ watched %@", actorName, repoName];
+        return [NSString stringWithFormat:@"%@ starred %@", actorName, repoName];
     } else if ([eventType isEqualToString:@"CreateEvent"]) {
         // Create Event
         return [NSString stringWithFormat:@"%@ created %@", actorName, repoName];
@@ -74,6 +74,11 @@
         NSInteger issueNumber = [[issue valueForKey:@"number"] intValue];
         NSString *issueName = [NSString stringWithFormat:@"%@#%d", repoName, issueNumber];
         return [NSString stringWithFormat:@"%@ commented on issue %@", user, issueName];
+    } else if ([eventType isEqualToString:@"PushEvent"]) {
+        // Push Event
+        NSArray *ref = [[self.payload valueForKey:@"ref"] componentsSeparatedByString:@"/"];
+        NSString *branch = [ref lastObject];
+        return [NSString stringWithFormat:@"%@ pushed to %@ at %@", actorName, branch, repoName];
     }
 
     return @"";
