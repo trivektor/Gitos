@@ -56,6 +56,8 @@
 		B555151816A3F0B9004D5713 /* 102-walk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B555151616A3F0B9004D5713 /* 102-walk@2x.png */; };
 		B555151B16A3F106004D5713 /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = B555151916A3F106004D5713 /* 111-user.png */; };
 		B555151C16A3F106004D5713 /* 111-user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B555151A16A3F106004D5713 /* 111-user@2x.png */; };
+		B55D8E0F16AB9B0D009CB90F /* RepoDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E0E16AB9B0D009CB90F /* RepoDetailsCell.xib */; };
+		B55D8E1316AB9B91009CB90F /* RepoDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E1216AB9B91009CB90F /* RepoDetailsCell.m */; };
 		B580E79616A52087000EFAC8 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79416A52087000EFAC8 /* 179-notepad.png */; };
 		B580E79716A52087000EFAC8 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79516A52087000EFAC8 /* 179-notepad@2x.png */; };
 		B580E79E16A52119000EFAC8 /* 291-idcard.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79C16A52119000EFAC8 /* 291-idcard.png */; };
@@ -260,6 +262,9 @@
 		B555151616A3F0B9004D5713 /* 102-walk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "102-walk@2x.png"; sourceTree = "<group>"; };
 		B555151916A3F106004D5713 /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
 		B555151A16A3F106004D5713 /* 111-user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user@2x.png"; sourceTree = "<group>"; };
+		B55D8E0E16AB9B0D009CB90F /* RepoDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoDetailsCell.xib; sourceTree = "<group>"; };
+		B55D8E1116AB9B90009CB90F /* RepoDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoDetailsCell.h; sourceTree = "<group>"; };
+		B55D8E1216AB9B91009CB90F /* RepoDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoDetailsCell.m; sourceTree = "<group>"; };
 		B580E79416A52087000EFAC8 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		B580E79516A52087000EFAC8 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad@2x.png"; sourceTree = "<group>"; };
 		B580E79C16A52119000EFAC8 /* 291-idcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "291-idcard.png"; sourceTree = "<group>"; };
@@ -541,6 +546,9 @@
 				B5E2CA9A169A9AFE0004E9A7 /* GistCell.xib */,
 				B5CD491A16A69AC7000659B3 /* RepoSearchResultCell.xib */,
 				B5CD491D16A69AF8000659B3 /* RepoSearchResultCell.h */,
+				B55D8E1116AB9B90009CB90F /* RepoDetailsCell.h */,
+				B55D8E1216AB9B91009CB90F /* RepoDetailsCell.m */,
+				B55D8E0E16AB9B0D009CB90F /* RepoDetailsCell.xib */,
 				B5CD491E16A69AF8000659B3 /* RepoSearchResultCell.m */,
 			);
 			path = Cells;
@@ -1037,6 +1045,7 @@
 				B580E7B216A66343000EFAC8 /* 06-magnify.png in Resources */,
 				B580E7B316A66343000EFAC8 /* 06-magnify@2x.png in Resources */,
 				B5CD491B16A69AC7000659B3 /* RepoSearchResultCell.xib in Resources */,
+				B55D8E0F16AB9B0D009CB90F /* RepoDetailsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,6 +1103,7 @@
 				B580E7AB16A65F4D000EFAC8 /* RepoSearchViewController.m in Sources */,
 				B580E7AF16A661E4000EFAC8 /* Repo.m in Sources */,
 				B5CD491F16A69AF8000659B3 /* RepoSearchResultCell.m in Sources */,
+				B55D8E1316AB9B91009CB90F /* RepoDetailsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

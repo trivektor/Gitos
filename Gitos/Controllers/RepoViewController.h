@@ -10,7 +10,16 @@
 #import "Repo.h"
 
 @interface RepoViewController : UIViewController
+<UITableViewDataSource, UITableViewDelegate>
+{
+    __weak IBOutlet UITableView *detailsTable;
+    __weak IBOutlet UITableView *branchesTable;
+}
 
 @property(nonatomic, strong) Repo *repo;
+
+- (void)performHouseKeepingTasks;
+- (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
