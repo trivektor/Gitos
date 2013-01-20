@@ -12,6 +12,8 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
+#import "RepoTreeViewController.h"
+#import "Branch.h"
 
 @interface RepoViewController ()
 
@@ -131,13 +133,23 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    NSDictionary *branch = [self.repoBranches objectAtIndex:indexPath.row];
-    
+
+    Branch *branch = [self.repoBranches objectAtIndex:indexPath.row];
+
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14.0];
-    cell.textLabel.text = [branch valueForKey:@"name"];
+    cell.textLabel.text = [branch name];
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == branchesTable) {
+        RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
+        repoTreeController.branch = [self.repoBranches objectAtIndex:indexPath.row];
+
+        [self.navigationController pushViewController:repoTreeController animated:YES];
+    }
 }
 
 - (void)getRepoBranches
@@ -161,7 +173,14 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
          
-         [self.repoBranches addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         Branch *branch;
+
+         for (int i=0; i < json.count; i++) {
+             branch = [[Branch alloc] initWithData:[json objectAtIndex:i]];
+             [self.repoBranches addObject:branch];
+         }
 
          [branchesTable setFrame:CGRectMake(0, 228, 320, self.repoBranches.count * 44 + 10)];
          [branchesTable reloadData];

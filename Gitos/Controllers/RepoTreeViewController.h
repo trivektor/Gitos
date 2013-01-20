@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Branch.h"
 
-@interface RepoTreeViewController : UIViewController
+@interface RepoTreeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSString *branchUrl;
+@property (nonatomic, strong) Branch *branch;
+
+- (void)performHouseKeepingTasks;
 
 @end

@@ -62,6 +62,7 @@
 		B55D8E1D16AC6FFC009CB90F /* RepoTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E1B16AC6FFC009CB90F /* RepoTreeViewController.xib */; };
 		B55D8E2016AC7030009CB90F /* RepoTreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E1F16AC7030009CB90F /* RepoTreeCell.m */; };
 		B55D8E2316AC70BD009CB90F /* RepoTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E2216AC70BD009CB90F /* RepoTreeNode.m */; };
+		B55D8E2616AC750E009CB90F /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E2516AC750D009CB90F /* Branch.m */; };
 		B580E79616A52087000EFAC8 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79416A52087000EFAC8 /* 179-notepad.png */; };
 		B580E79716A52087000EFAC8 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79516A52087000EFAC8 /* 179-notepad@2x.png */; };
 		B580E79E16A52119000EFAC8 /* 291-idcard.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79C16A52119000EFAC8 /* 291-idcard.png */; };
@@ -276,6 +277,8 @@
 		B55D8E1F16AC7030009CB90F /* RepoTreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeCell.m; sourceTree = "<group>"; };
 		B55D8E2116AC70BC009CB90F /* RepoTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTreeNode.h; sourceTree = "<group>"; };
 		B55D8E2216AC70BD009CB90F /* RepoTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepoTreeNode.m; sourceTree = "<group>"; };
+		B55D8E2416AC750D009CB90F /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Branch.h; sourceTree = "<group>"; };
+		B55D8E2516AC750D009CB90F /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
 		B580E79416A52087000EFAC8 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		B580E79516A52087000EFAC8 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad@2x.png"; sourceTree = "<group>"; };
 		B580E79C16A52119000EFAC8 /* 291-idcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "291-idcard.png"; sourceTree = "<group>"; };
@@ -855,6 +858,8 @@
 				B580E7AE16A661E4000EFAC8 /* Repo.m */,
 				B55D8E2116AC70BC009CB90F /* RepoTreeNode.h */,
 				B55D8E2216AC70BD009CB90F /* RepoTreeNode.m */,
+				B55D8E2416AC750D009CB90F /* Branch.h */,
+				B55D8E2516AC750D009CB90F /* Branch.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1126,6 +1131,7 @@
 				B55D8E1C16AC6FFC009CB90F /* RepoTreeViewController.m in Sources */,
 				B55D8E2016AC7030009CB90F /* RepoTreeCell.m in Sources */,
 				B55D8E2316AC70BD009CB90F /* RepoTreeNode.m in Sources */,
+				B55D8E2616AC750E009CB90F /* Branch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
