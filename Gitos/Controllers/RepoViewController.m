@@ -8,6 +8,10 @@
 
 #import "RepoViewController.h"
 #import "RepoDetailsCell.h"
+#import "AppConfig.h"
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "SSKeychain.h"
 
 @interface RepoViewController ()
 
@@ -22,6 +26,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.repoBranches = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -32,6 +37,20 @@
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:[self.repo getName]];
     [self performHouseKeepingTasks];
+    [self adjustFrameHeight];
+    [self getRepoBranches];
+}
+
+- (void)adjustFrameHeight
+{
+    [repoScrollView setContentSize:self.view.frame.size];
+    CGFloat scrollViewHeight = 0.0f;
+    for (UIView* view in repoScrollView.subviews)
+    {
+        scrollViewHeight += view.frame.size.height;
+    }
+    
+    [repoScrollView setContentSize:(CGSizeMake(320, scrollViewHeight + 35))];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,7 +91,7 @@
     if (tableView == detailsTable) {
         return 4;
     } else if (tableView == branchesTable) {
-        return 1;
+        return [self.repoBranches count];
     } else {
         return 1;
     }
@@ -109,8 +128,44 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    
+    NSDictionary *branch = [self.repoBranches objectAtIndex:indexPath.row];
+    
+    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14.0];
+    cell.textLabel.text = [branch valueForKey:@"name"];
 
     return cell;
+}
+
+- (void)getRepoBranches
+{
+    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+
+    NSURL *branchesUrl = [NSURL URLWithString:[self.repo getBranchesUrl]];
+    
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:branchesUrl];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   accessToken, @"access_token",
+                                   @"bearer", @"token_type",
+                                   nil];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:branchesUrl.absoluteString parameters:params];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+    
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+         
+         [self.repoBranches addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+         
+         [branchesTable reloadData];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];    
+    [operation start];
 }
 
 @end

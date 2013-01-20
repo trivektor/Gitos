@@ -14,12 +14,16 @@
 {
     __weak IBOutlet UITableView *detailsTable;
     __weak IBOutlet UITableView *branchesTable;
+    __weak IBOutlet UIScrollView *repoScrollView;
 }
 
 @property(nonatomic, strong) Repo *repo;
+@property(nonatomic, strong) NSMutableArray *repoBranches;
 
 - (void)performHouseKeepingTasks;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)cellForBranchesTableAtIndexPath:(NSIndexPath *)indexPath;
+- (void)getRepoBranches;
+- (void)adjustFrameHeight;
 
 @end

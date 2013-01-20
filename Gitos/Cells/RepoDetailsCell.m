@@ -10,6 +10,8 @@
 
 @implementation RepoDetailsCell
 
+@synthesize fieldLabel, fieldValue, repo;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -24,6 +26,24 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)renderForIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        self.fieldLabel.text = @"Name";
+        self.fieldValue.text = [self.repo getName];
+    } else if (indexPath.row == 1) {
+        self.fieldLabel.text = @"Forks";
+        self.fieldValue.text = [NSString stringWithFormat:@"%i", [self.repo getForks]];
+    } else if (indexPath.row == 2) {
+        self.fieldLabel.text = @"Watchers";
+        self.fieldValue.text = [NSString stringWithFormat:@"%i", [self.repo getWatchers]];
+    } else if (indexPath.row == 3) {
+        self.fieldLabel.text = @"Language";
+        self.fieldValue.text = [self.repo getLanguage];
+    }
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 @end

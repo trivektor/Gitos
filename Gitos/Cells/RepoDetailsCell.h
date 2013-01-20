@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Repo.h"
 
 @interface RepoDetailsCell : UITableViewCell
+
+@property (nonatomic, strong) IBOutlet UILabel *fieldLabel;
+@property (nonatomic, strong) IBOutlet UILabel *fieldValue;
+@property (nonatomic, strong) Repo *repo;
+
+- (void)renderForIndexPath:(NSIndexPath *)indexPath;
 
 @end
