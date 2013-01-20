@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Repo.h"
+#import "SpinnerView.h"
 
 @interface RepoViewController : UIViewController
 <UITableViewDataSource, UITableViewDelegate>
@@ -19,6 +20,7 @@
 
 @property(nonatomic, strong) Repo *repo;
 @property(nonatomic, strong) NSMutableArray *repoBranches;
+@property(nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)performHouseKeepingTasks;
 - (UITableViewCell *)cellForDetailsTableAtIndexPath:(NSIndexPath *)indexPath;

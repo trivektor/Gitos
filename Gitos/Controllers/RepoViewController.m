@@ -19,7 +19,7 @@
 
 @implementation RepoViewController
 
-@synthesize repo;
+@synthesize repo, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,6 +79,9 @@
         [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         [table setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
     }
+
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
+    self.spinnerView.hidden = NO;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -159,11 +162,15 @@
          NSString *response = [operation responseString];
          
          [self.repoBranches addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
-         
+
+         [branchesTable setFrame:CGRectMake(0, 228, 320, self.repoBranches.count * 44 + 10)];
          [branchesTable reloadData];
+         [self.spinnerView setHidden:YES];
+         [self adjustFrameHeight];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
      }];    
     [operation start];
 }
