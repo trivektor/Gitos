@@ -19,5 +19,6 @@
 - (NSInteger)getWatchers;
 - (NSString *)getLanguage;
 - (NSString *)getBranchesUrl;
+- (NSString *)getTreeUrl;
 
 @end

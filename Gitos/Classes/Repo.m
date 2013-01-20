@@ -47,4 +47,10 @@
     return [url stringByAppendingFormat:@"/branches"];
 }
 
+- (NSString *)getTreeUrl
+{
+    NSString *url = [self.data valueForKey:@"url"];
+    return [url stringByAppendingFormat:@"/git/trees/"];
+}
+
 @end
