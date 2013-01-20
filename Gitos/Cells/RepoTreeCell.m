@@ -10,6 +10,8 @@
 
 @implementation RepoTreeCell
 
+@synthesize node;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -24,6 +26,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)render
+{
+    self.textLabel.font = [UIFont fontWithName:@"Arial" size:13.0];
+    self.textLabel.text = [self.node path];
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 #import "RepoTreeNode.h"
+#import "RepoTreeCell.h"
 
 @interface RepoTreeViewController ()
 
@@ -58,7 +59,6 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    accessToken, @"access_token",
                                    @"bearer", @"token_type",
-                                   @"1", @"recursive",
                                    nil];
 
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:repoTreeUrl.absoluteString parameters:params];
@@ -75,7 +75,7 @@
 
          RepoTreeNode *node;
 
-         for (int i=0; i < json.count; i++) {
+         for (int i=0; i < treeNodes.count; i++) {
              node = [[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]];
              [self.treeData addObject:node];
          }
@@ -109,17 +109,14 @@
 {
     static NSString *cellIdentifier = @"Cell";
 
-    UITableViewCell *cell = [treeTable dequeueReusableCellWithIdentifier:cellIdentifier];
+    RepoTreeCell *cell = [treeTable dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[RepoTreeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    RepoTreeNode *node = [self.treeData objectAtIndex:indexPath.row];
-
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
-    cell.textLabel.text = [node path];
-
+    [cell setNode:[self.treeData objectAtIndex:indexPath.row]];
+    [cell render];
     return cell;
 }
 

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RepoTreeNode.h"
 
 @interface RepoTreeCell : UITableViewCell
+
+@property (nonatomic, strong) RepoTreeNode *node;
+
+- (void)render;
 
 @end
