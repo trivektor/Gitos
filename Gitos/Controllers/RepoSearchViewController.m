@@ -13,6 +13,7 @@
 #import "AppConfig.h"
 #import "Repo.h"
 #import "RepoSearchResultCell.h"
+#import "RepoViewController.h"
 
 @interface RepoSearchViewController ()
 
@@ -20,7 +21,7 @@
 
 @implementation RepoSearchViewController
 
-@synthesize user, searchResults, spinnerView;
+@synthesize accessToken, user, searchResults, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +29,7 @@
     if (self) {
         // Custom initialization
         self.searchResults = [[NSMutableArray alloc] initWithCapacity:0];
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -100,15 +102,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RepoSearchResultCell *cell = [searchResultsTable dequeueReusableCellWithIdentifier:@"RepoSearchResultCell"];
+    static NSString *cellIdentifier = @"RepoSearchResultCell";
+    RepoSearchResultCell *cell = [searchResultsTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        cell = [[RepoSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RepoSearchResultCell"];
+        cell = [[RepoSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    cell.repoDetails = [self.searchResults objectAtIndex:indexPath.row];
+    cell.repo = [self.searchResults objectAtIndex:indexPath.row];
+    //cell.repoDetails = [self.searchResults objectAtIndex:indexPath.row];
     [cell render];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RepoViewController *repoController = [[RepoViewController alloc] init];
+    repoController.repo = [self.searchResults objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:repoController animated:YES];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)_searchBar
@@ -116,14 +127,13 @@
     [self.spinnerView setHidden:NO];
     [searchBar resignFirstResponder];
     NSString *term = [_searchBar text];
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
     NSURL *searchUrl = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:searchUrl];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
+                                   self.accessToken, @"access_token",
                                    @"bearer", @"token_type",
                                    nil];
     
@@ -138,8 +148,15 @@
          NSString *response = [operation responseString];
          
          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSArray *repos = [json valueForKey:@"repositories"];
+
+         Repo *r;
          
-         self.searchResults = [json valueForKey:@"repositories"];
+         for (int i=0; i < repos.count; i++) {
+             r = [[Repo alloc] initWithData:[repos objectAtIndex:i]];
+             [self.searchResults addObject:r];
+         }
          
          [searchResultsTable reloadData];
          [searchBar resignFirstResponder];

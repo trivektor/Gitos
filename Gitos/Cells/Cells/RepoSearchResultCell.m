@@ -36,7 +36,7 @@
 
     RelativeDateDescriptor *relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@ ago" postDateDescriptionFormat:@"in %@"];
 
-    NSInteger size = [[self.repoDetails objectForKey:@"size"] integerValue];
+    NSInteger size = [self.repo getSize];
 
     NSString *sizeLabel;
     if (size <= 1024) {
@@ -47,7 +47,7 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:sszzz"];
-    NSDate *pushedAt  = [dateFormatter dateFromString:[self.repoDetails objectForKey:@"pushed_at"]];
+    NSDate *pushedAt  = [dateFormatter dateFromString:[self.repo getPushedAt]];
 
     NSMutableArray *labels = [[NSMutableArray alloc] initWithCapacity:0];
     [labels addObject:sizeLabel];
@@ -62,12 +62,12 @@
 
 - (void)renderName
 {
-    [self.repoNameLabel setText:[self.repoDetails objectForKey:@"name"]];
+    [self.repoNameLabel setText:[self.repo getName]];
 }
 
 - (void)renderDescription
 {
-    NSString *description = [self.repoDetails objectForKey:@"description"];
+    NSString *description = [self.repo getDescription];
     
     if (description == (id)[NSNull null]) {
         [self.repoDescriptionLabel setText:@"no description"];

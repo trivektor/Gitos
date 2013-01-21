@@ -17,6 +17,7 @@
     __weak IBOutlet UITableView *searchResultsTable;
 }
 
+@property(nonatomic, strong) NSString *accessToken;
 @property(nonatomic, strong) SpinnerView *spinnerView;
 @property(nonatomic, strong) NSMutableArray *searchResults;
 @property(nonatomic, strong) User *user;
