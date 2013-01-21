@@ -50,6 +50,7 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = [self.branch name];
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }
 
 - (void)fetchData
@@ -88,9 +89,11 @@
              [self.treeNodes addObject:treeNode];
          }
          [treeTable reloadData];
+         [self.spinnerView setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
      }];
 
     [operation start];
@@ -121,9 +124,11 @@
              [self.treeNodes addObject:treeNode];
          }
          [treeTable reloadData];
+         [self.spinnerView setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"%@", error);
+         [self.spinnerView setHidden:YES];
      }];
 
     [operation start];

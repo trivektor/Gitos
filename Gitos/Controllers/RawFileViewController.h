@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Repo.h"
 #import "Branch.h"
+#import "SpinnerView.h"
 
-@interface RawFileViewController : UIViewController
+@interface RawFileViewController : UIViewController <UIWebViewDelegate>
 {
     __weak IBOutlet UIWebView *fileWebView;
 }
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) Repo *repo;
 @property (nonatomic, strong) Branch *branch;
 @property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong) SpinnerView *spinnerView;
 
 - (void)fetchRawFile;
 

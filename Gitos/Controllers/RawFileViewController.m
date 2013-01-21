@@ -36,6 +36,7 @@
     // Do any additional setup after loading the view from its nib.
     [self.navigationItem setTitle:self.fileName];
     [self fetchRawFile];
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,6 +83,11 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:rawFileUrl];
 
     [fileWebView loadRequest:request];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.spinnerView setHidden:YES];
 }
 
 @end
