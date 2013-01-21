@@ -21,14 +21,19 @@
 
 @implementation RepoTreeViewController
 
-@synthesize branchUrl, branch, repo;
+@synthesize accessToken, accessTokenParams, branchUrl, branch, repo, node;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.treeData = [[NSMutableArray alloc] initWithCapacity:0];
+        self.treeNodes = [[NSMutableArray alloc] initWithCapacity:0];
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+        self.accessTokenParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  self.accessToken, @"access_token",
+                                  @"bearer", @"token_type",
+                                  nil];
     }
     return self;
 }
@@ -48,20 +53,24 @@
 
 - (void)fetchData
 {
-    NSString *treeUrl = [[self.repo getTreeUrl] stringByAppendingString:self.branch.name];
+    if (self.node == (id)[NSNull null]) {
+        [self fetchTopLayer];
+    } else if ([self.node isBlob]) {
+        [self fetchBlob];
+    } else if ([self.node isTree]) {
+        [self fetchTree];
+    }
+}
 
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
+- (void)fetchTopLayer
+{
+    NSString *treeUrl = [[self.repo getTreeUrl] stringByAppendingString:self.branch.name];
 
     NSURL *repoTreeUrl = [NSURL URLWithString:treeUrl];
 
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:repoTreeUrl];
 
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
-                                   @"bearer", @"token_type",
-                                   nil];
-
-    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:repoTreeUrl.absoluteString parameters:params];
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:repoTreeUrl.absoluteString parameters:self.accessTokenParams];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
 
@@ -73,11 +82,11 @@
 
          NSArray *treeNodes = [json valueForKey:@"tree"];
 
-         RepoTreeNode *node;
+         RepoTreeNode *treeNode;
 
          for (int i=0; i < treeNodes.count; i++) {
-             node = [[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]];
-             [self.treeData addObject:node];
+             treeNode = [[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]];
+             [self.treeNodes addObject:treeNode];
          }
          [treeTable reloadData];
      }
@@ -86,7 +95,43 @@
      }];
 
     [operation start];
+}
 
+- (void)fetchTree
+{
+    NSURL *treeNodeUrl = [NSURL URLWithString:self.node.url];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:treeNodeUrl];
+
+    NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:treeNodeUrl.absoluteString parameters:self.accessTokenParams];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:getRequest];
+
+    [operation setCompletionBlockWithSuccess:
+     ^(AFHTTPRequestOperation *operation, id responseObject){
+         NSString *response = [operation responseString];
+
+         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         NSArray *treeNodes = [json valueForKey:@"tree"];
+
+         RepoTreeNode *treeNode;
+
+         for (int i=0; i < treeNodes.count; i++) {
+             treeNode = [[RepoTreeNode alloc] initWithData:[treeNodes objectAtIndex:i]];
+             [self.treeNodes addObject:treeNode];
+         }
+         [treeTable reloadData];
+     }
+     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
+     }];
+
+    [operation start];
+}
+
+- (void)fetchBlob
+{
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,7 +147,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.treeData count];
+    return [self.treeNodes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,18 +160,19 @@
         cell = [[RepoTreeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    [cell setNode:[self.treeData objectAtIndex:indexPath.row]];
+    [cell setNode:[self.treeNodes objectAtIndex:indexPath.row]];
     [cell render];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    RepoTreeNode *node = [self.treeData objectAtIndex:indexPath.row];
-//    RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
-//    repoTreeController.branch = self.branch;
-//    repoTreeController.repo = self.repo;
-
+    RepoTreeNode *selectedNode = [self.treeNodes objectAtIndex:indexPath.row];
+    RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
+    repoTreeController.branch = self.branch;
+    repoTreeController.repo = self.repo;
+    repoTreeController.node = selectedNode;
+    [self.navigationController pushViewController:repoTreeController animated:YES];
 }
 
 @end

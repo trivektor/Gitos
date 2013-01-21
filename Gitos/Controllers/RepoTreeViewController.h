@@ -9,18 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "Branch.h"
 #import "Repo.h"
+#import "RepoTreeNode.h"
 
 @interface RepoTreeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     __weak IBOutlet UITableView *treeTable;
 }
 
-@property (nonatomic, strong) NSMutableArray *treeData;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSMutableDictionary *accessTokenParams;
+@property (nonatomic, strong) NSMutableArray *treeNodes;
 @property (nonatomic, strong) NSString *branchUrl;
 @property (nonatomic, strong) Branch *branch;
 @property (nonatomic, strong) Repo *repo;
+@property (nonatomic, strong) RepoTreeNode *node;
 
 - (void)performHouseKeepingTasks;
 - (void)fetchData;
+- (void)fetchTopLayer;
+- (void)fetchTree;
+- (void)fetchBlob;
 
 @end
