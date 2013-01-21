@@ -41,7 +41,11 @@
         self.fieldValue.text = [NSString stringWithFormat:@"%i", [self.repo getWatchers]];
     } else if (indexPath.row == 3) {
         self.fieldLabel.text = @"Language";
-        self.fieldValue.text = [self.repo getLanguage];
+        if ([self.repo getLanguage] == (id)[NSNull null]) {
+            self.fieldValue.text = @"n/a";
+        } else {
+            self.fieldValue.text = [self.repo getLanguage];
+        }
     }
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
