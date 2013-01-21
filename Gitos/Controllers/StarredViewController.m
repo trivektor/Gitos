@@ -14,6 +14,8 @@
 #import "SpinnerView.h"
 #import "SVPullToRefresh.h"
 #import "Repo.h"
+#import "RepoViewController.h"
+#import "AppConfig.h"
 
 @interface StarredViewController ()
 
@@ -21,7 +23,7 @@
 
 @implementation StarredViewController
 
-@synthesize user, starredRepos, currentPage, spinnerView;
+@synthesize accessToken, user, starredRepos, currentPage, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +32,7 @@
         // Custom initialization
         self.currentPage = 1;
         self.starredRepos = [[NSMutableArray alloc] initWithCapacity:0];
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -63,14 +66,12 @@
 
 - (void)getUserInfo
 {
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-    
-    NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
+    NSURL *userUrl = [NSURL URLWithString:[[AppConfig getConfigValue:@"GithubApiHost"] stringByAppendingString:@"/user"]];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
+                                   self.accessToken, @"access_token",
                                    @"bearer", @"token_type",
                                    nil];
     
@@ -102,6 +103,8 @@
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    [NSString stringWithFormat:@"%i", page], @"page",
+                                   self.accessToken, @"access_token",
+                                   @"bearer", @"token_type",
                                    nil];
     
     NSMutableURLRequest *getRequest = [httpClient requestWithMethod:@"GET" path:starredReposUrl.absoluteString parameters:params];
@@ -112,7 +115,14 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
          
-         [self.starredRepos addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+         NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         Repo *r;
+
+         for (int i=0; i < json.count; i++) {
+             r = [[Repo alloc] initWithData:[json objectAtIndex:i]];
+             [self.starredRepos addObject:r];
+         }
 
          [starredReposTable.pullToRefreshView stopAnimating];
          [starredReposTable reloadData];
@@ -147,12 +157,18 @@
     if (!cell) {
         cell = [[RepoCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
-    NSDictionary *repo = [self.starredRepos objectAtIndex:indexPath.row];
-    cell.repo = [[Repo alloc] initWithData:repo];
+
+    cell.repo = [self.starredRepos objectAtIndex:indexPath.row];
     [cell render];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RepoViewController *repoController = [[RepoViewController alloc] init];
+    repoController.repo = [self.starredRepos objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:repoController animated:YES];
 }
 
 // https://github.com/stephenjames/ContinuousTableview/blob/master/Classes/RootViewController.m

@@ -16,6 +16,7 @@
     __weak IBOutlet UITableView *starredReposTable;
 }
 
+@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSMutableArray *starredRepos;
 @property (nonatomic) NSInteger currentPage;
