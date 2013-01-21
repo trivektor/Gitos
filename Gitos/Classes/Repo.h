@@ -21,5 +21,8 @@
 - (NSString *)getLanguage;
 - (NSString *)getBranchesUrl;
 - (NSString *)getTreeUrl;
+- (NSInteger)getSize;
+- (NSString *)getPushedAt;
+- (NSString *)getDescription;
 
 @end

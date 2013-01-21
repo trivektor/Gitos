@@ -58,4 +58,19 @@
     return [url stringByAppendingFormat:@"/git/trees/"];
 }
 
+- (NSInteger)getSize
+{
+    return [[self.data valueForKey:@"size"] integerValue];
+}
+
+- (NSString *)getPushedAt
+{
+    return [self.data valueForKey:@"pushed_at"];
+}
+
+- (NSString *)getDescription
+{
+    return [self.data valueForKey:@"description"];
+}
+
 @end
