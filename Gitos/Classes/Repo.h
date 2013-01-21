@@ -15,6 +15,7 @@
 - (id)initWithData:(NSDictionary *)data;
 
 - (NSString *)getName;
+- (NSString *)getFullName;
 - (NSInteger)getForks;
 - (NSInteger)getWatchers;
 - (NSString *)getLanguage;

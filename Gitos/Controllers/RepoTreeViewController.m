@@ -7,6 +7,7 @@
 //
 
 #import "RepoTreeViewController.h"
+#import "RawFileViewController.h"
 #import "RepoTreeCell.h"
 #import "AppConfig.h"
 #import "SSKeychain.h"
@@ -55,8 +56,6 @@
 {
     if (self.node == (id)[NSNull null]) {
         [self fetchTopLayer];
-    } else if ([self.node isBlob]) {
-        [self fetchBlob];
     } else if ([self.node isTree]) {
         [self fetchTree];
     }
@@ -132,6 +131,11 @@
 
 - (void)fetchBlob
 {
+    RawFileViewController *rawFileController = [[RawFileViewController alloc] init];
+    rawFileController.repo = self.repo;
+    rawFileController.branch = self.branch;
+    rawFileController.fileName = self.node.path;
+    [self.navigationController pushViewController:rawFileController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -168,11 +172,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RepoTreeNode *selectedNode = [self.treeNodes objectAtIndex:indexPath.row];
-    RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
-    repoTreeController.branch = self.branch;
-    repoTreeController.repo = self.repo;
-    repoTreeController.node = selectedNode;
-    [self.navigationController pushViewController:repoTreeController animated:YES];
+
+    if ([selectedNode isBlob]) {
+        RawFileViewController *rawFileController = [[RawFileViewController alloc] init];
+        rawFileController.repo = self.repo;
+        rawFileController.branch = self.branch;
+        rawFileController.fileName = [selectedNode path];
+        [self.navigationController pushViewController:rawFileController animated:YES];
+    } else if ([selectedNode isTree]) {
+        RepoTreeViewController *repoTreeController = [[RepoTreeViewController alloc] init];
+        repoTreeController.branch = self.branch;
+        repoTreeController.repo = self.repo;
+        repoTreeController.node = selectedNode;
+        [self.navigationController pushViewController:repoTreeController animated:YES];
+    }
 }
 
 @end

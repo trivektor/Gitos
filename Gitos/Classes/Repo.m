@@ -26,6 +26,11 @@
     return [self.data valueForKey:@"name"];
 }
 
+- (NSString *)getFullName
+{
+    return [self.data valueForKey:@"full_name"];
+}
+
 - (NSInteger)getForks
 {
     return [[self.data valueForKey:@"forks"] integerValue];

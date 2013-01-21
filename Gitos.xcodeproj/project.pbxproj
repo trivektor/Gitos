@@ -65,6 +65,8 @@
 		B55D8E2616AC750E009CB90F /* Branch.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E2516AC750D009CB90F /* Branch.m */; };
 		B55D8E2916AC8D4B009CB90F /* file_16.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E2716AC8D4B009CB90F /* file_16.png */; };
 		B55D8E2A16AC8D4B009CB90F /* folder_16.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E2816AC8D4B009CB90F /* folder_16.png */; };
+		B55D8E2E16AD0E49009CB90F /* RawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E2C16AD0E48009CB90F /* RawFileViewController.m */; };
+		B55D8E2F16AD0E49009CB90F /* RawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E2D16AD0E48009CB90F /* RawFileViewController.xib */; };
 		B580E79616A52087000EFAC8 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79416A52087000EFAC8 /* 179-notepad.png */; };
 		B580E79716A52087000EFAC8 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79516A52087000EFAC8 /* 179-notepad@2x.png */; };
 		B580E79E16A52119000EFAC8 /* 291-idcard.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79C16A52119000EFAC8 /* 291-idcard.png */; };
@@ -283,6 +285,9 @@
 		B55D8E2516AC750D009CB90F /* Branch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Branch.m; sourceTree = "<group>"; };
 		B55D8E2716AC8D4B009CB90F /* file_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_16.png; sourceTree = "<group>"; };
 		B55D8E2816AC8D4B009CB90F /* folder_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder_16.png; sourceTree = "<group>"; };
+		B55D8E2B16AD0E47009CB90F /* RawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawFileViewController.h; sourceTree = "<group>"; };
+		B55D8E2C16AD0E48009CB90F /* RawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawFileViewController.m; sourceTree = "<group>"; };
+		B55D8E2D16AD0E48009CB90F /* RawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawFileViewController.xib; sourceTree = "<group>"; };
 		B580E79416A52087000EFAC8 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		B580E79516A52087000EFAC8 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad@2x.png"; sourceTree = "<group>"; };
 		B580E79C16A52119000EFAC8 /* 291-idcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "291-idcard.png"; sourceTree = "<group>"; };
@@ -725,6 +730,9 @@
 				B55D8E1916AC6FFB009CB90F /* RepoTreeViewController.h */,
 				B55D8E1A16AC6FFC009CB90F /* RepoTreeViewController.m */,
 				B55D8E1B16AC6FFC009CB90F /* RepoTreeViewController.xib */,
+				B55D8E2B16AD0E47009CB90F /* RawFileViewController.h */,
+				B55D8E2C16AD0E48009CB90F /* RawFileViewController.m */,
+				B55D8E2D16AD0E48009CB90F /* RawFileViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1078,6 +1086,7 @@
 				B55D8E1D16AC6FFC009CB90F /* RepoTreeViewController.xib in Resources */,
 				B55D8E2916AC8D4B009CB90F /* file_16.png in Resources */,
 				B55D8E2A16AC8D4B009CB90F /* folder_16.png in Resources */,
+				B55D8E2F16AD0E49009CB90F /* RawFileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,6 +1149,7 @@
 				B55D8E2016AC7030009CB90F /* RepoTreeCell.m in Sources */,
 				B55D8E2316AC70BD009CB90F /* RepoTreeNode.m in Sources */,
 				B55D8E2616AC750E009CB90F /* Branch.m in Sources */,
+				B55D8E2E16AD0E49009CB90F /* RawFileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
