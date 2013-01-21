@@ -10,6 +10,8 @@
 #import "AppConfig.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
+#import "RepoTreeNode.h"
+#import "RepoTreeViewController.h"
 
 @interface RawFileViewController ()
 
@@ -48,7 +50,34 @@
     NSString *repoFullName = [self.repo getFullName];
     NSString *branchName = self.branch.name;
 
-    NSURL *rawFileUrl = [NSURL URLWithString:[githubRawHost stringByAppendingFormat:@"/%@/%@/%@", repoFullName, branchName, self.fileName]];
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    NSMutableArray *blobPaths = [[NSMutableArray alloc] initWithCapacity:0];
+    RepoTreeNode *node;
+    RepoTreeViewController *treeController;
+
+    for (int i=0; i < viewControllers.count; i++) {
+        if ([[viewControllers objectAtIndex:i] isKindOfClass:[RepoTreeViewController class]]) {
+            treeController = (RepoTreeViewController *)[viewControllers objectAtIndex:i];
+            node = treeController.node;
+            if (node != (id)[NSNull null]) {
+                [blobPaths addObject:node.path];
+            }
+        }
+    }
+
+    NSMutableArray *paths = [[NSMutableArray alloc] initWithCapacity:0];
+
+    [paths addObject:repoFullName];
+    [paths addObject:branchName];
+
+    if (blobPaths.count == 0) {
+        [paths addObject:self.fileName];
+    } else {
+        [paths addObject:[blobPaths componentsJoinedByString:@"/"]];
+        [paths addObject:self.fileName];
+    }
+
+    NSURL *rawFileUrl = [NSURL URLWithString:[githubRawHost stringByAppendingFormat:@"/%@", [paths componentsJoinedByString:@"/"]]];
 
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:rawFileUrl];
 
