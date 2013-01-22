@@ -29,6 +29,7 @@
     if (self) {
         // Custom initialization
         self.repoBranches = [[NSMutableArray alloc] initWithCapacity:0];
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -156,14 +157,12 @@
 
 - (void)getRepoBranches
 {
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
-
     NSURL *branchesUrl = [NSURL URLWithString:[self.repo getBranchesUrl]];
-    
+
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:branchesUrl];
-    
+
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
+                                   self.accessToken, @"access_token",
                                    @"bearer", @"token_type",
                                    nil];
 

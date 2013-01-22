@@ -18,6 +18,7 @@
     __weak IBOutlet UIScrollView *repoScrollView;
 }
 
+@property(nonatomic, strong) NSString *accessToken;
 @property(nonatomic, strong) Repo *repo;
 @property(nonatomic, strong) NSMutableArray *repoBranches;
 @property(nonatomic, strong) SpinnerView *spinnerView;

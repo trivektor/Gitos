@@ -7,6 +7,7 @@
 //
 
 #import "Repo.h"
+#import "AppConfig.h"
 
 @implementation Repo
 
@@ -28,7 +29,14 @@
 
 - (NSString *)getFullName
 {
-    return [self.data valueForKey:@"full_name"];
+    NSString *fullName = [self.data valueForKey:@"full_name"];
+
+    if (fullName == (id)[NSNull null] || fullName.length == 0) {
+        NSString *owner = [self.data valueForKey:@"owner"];
+        return [owner stringByAppendingString:[self getName]];
+    }
+
+    return fullName;
 }
 
 - (NSInteger)getForks
@@ -49,12 +57,26 @@
 - (NSString *)getBranchesUrl
 {
     NSString *url = [self.data valueForKey:@"url"];
+
+    if (url == (id)[NSNull null] || url.length == 0) {
+        NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+        NSString *owner = [self.data valueForKey:@"owner"];
+        url = [githubApiHost stringByAppendingFormat:@"/repos/%@/%@", owner, [self getName]];
+    }
+
     return [url stringByAppendingFormat:@"/branches"];
 }
 
 - (NSString *)getTreeUrl
 {
     NSString *url = [self.data valueForKey:@"url"];
+
+    if (url == (id)[NSNull null] || url.length == 0) {
+        NSString *githubApiHost = [AppConfig getConfigValue:@"GithubApiHost"];
+        NSString *owner = [self.data valueForKey:@"owner"];
+        url = [githubApiHost stringByAppendingFormat:@"/repos/%@/%@", owner, [self getName]];
+    }
+
     return [url stringByAppendingFormat:@"/git/trees/"];
 }
 
