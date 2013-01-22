@@ -80,9 +80,9 @@
 
     NSURL *rawFileUrl = [NSURL URLWithString:[githubRawHost stringByAppendingFormat:@"/%@", [paths componentsJoinedByString:@"/"]]];
 
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:rawFileUrl];
+    NSString *content = [NSString stringWithContentsOfURL:rawFileUrl encoding:NSASCIIStringEncoding error:nil];
 
-    [fileWebView loadRequest:request];
+    [fileWebView loadHTMLString:[NSString stringWithFormat:@"<!DOCTYPE html><html><head><style>body{background:#000; color:#fff; font-family:Trebuchet}</style></head><body><pre>%@</pre></body></html>", content] baseURL: nil];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
