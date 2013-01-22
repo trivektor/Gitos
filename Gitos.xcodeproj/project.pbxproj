@@ -552,6 +552,14 @@
 			path = vector;
 			sourceTree = "<group>";
 		};
+		B55D8E3016AE5305009CB90F /* Html */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Html;
+			path = Gitos/Html;
+			sourceTree = "<group>";
+		};
 		B5CB3C73168267A400566E19 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +627,7 @@
 		B5F5C6F41675742500C4F0E4 = {
 			isa = PBXGroup;
 			children = (
+				B55D8E3016AE5305009CB90F /* Html */,
 				B555150B16A3E805004D5713 /* MessageUI.framework */,
 				B5DF89F016A000C200114862 /* QuartzCore.framework */,
 				B5ACFE8F1698B81A008E56C1 /* icon@2x_et.png */,

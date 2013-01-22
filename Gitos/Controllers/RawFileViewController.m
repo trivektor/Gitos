@@ -82,7 +82,18 @@
 
     NSString *content = [NSString stringWithContentsOfURL:rawFileUrl encoding:NSASCIIStringEncoding error:nil];
 
-    [fileWebView loadHTMLString:[NSString stringWithFormat:@"<!DOCTYPE html><html><head><style>body{background:#000; color:#fff; font-family:Trebuchet}</style></head><body><pre>%@</pre></body></html>", content] baseURL: nil];
+    [fileWebView loadHTMLString:[NSString stringWithFormat:@"<!DOCTYPE html> \
+    <html> \
+        <head> \
+            <link rel='stylesheet' type='text/css' href='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.css'></link> \
+            <style>html, body{padding:0;margin:0;background:#000} pre.prettyprint, code.prettyprint{border:0 !important; border-radius:0 !important;-webkit-border-radius:0 !important;margin:0 !important}</style> \
+            <link rel='stylesheet' href='http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css'></link>\
+            <script src='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.js'></script> \
+        </head> \
+        <body onload='prettyPrint()'> \
+            <pre class='prettyprint'>%@</pre> \
+        </body> \
+    </html>", content] baseURL: nil];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
