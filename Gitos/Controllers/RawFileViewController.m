@@ -90,7 +90,6 @@
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     self.mimeType = [response MIMEType];
-    NSLog(@"%@", self.mimeType);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -105,18 +104,23 @@
     } else if ([self.mimeType isEqualToString:@"text/plain"]) {
         NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
-        [fileWebView loadHTMLString:[NSString stringWithFormat:@"<!DOCTYPE html> \
-         <html> \
-         <head> \
-         <link rel='stylesheet' type='text/css' href='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.css'></link> \
-         <style>html, body{padding:0;margin:0;background:#000} pre.prettyprint, code.prettyprint{border:0 !important; border-radius:0 !important;-webkit-border-radius:0 !important;margin:0 !important}</style> \
-         <link rel='stylesheet' href='http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css'></link>\
-         <script src='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.js'></script> \
-         </head> \
-         <body onload='prettyPrint()'> \
-         <pre class='prettyprint'>%@</pre> \
-         </body> \
-         </html>", content] baseURL: nil];
+        NSString *path = [[NSBundle mainBundle] bundlePath];
+        NSURL *baseURL = [NSURL fileURLWithPath:path];
+
+        NSString *htmlString = [NSString stringWithFormat:@" \
+        <!DOCTYPE html> \
+        <html> \
+        <head> \
+        <link rel='stylesheet' href='prettify.css'></link> \
+        <link rel='stylesheet' href='sunburst.css'></link> \
+        <script src='prettify.js'></script> \
+        </head> \
+        <body onload='prettyPrint()'> \
+        <pre class='prettyprint'><code>%@</code></pre> \
+        </body> \
+        </html>", content];
+
+        [fileWebView loadHTMLString:htmlString baseURL:baseURL];
 
     }
 }

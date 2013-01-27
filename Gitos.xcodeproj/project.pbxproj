@@ -67,6 +67,9 @@
 		B55D8E2A16AC8D4B009CB90F /* folder_16.png in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E2816AC8D4B009CB90F /* folder_16.png */; };
 		B55D8E2E16AD0E49009CB90F /* RawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E2C16AD0E48009CB90F /* RawFileViewController.m */; };
 		B55D8E2F16AD0E49009CB90F /* RawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E2D16AD0E48009CB90F /* RawFileViewController.xib */; };
+		B55D8E3516B50C8C009CB90F /* prettify.css in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E3216B50C8C009CB90F /* prettify.css */; };
+		B55D8E3716B50C8C009CB90F /* sunburst.css in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E3416B50C8C009CB90F /* sunburst.css */; };
+		B55D8E3816B511C3009CB90F /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E3316B50C8C009CB90F /* prettify.js */; };
 		B580E79616A52087000EFAC8 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79416A52087000EFAC8 /* 179-notepad.png */; };
 		B580E79716A52087000EFAC8 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79516A52087000EFAC8 /* 179-notepad@2x.png */; };
 		B580E79E16A52119000EFAC8 /* 291-idcard.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79C16A52119000EFAC8 /* 291-idcard.png */; };
@@ -288,6 +291,9 @@
 		B55D8E2B16AD0E47009CB90F /* RawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawFileViewController.h; sourceTree = "<group>"; };
 		B55D8E2C16AD0E48009CB90F /* RawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RawFileViewController.m; sourceTree = "<group>"; };
 		B55D8E2D16AD0E48009CB90F /* RawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawFileViewController.xib; sourceTree = "<group>"; };
+		B55D8E3216B50C8C009CB90F /* prettify.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = prettify.css; sourceTree = "<group>"; };
+		B55D8E3316B50C8C009CB90F /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = prettify.js; sourceTree = "<group>"; };
+		B55D8E3416B50C8C009CB90F /* sunburst.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = sunburst.css; sourceTree = "<group>"; };
 		B580E79416A52087000EFAC8 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		B580E79516A52087000EFAC8 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad@2x.png"; sourceTree = "<group>"; };
 		B580E79C16A52119000EFAC8 /* 291-idcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "291-idcard.png"; sourceTree = "<group>"; };
@@ -552,9 +558,12 @@
 			path = vector;
 			sourceTree = "<group>";
 		};
-		B55D8E3016AE5305009CB90F /* Html */ = {
+		B55D8E3116B50C8C009CB90F /* Html */ = {
 			isa = PBXGroup;
 			children = (
+				B55D8E3216B50C8C009CB90F /* prettify.css */,
+				B55D8E3316B50C8C009CB90F /* prettify.js */,
+				B55D8E3416B50C8C009CB90F /* sunburst.css */,
 			);
 			name = Html;
 			path = Gitos/Html;
@@ -627,7 +636,7 @@
 		B5F5C6F41675742500C4F0E4 = {
 			isa = PBXGroup;
 			children = (
-				B55D8E3016AE5305009CB90F /* Html */,
+				B55D8E3116B50C8C009CB90F /* Html */,
 				B555150B16A3E805004D5713 /* MessageUI.framework */,
 				B5DF89F016A000C200114862 /* QuartzCore.framework */,
 				B5ACFE8F1698B81A008E56C1 /* icon@2x_et.png */,
@@ -947,6 +956,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55D8E3816B511C3009CB90F /* prettify.js in Resources */,
 				B5F5C7101675742500C4F0E4 /* InfoPlist.strings in Resources */,
 				B5F5C7181675742500C4F0E4 /* Default.png in Resources */,
 				B5F5C71A1675742500C4F0E4 /* Default@2x.png in Resources */,
@@ -1096,6 +1106,8 @@
 				B55D8E2916AC8D4B009CB90F /* file_16.png in Resources */,
 				B55D8E2A16AC8D4B009CB90F /* folder_16.png in Resources */,
 				B55D8E2F16AD0E49009CB90F /* RawFileViewController.xib in Resources */,
+				B55D8E3516B50C8C009CB90F /* prettify.css in Resources */,
+				B55D8E3716B50C8C009CB90F /* sunburst.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
