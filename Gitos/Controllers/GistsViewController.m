@@ -45,8 +45,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Gists";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
-    
+
     UINib *nib = [UINib nibWithNibName:@"GistCell" bundle:nil];
     [gistsTable registerNib:nib forCellReuseIdentifier:@"GistCell"];
     [gistsTable setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];

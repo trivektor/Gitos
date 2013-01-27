@@ -45,7 +45,6 @@
 {
     [scrollView setContentSize:self.view.frame.size];
     [self adjustFrameHeight];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.title = @"Profile";
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }

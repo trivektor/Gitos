@@ -8,22 +8,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/AppDelegate.m"
-         timestampString = "380183557.582234"
+         timestampString = "381010334.001595"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "231"
-         endingLineNumber = "231">
+         startingLineNumber = "233"
+         endingLineNumber = "233">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/NewsfeedViewController.m"
-         timestampString = "379817588.088118"
+         timestampString = "381010334.001595"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "136"
-         endingLineNumber = "136"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
          landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -45,11 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/StarredViewController.m"
-         timestampString = "380499691.355221"
+         timestampString = "381010334.001595"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
          landmarkName = "-getStarredReposForPage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -58,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/StarredViewController.m"
-         timestampString = "380499691.355221"
+         timestampString = "381010334.001595"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
          landmarkName = "-getStarredReposForPage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -71,11 +71,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Gitos/Controllers/StarredViewController.m"
-         timestampString = "380499691.355221"
+         timestampString = "381010334.001595"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
          landmarkName = "-getStarredReposForPage:"
          landmarkType = "5">
       </FileBreakpoint>

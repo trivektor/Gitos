@@ -68,7 +68,6 @@
 - (void)performHouseKeepingTasks
 {
     self.navigationItem.title = @"News Feed";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     
     UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"glyphicons_081_refresh"] landscapeImagePhone:nil style:UIBarButtonItemStyleBordered target:self action:@selector(reloadNewsfeed)];

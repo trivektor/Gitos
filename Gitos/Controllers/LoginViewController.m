@@ -52,9 +52,7 @@
     [self.spinnerView setHidden:YES];
 
     [self.navigationItem setTitle:@"Login to Github"];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
-    
+
     UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteExistingAuthorizations)];
     [submitButton setTintColor:[UIColor colorWithRed:202/255.0 green:0 blue:0 alpha:1]];
     [self.navigationItem setRightBarButtonItem:submitButton];

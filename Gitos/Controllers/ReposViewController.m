@@ -37,8 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"Repositories";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
-    
+
     UINib *nib = [UINib nibWithNibName:@"RepoCell" bundle:nil];
     [reposTable registerNib:nib forCellReuseIdentifier:@"RepoCell"];
     [reposTable setDelegate:self];

@@ -51,7 +51,6 @@
 - (void)performHouseKeepingTasks
 {
     [self.navigationItem setTitle:@"Search"];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
     [self.spinnerView setHidden:YES];
     [searchResultsTable setContentInset:UIEdgeInsetsMake(0, 0, 48, 0)];
