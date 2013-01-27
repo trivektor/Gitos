@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Gist.h"
 
 @interface GistDetailsCell : UITableViewCell
+{
+    __weak IBOutlet UILabel *fieldLabel;
+    __weak IBOutlet UILabel *fieldValue;
+}
+
+@property (nonatomic, strong) Gist *gist;
+
+- (void)renderForIndexPath:(NSIndexPath *)indexPath;
 
 @end
