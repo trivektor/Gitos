@@ -16,6 +16,7 @@
     __weak IBOutlet UITableView *gistsTable;
 }
 
+@property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) SpinnerView *spinnerView;
 @property (nonatomic) NSInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *gists;

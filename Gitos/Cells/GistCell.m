@@ -10,7 +10,7 @@
 
 @implementation GistCell
 
-@synthesize gistName, gistDescription, gistCreatedAt;
+@synthesize  gist, dateFormatter, relativeDateDescriptor, gistName, gistDescription, gistCreatedAt;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -26,6 +26,16 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)render
+{
+    self.gistName.text = [self.gist getName];
+    self.gistDescription.text = [self.gist getDescription];
+
+    NSDate *date  = [self.dateFormatter dateFromString:[self.gist getCreatedAt]];
+
+    self.gistCreatedAt.text = [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
 }
 
 @end

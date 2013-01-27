@@ -13,6 +13,9 @@
 #import "GistCell.h"
 #import "RelativeDateDescriptor.h"
 #import "SVPullToRefresh.h"
+#import "Gist.h"
+#import "SSKeychain.h"
+#import "AppConfig.h"
 
 @interface GistsViewController ()
 
@@ -20,7 +23,7 @@
 
 @implementation GistsViewController
 
-@synthesize currentPage, spinnerView, user;
+@synthesize currentPage, spinnerView, user, accessToken;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +34,7 @@
         self.currentPage = 1;
         self.relativeDateDescriptor = [[RelativeDateDescriptor alloc] initWithPriorDateDescriptionFormat:@"%@" postDateDescriptionFormat:@"in %@"];
         self.dateFormatter  = [[NSDateFormatter alloc] init];
+        self.accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     }
     return self;
 }
@@ -80,25 +84,10 @@
         cell = [[GistCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"GistCell"];
     }
     
-    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    NSDictionary *gist = [self.gists objectAtIndex:indexPath.row];
-    
-    cell.gistName.text = [NSString stringWithFormat:@"gist:%@", [gist valueForKey:@"id"]];
-    
-    if ([gist valueForKey:@"description"] != [NSNull null]) {
-        cell.gistDescription.text = [gist valueForKey:@"description"];
-    } else {
-        cell.gistDescription.text = @"n/a";
-    }
-    
-    [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-    NSDate *date  = [self.dateFormatter dateFromString:[gist valueForKey:@"created_at"]];
-    
-    cell.gistCreatedAt.text = [self.relativeDateDescriptor describeDate:date relativeTo:[NSDate date]];
-    
-    cell.backgroundColor = [UIColor whiteColor];
-    
+    cell.gist = [self.gists objectAtIndex:indexPath.row];
+    cell.dateFormatter = self.dateFormatter;
+    cell.relativeDateDescriptor = self.relativeDateDescriptor;
+    [cell render];
     return cell;
 
 }
@@ -114,14 +103,13 @@
 
 - (void)getUserInfo
 {
-    NSString *accessToken = [SSKeychain passwordForService:@"access_token" account:@"gitos"];
     
     NSURL *userUrl = [NSURL URLWithString:@"https://api.github.com/user"];
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:userUrl];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   accessToken, @"access_token",
+                                   self.accessToken, @"access_token",
                                    @"bearer", @"token_type",
                                    nil];
     
@@ -139,6 +127,7 @@
          [self getUserGists:self.currentPage++];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
      }];
     
     [operation start];
@@ -162,12 +151,21 @@
      ^(AFHTTPRequestOperation *operation, id responseObject){
          NSString *response = [operation responseString];
          
-         [self.gists addObjectsFromArray:[NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+         NSArray *gistsArray = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+         Gist *g;
+
+         for (int i=0; i < [gistsArray count]; i++) {
+             g = [[Gist alloc] initWithData:[gistsArray objectAtIndex:i]];
+             [self.gists addObject:g];
+         }
+
          [gistsTable.pullToRefreshView stopAnimating];
          [gistsTable reloadData];
          [self.spinnerView setHidden:YES];
      }
      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@", error);
          [self.spinnerView setHidden:YES];
      }];
     
