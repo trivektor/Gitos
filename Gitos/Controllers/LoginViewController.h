@@ -24,6 +24,7 @@
 
 - (void)performHousekeepingTasks;
 - (void)authenticate;
+- (void)deleteExistingAuthorizations;
 - (void)setDelegates;
 
 @end

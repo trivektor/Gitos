@@ -55,7 +55,7 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_bg.png"] forBarMetrics:UIBarMetricsDefault];
     
-    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(authenticate)];
+    UIBarButtonItem *submitButton = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteExistingAuthorizations)];
     [submitButton setTintColor:[UIColor colorWithRed:202/255.0 green:0 blue:0 alpha:1]];
     [self.navigationItem setRightBarButtonItem:submitButton];
     
@@ -145,9 +145,59 @@
      }];
     
     [operation start];
-    [self.spinnerView setHidden:NO];
     [usernameField resignFirstResponder];
     [passwordField resignFirstResponder];
+}
+
+- (void)deleteExistingAuthorizations
+{
+    NSString *username = [usernameField text];
+    NSString *password = [passwordField text];
+
+    NSURL *url = [NSURL URLWithString:[AppConfig getConfigValue:@"GithubApiHost"]];
+
+    NSMutableDictionary *oauthParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                        @"75f198a854031c317e62", @"client_id",
+                                        @"07d3e053d06132245799f4afe45b90d2780a89a8", @"client_secret",
+                                        nil];
+
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setParameterEncoding:AFJSONParameterEncoding];
+    [httpClient setAuthorizationHeaderWithUsername:username password:password];
+
+    NSMutableURLRequest *postRequest = [httpClient requestWithMethod:@"GET" path:@"/authorizations" parameters:oauthParams];
+
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:postRequest];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+
+        NSArray *json = [NSJSONSerialization JSONObjectWithData:[response dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+
+        NSDictionary *authorization;
+
+        for (int i=0; i < [json count]; i++) {
+            authorization = [json objectAtIndex:i];
+            NSString *appName = [[authorization valueForKey:@"app"] valueForKey:@"name"];
+
+            if ([appName isEqualToString:@"Gitos"]) {
+                NSInteger authorizationId = [[authorization valueForKey:@"id"] integerValue];
+                NSLog(@"deleting existing authorization id");
+
+                NSMutableURLRequest *deleteRequest = [httpClient requestWithMethod:@"DELETE" path:[NSString stringWithFormat:@"/authorizations/%i", authorizationId] parameters:nil];
+                AFHTTPRequestOperation *deleteOperation = [[AFHTTPRequestOperation alloc] initWithRequest:deleteRequest];
+                [deleteOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [self authenticate];
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"%@", error);
+                }];
+                [deleteOperation start];
+                [self.spinnerView setHidden:NO];
+                return;
+            }
+        }
+        [self authenticate];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {}];
+    [operation start];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
