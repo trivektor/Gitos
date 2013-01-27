@@ -19,7 +19,7 @@
 
 @implementation RawFileViewController
 
-@synthesize repo, branch, fileName;
+@synthesize repo, branch, fileName, mimeType, rawFileUrl, rawFileRequest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -78,22 +78,47 @@
         [paths addObject:self.fileName];
     }
 
-    NSURL *rawFileUrl = [NSURL URLWithString:[githubRawHost stringByAppendingFormat:@"/%@", [paths componentsJoinedByString:@"/"]]];
+    self.rawFileUrl = [NSURL URLWithString:[githubRawHost stringByAppendingFormat:@"/%@", [paths componentsJoinedByString:@"/"]]];
 
-    NSString *content = [NSString stringWithContentsOfURL:rawFileUrl encoding:NSASCIIStringEncoding error:nil];
+    self.rawFileRequest = [NSURLRequest requestWithURL:self.rawFileUrl];
 
-    [fileWebView loadHTMLString:[NSString stringWithFormat:@"<!DOCTYPE html> \
-    <html> \
-        <head> \
-            <link rel='stylesheet' type='text/css' href='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.css'></link> \
-            <style>html, body{padding:0;margin:0;background:#000} pre.prettyprint, code.prettyprint{border:0 !important; border-radius:0 !important;-webkit-border-radius:0 !important;margin:0 !important}</style> \
-            <link rel='stylesheet' href='http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css'></link>\
-            <script src='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.js'></script> \
-        </head> \
-        <body onload='prettyPrint()'> \
-            <pre class='prettyprint'>%@</pre> \
-        </body> \
-    </html>", content] baseURL: nil];
+    NSURLConnection *rawFileConnection = [NSURLConnection connectionWithRequest:self.rawFileRequest delegate:self];
+    [rawFileConnection start];
+    [self.spinnerView setHidden:NO];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    self.mimeType = [response MIMEType];
+    NSLog(@"%@", self.mimeType);
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [self.spinnerView setHidden:YES];
+
+    UIImage *image = [UIImage imageWithData:data];
+
+    if (image != nil) {
+        // Raw file is an image
+        [fileWebView loadRequest:self.rawFileRequest];
+    } else if ([self.mimeType isEqualToString:@"text/plain"]) {
+        NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+        [fileWebView loadHTMLString:[NSString stringWithFormat:@"<!DOCTYPE html> \
+         <html> \
+         <head> \
+         <link rel='stylesheet' type='text/css' href='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.css'></link> \
+         <style>html, body{padding:0;margin:0;background:#000} pre.prettyprint, code.prettyprint{border:0 !important; border-radius:0 !important;-webkit-border-radius:0 !important;margin:0 !important}</style> \
+         <link rel='stylesheet' href='http://google-code-prettify.googlecode.com/svn/trunk/styles/sunburst.css'></link>\
+         <script src='http://google-code-prettify.googlecode.com/svn-history/r52/trunk/src/prettify.js'></script> \
+         </head> \
+         <body onload='prettyPrint()'> \
+         <pre class='prettyprint'>%@</pre> \
+         </body> \
+         </html>", content] baseURL: nil];
+
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

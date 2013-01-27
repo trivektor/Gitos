@@ -11,7 +11,7 @@
 #import "Branch.h"
 #import "SpinnerView.h"
 
-@interface RawFileViewController : UIViewController <UIWebViewDelegate>
+@interface RawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDataDelegate>
 {
     __weak IBOutlet UIWebView *fileWebView;
 }
@@ -20,6 +20,9 @@
 @property (nonatomic, strong) Branch *branch;
 @property (nonatomic, strong) NSString *fileName;
 @property (nonatomic, strong) SpinnerView *spinnerView;
+@property (nonatomic, strong) NSString *mimeType;
+@property (nonatomic, strong) NSURL *rawFileUrl;
+@property (nonatomic, strong) NSURLRequest *rawFileRequest;
 
 - (void)fetchRawFile;
 
