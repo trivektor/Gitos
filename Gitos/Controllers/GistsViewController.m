@@ -16,6 +16,7 @@
 #import "Gist.h"
 #import "SSKeychain.h"
 #import "AppConfig.h"
+#import "GistViewController.h"
 
 @interface GistsViewController ()
 
@@ -90,6 +91,13 @@
     [cell render];
     return cell;
 
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GistViewController *gistController = [[GistViewController alloc] init];
+    gistController.gist = [self.gists objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:gistController animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
