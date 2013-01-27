@@ -96,6 +96,7 @@
 {
     GistViewController *gistController = [[GistViewController alloc] init];
     gistController.gist = [self.gists objectAtIndex:indexPath.row];
+    gistController.user = self.user;
     [self.navigationController pushViewController:gistController animated:YES];
 }
 

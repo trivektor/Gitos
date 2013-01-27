@@ -10,7 +10,7 @@
 
 @implementation Gist
 
-@synthesize data;
+@synthesize data, details;
 
 - (id)initWithData:(NSDictionary *)gistData
 {
@@ -21,9 +21,14 @@
     return self;
 }
 
+- (NSString *)getId
+{
+    return [self.data valueForKey:@"id"];
+}
+
 - (NSString *)getName
 {
-    return [NSString stringWithFormat:@"gist:%@", [self.data valueForKey:@"id"]];
+    return [NSString stringWithFormat:@"gist:%@", [self getId]];
 }
 
 - (NSString *)getDescription
@@ -38,6 +43,23 @@
 - (NSString *)getCreatedAt
 {
     return [self.data valueForKey:@"created_at"];
+}
+
+- (NSInteger)getNumberOfFiles
+{
+    NSArray *files = [self.data valueForKey:@"files"];
+    return [files count];
+}
+
+- (NSInteger)getNumberOfForks
+{
+    NSArray *forks = [self.details valueForKey:@"forks"];
+    return [forks count];
+}
+
+- (NSInteger)getNumberOfComments
+{
+    return [[self.details valueForKey:@"comments"] integerValue];
 }
 
 @end

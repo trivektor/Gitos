@@ -11,11 +11,16 @@
 @interface Gist : NSObject
 
 @property (nonatomic, retain) NSDictionary *data;
+@property (nonatomic, retain) NSDictionary *details;
 
 - (id)initWithData:(NSDictionary *)gistData;
 
+- (NSString *)getId;
 - (NSString *)getName;
 - (NSString *)getDescription;
 - (NSString *)getCreatedAt;
+- (NSInteger)getNumberOfForks;
+- (NSInteger)getNumberOfFiles;
+- (NSInteger)getNumberOfComments;
 
 @end

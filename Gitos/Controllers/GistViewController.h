@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "Gist.h"
+#import "User.h"
 
-@interface GistViewController : UIViewController
+@interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    __weak IBOutlet UITableView *detailsTable;
+}
 
 @property (nonatomic, strong) Gist *gist;
+@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSDictionary *accessTokenParams;
+
+- (void)performHouseKeepingTasks;
+- (void)getGistStats;
+- (void)setGistStats:(NSDictionary *)stats;
 
 @end
