@@ -31,7 +31,33 @@
     [self.navigationItem setTitle:[self.gistFile getName]];
     NSURL *fileUrl = [NSURL URLWithString:[self.gistFile getRawUrl]];
     NSURLRequest *fileRequest = [NSURLRequest requestWithURL:fileUrl];
-    [fileWebView loadRequest:fileRequest];
+    NSURLConnection *fileConnection = [NSURLConnection connectionWithRequest:fileRequest delegate:self];
+    [fileConnection start];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [self.spinnerView setHidden:YES];
+
+    NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+
+    NSString *htmlString = [NSString stringWithFormat:@" \
+    <!DOCTYPE html> \
+    <html> \
+    <head> \
+    <link rel='stylesheet' href='prettify.css'></link> \
+    <link rel='stylesheet' href='sunburst.css'></link> \
+    <script src='prettify.js'></script> \
+    </head> \
+    <body onload='prettyPrint()'> \
+    <pre class='prettyprint'><code>%@</code></pre> \
+    </body> \
+    </html>", content];
+
+    [fileWebView loadHTMLString:htmlString baseURL:baseURL];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

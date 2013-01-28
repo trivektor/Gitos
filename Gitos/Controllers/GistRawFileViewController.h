@@ -10,7 +10,7 @@
 #import "SpinnerView.h"
 #import "GistFile.h"
 
-@interface GistRawFileViewController : UIViewController <UIWebViewDelegate>
+@interface GistRawFileViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate>
 {
     __weak IBOutlet UIWebView *fileWebView;
 }
