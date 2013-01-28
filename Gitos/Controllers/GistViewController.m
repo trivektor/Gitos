@@ -12,6 +12,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "SSKeychain.h"
 #import "AppConfig.h"
+#import "GistFile.h"
 
 @interface GistViewController ()
 
@@ -31,6 +32,7 @@
                                   self.accessToken, @"access_token",
                                   @"bearer", @"token_type",
                                   nil];
+        self.files = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -47,10 +49,20 @@
 - (void)performHouseKeepingTasks
 {
     UINib *nib = [UINib nibWithNibName:@"GistDetailsCell" bundle:nil];
-    [detailsTable registerNib:nib forCellReuseIdentifier:@"GistDetailsCell"];
-    [detailsTable setBackgroundView:nil];
-    [detailsTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [detailsTable setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
+
+    NSArray *tables = [[NSArray alloc] initWithObjects:detailsTable, filesTable, nil];
+
+    UITableView *table;
+
+    for (int i=0; i < tables.count; i++) {
+        table = [tables objectAtIndex:i];
+        [table registerNib:nib forCellReuseIdentifier:@"GistDetailsCell"];
+        [table setBackgroundView:nil];
+        [table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+        [table setSeparatorColor:[UIColor colorWithRed:206/255.0 green:206/255.0 blue:206/255.0 alpha:0.8]];
+        [table setScrollEnabled:NO];
+    }
+
     [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
 }
 
@@ -83,6 +95,14 @@
 - (void)setGistStats:(NSDictionary *)stats
 {
     self.gist.details = [[NSDictionary alloc] initWithDictionary:stats];
+
+    NSDictionary *gistFiles = [self.gist getFiles];
+
+    for (NSString *key in [gistFiles allKeys]) {
+        NSLog(@"%@", key);
+        [self.files addObject:[[GistFile alloc] initWithData:[gistFiles valueForKey:key]]];
+    }
+    [filesTable reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -95,20 +115,33 @@
     if (tableView == detailsTable) {
         return 3;
     } else {
-        return 0;
+        return [self.files count];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"GistDetailsCell";
-    GistDetailsCell *cell = [detailsTable dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[GistDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    if (tableView == detailsTable) {
+        static NSString *cellIdentifier = @"GistDetailsCell";
+        GistDetailsCell *cell = [detailsTable dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[GistDetailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        [cell setGist:self.gist];
+        [cell renderForIndexPath:indexPath];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        return cell;
+    } else {
+        UITableViewCell *cell = [filesTable dequeueReusableCellWithIdentifier:@"Cell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        }
+        GistFile *file = [self.files objectAtIndex:indexPath.row];
+        cell.textLabel.text = [file getName];
+        cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
+
+        return cell;
     }
-    cell.gist = self.gist;
-    [cell renderForIndexPath:indexPath];
-    return cell;
 }
 
 - (void)didReceiveMemoryWarning

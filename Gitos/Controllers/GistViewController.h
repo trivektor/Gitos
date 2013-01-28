@@ -13,12 +13,14 @@
 @interface GistViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     __weak IBOutlet UITableView *detailsTable;
+    __weak IBOutlet UITableView *filesTable;
 }
 
 @property (nonatomic, strong) Gist *gist;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSDictionary *accessTokenParams;
+@property (nonatomic, strong) NSMutableArray *files;
 
 - (void)performHouseKeepingTasks;
 - (void)getGistStats;

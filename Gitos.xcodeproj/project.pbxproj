@@ -75,6 +75,7 @@
 		B55D8E4716B5BFF5009CB90F /* GistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E4516B5BFF5009CB90F /* GistViewController.xib */; };
 		B55D8E4A16B5C586009CB90F /* GistDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E4916B5C586009CB90F /* GistDetailsCell.xib */; };
 		B55D8E4D16B5C677009CB90F /* GistDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E4C16B5C677009CB90F /* GistDetailsCell.m */; };
+		B55D8E5016B5D929009CB90F /* GistFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E4F16B5D929009CB90F /* GistFile.m */; };
 		B580E79616A52087000EFAC8 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79416A52087000EFAC8 /* 179-notepad.png */; };
 		B580E79716A52087000EFAC8 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79516A52087000EFAC8 /* 179-notepad@2x.png */; };
 		B580E79E16A52119000EFAC8 /* 291-idcard.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79C16A52119000EFAC8 /* 291-idcard.png */; };
@@ -307,6 +308,8 @@
 		B55D8E4916B5C586009CB90F /* GistDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistDetailsCell.xib; sourceTree = "<group>"; };
 		B55D8E4B16B5C677009CB90F /* GistDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistDetailsCell.h; sourceTree = "<group>"; };
 		B55D8E4C16B5C677009CB90F /* GistDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistDetailsCell.m; sourceTree = "<group>"; };
+		B55D8E4E16B5D929009CB90F /* GistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistFile.h; sourceTree = "<group>"; };
+		B55D8E4F16B5D929009CB90F /* GistFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistFile.m; sourceTree = "<group>"; };
 		B580E79416A52087000EFAC8 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		B580E79516A52087000EFAC8 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad@2x.png"; sourceTree = "<group>"; };
 		B580E79C16A52119000EFAC8 /* 291-idcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "291-idcard.png"; sourceTree = "<group>"; };
@@ -913,6 +916,8 @@
 				B55D8E2516AC750D009CB90F /* Branch.m */,
 				B55D8E3916B5ADCF009CB90F /* Gist.h */,
 				B55D8E3A16B5ADCF009CB90F /* Gist.m */,
+				B55D8E4E16B5D929009CB90F /* GistFile.h */,
+				B55D8E4F16B5D929009CB90F /* GistFile.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1197,6 +1202,7 @@
 				B55D8E3B16B5ADD0009CB90F /* Gist.m in Sources */,
 				B55D8E4616B5BFF5009CB90F /* GistViewController.m in Sources */,
 				B55D8E4D16B5C677009CB90F /* GistDetailsCell.m in Sources */,
+				B55D8E5016B5D929009CB90F /* GistFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
