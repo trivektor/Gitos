@@ -26,4 +26,9 @@
     return [self.data valueForKey:@"filename"];
 }
 
+- (NSString *)getRawUrl
+{
+    return [self.data valueForKey:@"raw_url"];
+}
+
 @end

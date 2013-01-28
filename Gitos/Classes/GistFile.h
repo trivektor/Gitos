@@ -15,5 +15,6 @@
 - (id)initWithData:(NSDictionary *)gistData;
 
 - (NSString *)getName;
+- (NSString *)getRawUrl;
 
 @end

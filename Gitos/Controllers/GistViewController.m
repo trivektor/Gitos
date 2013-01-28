@@ -13,6 +13,7 @@
 #import "SSKeychain.h"
 #import "AppConfig.h"
 #import "GistFile.h"
+#import "GistRawFileViewController.h"
 
 @interface GistViewController ()
 
@@ -143,6 +144,15 @@
         cell.textLabel.font = [UIFont fontWithName:@"Arial" size:12.0];
 
         return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == filesTable) {
+        GistRawFileViewController *gistRawFileController = [[GistRawFileViewController alloc] init];
+        gistRawFileController.gistFile = [self.files objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:gistRawFileController animated:YES];
     }
 }
 

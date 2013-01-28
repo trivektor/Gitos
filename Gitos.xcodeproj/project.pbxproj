@@ -76,6 +76,8 @@
 		B55D8E4A16B5C586009CB90F /* GistDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E4916B5C586009CB90F /* GistDetailsCell.xib */; };
 		B55D8E4D16B5C677009CB90F /* GistDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E4C16B5C677009CB90F /* GistDetailsCell.m */; };
 		B55D8E5016B5D929009CB90F /* GistFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E4F16B5D929009CB90F /* GistFile.m */; };
+		B55D8E5416B65989009CB90F /* GistRawFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B55D8E5216B65988009CB90F /* GistRawFileViewController.m */; };
+		B55D8E5516B65989009CB90F /* GistRawFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55D8E5316B65988009CB90F /* GistRawFileViewController.xib */; };
 		B580E79616A52087000EFAC8 /* 179-notepad.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79416A52087000EFAC8 /* 179-notepad.png */; };
 		B580E79716A52087000EFAC8 /* 179-notepad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79516A52087000EFAC8 /* 179-notepad@2x.png */; };
 		B580E79E16A52119000EFAC8 /* 291-idcard.png in Resources */ = {isa = PBXBuildFile; fileRef = B580E79C16A52119000EFAC8 /* 291-idcard.png */; };
@@ -310,6 +312,9 @@
 		B55D8E4C16B5C677009CB90F /* GistDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistDetailsCell.m; sourceTree = "<group>"; };
 		B55D8E4E16B5D929009CB90F /* GistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistFile.h; sourceTree = "<group>"; };
 		B55D8E4F16B5D929009CB90F /* GistFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistFile.m; sourceTree = "<group>"; };
+		B55D8E5116B65987009CB90F /* GistRawFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GistRawFileViewController.h; sourceTree = "<group>"; };
+		B55D8E5216B65988009CB90F /* GistRawFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GistRawFileViewController.m; sourceTree = "<group>"; };
+		B55D8E5316B65988009CB90F /* GistRawFileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GistRawFileViewController.xib; sourceTree = "<group>"; };
 		B580E79416A52087000EFAC8 /* 179-notepad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad.png"; sourceTree = "<group>"; };
 		B580E79516A52087000EFAC8 /* 179-notepad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "179-notepad@2x.png"; sourceTree = "<group>"; };
 		B580E79C16A52119000EFAC8 /* 291-idcard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "291-idcard.png"; sourceTree = "<group>"; };
@@ -773,6 +778,9 @@
 				B55D8E4316B5BFF5009CB90F /* GistViewController.h */,
 				B55D8E4416B5BFF5009CB90F /* GistViewController.m */,
 				B55D8E4516B5BFF5009CB90F /* GistViewController.xib */,
+				B55D8E5116B65987009CB90F /* GistRawFileViewController.h */,
+				B55D8E5216B65988009CB90F /* GistRawFileViewController.m */,
+				B55D8E5316B65988009CB90F /* GistRawFileViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1136,6 +1144,7 @@
 				B55D8E3716B50C8C009CB90F /* sunburst.css in Resources */,
 				B55D8E4716B5BFF5009CB90F /* GistViewController.xib in Resources */,
 				B55D8E4A16B5C586009CB90F /* GistDetailsCell.xib in Resources */,
+				B55D8E5516B65989009CB90F /* GistRawFileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1203,6 +1212,7 @@
 				B55D8E4616B5BFF5009CB90F /* GistViewController.m in Sources */,
 				B55D8E4D16B5C677009CB90F /* GistDetailsCell.m in Sources */,
 				B55D8E5016B5D929009CB90F /* GistFile.m in Sources */,
+				B55D8E5416B65989009CB90F /* GistRawFileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
