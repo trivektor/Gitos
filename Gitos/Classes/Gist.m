@@ -51,6 +51,11 @@
     return [files count];
 }
 
+- (NSDictionary *)getFiles
+{
+    return [self.details valueForKey:@"files"];
+}
+
 - (NSInteger)getNumberOfForks
 {
     NSArray *forks = [self.details valueForKey:@"forks"];

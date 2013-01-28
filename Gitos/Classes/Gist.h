@@ -21,6 +21,7 @@
 - (NSString *)getCreatedAt;
 - (NSInteger)getNumberOfForks;
 - (NSInteger)getNumberOfFiles;
+- (NSDictionary *)getFiles;
 - (NSInteger)getNumberOfComments;
 
 @end
