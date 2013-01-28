@@ -20,7 +20,7 @@
 
 @implementation GistViewController
 
-@synthesize gist, user;
+@synthesize gist, user, spinnerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,6 +64,7 @@
     }
 
     [self.view setBackgroundColor:[UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]];
+    self.spinnerView = [SpinnerView loadSpinnerIntoView:self.view];
 }
 
 - (void)getGistStats
@@ -86,8 +87,10 @@
 
         [self setGistStats:json];
         [detailsTable reloadData];
+        [self.spinnerView setHidden:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
+        [self.spinnerView setHidden:YES];
     }];
     [operation start];
 }
@@ -99,7 +102,6 @@
     NSDictionary *gistFiles = [self.gist getFiles];
 
     for (NSString *key in [gistFiles allKeys]) {
-        NSLog(@"%@", key);
         [self.files addObject:[[GistFile alloc] initWithData:[gistFiles valueForKey:key]]];
     }
     [filesTable reloadData];
